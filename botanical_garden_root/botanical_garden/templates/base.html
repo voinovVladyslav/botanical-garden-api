@@ -1,1 +1,378 @@
-<h1>Это база</h1>>
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>
+        {% block title %} Ботанічний сад ХДУ {% endblock title %}
+    </title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header" id="main">
+            {% block header %}
+            <div class="header__container _container">
+                <a href="#main" class="header__logo">
+                    <img src="img/logo.svg" alt="logo">
+                </a>
+                <nav class="header__menu menu">
+                    {% block nav %}
+                    <ul class="menu__list">
+                        <li class="menu__item">
+                            <a href="#news" class="menu__link">Новини</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#history" class="menu__link">Історія</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#structure" class="menu__link">Структура</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="#contacts" class="menu__link">Контакти</a>
+                        </li>
+                    </ul>
+                    {% endblock nav %}
+                </nav>
+            </div>
+            {% endblock header %}
+        </header>
+
+        <main class="page">
+            <section class="page__main-block main-block">
+                {% block main-block %}
+                <div class="main-block__container _container">
+                    <div class="main-block__body">
+                        <div class="main-block__square">
+
+                        </div>
+                        <h1 class="main-block__title">
+                            Вітаємо у ботанічному саду Херсонського державного університету!
+                        </h1>
+                        <div class="main-block__text">
+                            Відчуй єднання людини з природою завітавши до ботанічного саду
+                        </div>
+                        <div class="main-block__buttons">
+                            <a href="#schedule" class="main-block__button">Дізнатися розклад</a>
+                            <p class="main-block__button_text">З 9:00 до 19:00</p>
+                        </div>
+                        <div class="main-block__image">
+                            <img src="img/cuate.svg" alt="mainpage_image1">
+                        </div>
+                    </div>
+                </div>
+                {% endblock main-block %}
+            </section>
+
+            <section class="page__news news">
+                {% block news %}
+                <div class="news__container _container">
+                    <h1 class="news__title" id="news">
+                        Нещодавні новини
+                        <a href="https://www.instagram.com/botanical_garden_ks/" target="_blank" class="news__viewall">View all</a>
+                    </h1>
+                    <div class="news__body">
+                        <div class="news__column">
+                            <div class="news__item item-news">
+                                <h3 class="item-news__title">Підготовка до весни</h3>
+                                <div class="item-news__date">
+                                    16 Oct 2021 ⠀⠀⠀|⠀⠀⠀ #tropic
+                                </div>
+                                <div class="item-news__text">В Ботанічному саду вже йде підготовка до весни &#128522 Висаджуємо нові сорти тюльпанів &#127802 весна обіцяє бути яскравою &#127804 </div>
+                                <div class="item-news__image"><img src="img/flower.jpg" alt="flower" width="509px" height="357px"></div>
+                            </div>
+                        </div>
+                        <div class="news__column">
+                            <div class="news__item item-news">
+                                <h3 class="item-news__title">Весна прийшла</h3>
+                                <div class="item-news__date">
+                                    11 Mar 2022 ⠀⠀⠀|⠀⠀⠀ #spring
+                                </div>
+                                <div class="item-news__text">В Ботанічному саду 💚 вже прокинулись, зачаровуючи своєю ніжністю і жагою до життя перші весняні квіточки!</div>
+                                <div class="item-news__image"><img src="img/news-flower.jpg" alt="news-flower" width="509px" height="357px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock news %}
+            </section>
+
+            <section class="page__history history">
+                {% block history %}
+                <div class="history__container _container">
+                    <h1 class="history__title" id="history">
+                        Історія заснування
+                    </h1>
+                    <div class="history__body">
+                        <div class="history__1block-text">
+                            <p>Рішення про заснування ботанічного саду Херсонського державного педагогічного інституту ім. Н. К. Крупської було прийняте Херсонським міськвиконкомом у 1934 році. Необхіднісь створення ботанічного саду була обґрунтована співробітниками
+                                кафедри ботаніки, зусиллями яких був розроблений перший проект плану агробіостанції з ботанічним садом як навчальної бази природничо-географічного факультету.
+                            </p>
+                        </div>
+                        <div class="history__1block-image">
+                            <img src="img/bell.jpg" alt="bell">
+                        </div>
+
+                        <div class="history__2block-image">
+                            <img src="img/hat.jpg " alt="hat ">
+                        </div>
+                        <div class="history__2block-text">
+                            Практичні роботи розпочалися навесні 1935 року. Керувати ними було доручено старшому викладачеві кафедри ботаніки М. С. Кривошею. У 1937 році були проведені посадки захисної смуги навколо майбутнього саду та висаджені дерева на центральній алеї. У кінці
+                            центральної алеї розпочалося створення ботанічного кола, у його центрі планувалося побудувати басейн для вирощування водних рослин, зокрема рослин Нижньодніпровських плавнів.
+                        </div>
+                        <img src="img/tree.jpg" alt="tree" class="history__3block-image">
+                        <div class="history__3block-text">
+                            <p>Зліва від центральної алеї було закладено колекційний плодовий сад з місцевих сортів плодових дерев та кущів. Справа від центральної алеї зроблені посадки хвойних — сосни та біоти, а далі — т. з. «Мічурінський сад», який за
+                                свідченням професора Ківера Ф. В. та викладача Кривчені Є. І. був гордістю ботанічного саду. У ньому росли 10 сортів яблунь та інших плодових дерев, які були виведені І. В. Мічуріним.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endblock history %}
+            </section>
+
+            <section class="page__str structure">
+                {% block structure %}
+                <div class="str__container _container">
+                    <h1 class="str__title" id="structure">
+                        Структура саду
+                    </h1>
+                    <div class="str__body">
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">типова пришкільна ділянка</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">сад безперервного цвітіння</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">плодовий <br>сад</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">метеорологічний майданчик</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">фізіологічна <br>ділянка</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">квітково-декоративні культури</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">дендрологічний сектор</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">відділ «Херсонські степи»</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">велике ботанічне <br>коло</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">дубовий <br>гай
+                            </div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">новий <br>дендрарій</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">листяний <br>гай</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">хвойний <br>гай</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">мале ботанічне <br>коло</div>
+                        </div>
+                        <div class="str__block">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">північна та південна лісосмуги</div>
+                        </div>
+                        <div class="str__block-last">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">листяні та <br>хвойні алеї</div>
+                        </div>
+                        <div class="str__block-last">
+                            <div class="str__block-line"></div>
+                            <div class="str__block-text">теплиця та <br>розсадник</div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock structure %}
+            </section>
+
+            <section class="page__map map">
+                {% block map %}
+                <div class="map__container _container">
+                    <h1 class="map__title" id="map">
+                        Місцезнаходження саду
+                    </h1>
+                    <div class="map__body">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5077.2452867020575!2d32.58974002317306!3d46.6581468931982!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c41a839f49d107%3A0xbe04a726ee205c46!2sKhersons%CA%B9kyy%20Botanichnyy%20Sad%2C%20Mykolaivske%20Hwy%2C%2029%2C%20Kherson%2C%20Khersons&#39;ka%20oblast%2C%2073000!5e0!3m2!1sen!2sua!4v1647007703135!5m2!1sen!2sua"
+                            width="1180" height="510" style="border:0;" allowfullscreen="" loading="lazy" class="map"></iframe>
+                    </div>
+                </div>
+                {% endblock map %}
+            </section>
+
+            <section class="page__schedule schedule">
+                {% block schedule %}
+                <div class="schedule__container _container">
+                    <h1 class="schedule__title" id="schedule">
+                        Розклад роботи та вартість платних послуг
+                    </h1>
+                    <div class="schedule__body">
+                        <img src="img/calendar1.svg" alt="calendar" class="calendar">
+                        <div class="schedule__days">
+                            <div class="schedule__days-block">
+                                <div class="schedule__days-line">
+                                    <div class="schedule__days-title">
+                                        Робочі дні:
+                                        <div class="schedule__days-text">
+                                            понеділок – п’ятниця.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="schedule__hours">
+                            <div class="schedule__hours-block">
+                                <div class="schedule__hours-line">
+                                    <div class="schedule__hours-title">
+                                        Робочі години:
+                                        <div class="schedule__hours-text">
+                                            понеділок – четвер: 8:30 – 17:15; <br>п’ятниця: 8:30 – 17:15.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="schedule__weekend">
+                            <div class="schedule__weekend-block">
+                                <div class="schedule__weekend-line">
+                                    <div class="schedule__weekend-title">
+                                        Вихідні дні:
+                                        <div class="schedule__weekend-text">
+                                            субота – неділя.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="schedule__price">
+                            <div class="schedule__price-block">
+                                <div class="schedule__price-line">
+                                    <div class="schedule__price-title">
+                                        Вартість послуг:
+                                        <div class="schedule__price-text">
+                                            <br>Індивідуальні відвідування – 20 грн; <br>Екскурсія для дорослих – 20 грн; <br>Екскурсія для дітей – 15 грн; <br>Проведення заходів – 300 грн/год; <br>Фото - відеозйомки – 100 грн/год.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock schedule %}
+            </section>
+
+            <section class="page__contacts contacts">
+                {% block contacts %}
+                <div class="contacts__container _container">
+                    <h1 class="contacts__title" id="contacts">
+                        Контакти
+                    </h1>
+                    <div class="contacts__body">
+                        <div class="contacts__title-con">
+                            Наш телефон:
+                            <div class="contacts__text-con">
+                                <a href="tel:+38(0552)33-70-87" class="contacts__link">+38(0552)33-70-87</a>
+                            </div>
+                        </div>
+                        <div class="contacts__title-con">
+                            <br>Наша адреса:
+                            <div class="contacts__text-con">
+                                <a href="https://goo.gl/maps/GAMzcUENS8uiSn7u5" target="_blank" class="contacts__link">Миколаївське шосе, 29</a>
+                            </div>
+                        </div>
+                        <div class="contacts__title-con">
+                            <br>E-Mail:
+                            <div class="contacts__text-con">
+                                <a href="mailto:gardenksu@gmail.com" class="contacts__link">gardenksu@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contacts__title-con">
+                            <br>Instagram:
+                            <div class="contacts__text-con">
+                                <a href="https://www.instagram.com/botanical_garden_ks/" target="_blank" class="contacts__link">@botanical_garden_ks</a>
+                            </div>
+                        </div>
+
+                        <div class="contacts__block">
+                            <div class="contacts__block-text">
+                                Поставте
+                            </div>
+                            <div class="contacts__block-text">
+                                <br>питання
+                            </div>
+                            <div class="contacts__block-text">
+                                <br>саме
+                            </div>
+                            <div class="contacts__block-text">
+                                <br>зараз:
+                            </div>
+
+                            <div class="contacts__block-form">
+                                <form action="#" method="post">
+                                    <ul>
+                                        <li>
+                                            <input placeholder="Ім'я:" type="text" id="name" name="user_name">
+                                        </li>
+                                        <li>
+                                            <input placeholder="Номер телефону:" type="tel" id="tel" name="phone_number">
+                                        </li>
+                                        <li>
+                                            <input placeholder="E-Mail:" type="email" id="mail" name="user_mail">
+                                        </li>
+                                        <li>
+                                            <textarea placeholder="Повідомлення:" id="msg" name="user_message" class="message-area"></textarea>
+                                        </li>
+                                        <li class="button">
+                                            <button type="submit" class="form-button">Надіслати</button>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% block contacts %}
+            </section>
+        </main>
+
+        <div class="to-top">
+            <a href="#" title="Back to Top"><img src="img/round-arrow.svg" alt=""></a>
+        </div>
+    </div>
+</body>
+
+</html>

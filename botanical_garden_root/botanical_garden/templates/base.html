@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>
         {% block title %} Ботанічний сад ХДУ {% endblock title %}
     </title>
@@ -19,7 +19,7 @@
             {% block header %}
             <div class="header__container _container">
                 <a href="#main" class="header__logo">
-                    <img src="img/logo.svg" alt="logo">
+                    <img src="{% static 'img/logo.svg' %}" alt="logo">
                 </a>
                 <nav class="header__menu menu">
                     {% block nav %}
@@ -62,7 +62,7 @@
                             <p class="main-block__button_text">З 9:00 до 19:00</p>
                         </div>
                         <div class="main-block__image">
-                            <img src="img/cuate.svg" alt="mainpage_image1">
+                            <img src="{% static 'img/cuate.svg' %}" alt="mainpage_image1">
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                                     16 Oct 2021 ⠀⠀⠀|⠀⠀⠀ #tropic
                                 </div>
                                 <div class="item-news__text">В Ботанічному саду вже йде підготовка до весни &#128522 Висаджуємо нові сорти тюльпанів &#127802 весна обіцяє бути яскравою &#127804 </div>
-                                <div class="item-news__image"><img src="img/flower.jpg" alt="flower" width="509px" height="357px"></div>
+                                <div class="item-news__image"><img src="{% static 'img/flower.jpg' %}" alt="flower" width="509px" height="357px"></div>
                             </div>
                         </div>
                         <div class="news__column">
@@ -94,7 +94,7 @@
                                     11 Mar 2022 ⠀⠀⠀|⠀⠀⠀ #spring
                                 </div>
                                 <div class="item-news__text">В Ботанічному саду 💚 вже прокинулись, зачаровуючи своєю ніжністю і жагою до життя перші весняні квіточки!</div>
-                                <div class="item-news__image"><img src="img/news-flower.jpg" alt="news-flower" width="509px" height="357px"></div>
+                                <div class="item-news__image"><img src="{% static 'img/news-flower.jpg %}" alt="news-flower" width="509px" height="357px"></div>
                             </div>
                         </div>
                     </div>
@@ -115,17 +115,17 @@
                             </p>
                         </div>
                         <div class="history__1block-image">
-                            <img src="img/bell.jpg" alt="bell">
+                            <img src="{% static 'img/bell.jpg' %}" alt="bell">
                         </div>
 
                         <div class="history__2block-image">
-                            <img src="img/hat.jpg " alt="hat ">
+                            <img src="{% static 'img/hat.jpg' %}" alt="hat ">
                         </div>
                         <div class="history__2block-text">
                             Практичні роботи розпочалися навесні 1935 року. Керувати ними було доручено старшому викладачеві кафедри ботаніки М. С. Кривошею. У 1937 році були проведені посадки захисної смуги навколо майбутнього саду та висаджені дерева на центральній алеї. У кінці
                             центральної алеї розпочалося створення ботанічного кола, у його центрі планувалося побудувати басейн для вирощування водних рослин, зокрема рослин Нижньодніпровських плавнів.
                         </div>
-                        <img src="img/tree.jpg" alt="tree" class="history__3block-image">
+                        <img src="{% static 'img/tree.jpg' %}" alt="tree" class="history__3block-image">
                         <div class="history__3block-text">
                             <p>Зліва від центральної алеї було закладено колекційний плодовий сад з місцевих сортів плодових дерев та кущів. Справа від центральної алеї зроблені посадки хвойних — сосни та біоти, а далі — т. з. «Мічурінський сад», який за
                                 свідченням професора Ківера Ф. В. та викладача Кривчені Є. І. був гордістю ботанічного саду. У ньому росли 10 сортів яблунь та інших плодових дерев, які були виведені І. В. Мічуріним.
@@ -238,7 +238,7 @@
                         Розклад роботи та вартість платних послуг
                     </h1>
                     <div class="schedule__body">
-                        <img src="img/calendar1.svg" alt="calendar" class="calendar">
+                        <img src="{% static 'img/calendar.svg' %}" alt="calendar" class="calendar">
                         <div class="schedule__days">
                             <div class="schedule__days-block">
                                 <div class="schedule__days-line">
@@ -370,7 +370,7 @@
         </main>
 
         <div class="to-top">
-            <a href="#" title="Back to Top"><img src="img/round-arrow.svg" alt=""></a>
+            <a href="#" title="back to Top"><img src="{% static 'img/round-arrow.svg' %}" alt=""></a>
         </div>
     </div>
 </body>

@@ -1,12 +1,14 @@
+{% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html lang="uk">
+{% block content %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Історя заснування саду</title>
 </head>
 
@@ -26,10 +28,10 @@
                             Ознайомтеся з цікавою історією заснування Ботанічного саду ХДУ
                         </div>
                         <div class="main-block__buttons ">
-                            <a href="base.html#main " class="main-block__button ">Повернутися на головну</a>
+                            <a href="main.html#main " class="main-block__button ">Повернутися на головну</a>
                         </div>
                         <div class="history__main-block__image ">
-                            <img src="img/bro.svg " alt="mainpage_image1 ">
+                            <img src="{% static 'img/bro.svg' %}" alt="mainpage_image1 ">
                         </div>
                     </div>
                 </div>
@@ -46,17 +48,17 @@
                             </p>
                         </div>
                         <div class="history__1block-image ">
-                            <img src="img/bell.jpg " alt="bell ">
+                            <img src="{% static 'img/bell.jpg' %}" alt="bell ">
                         </div>
 
                         <div class="history__2block-image ">
-                            <img src="img/hat.jpg " alt="hat ">
+                            <img src="{% static 'img/hat.jpg' %}" alt="hat ">
                         </div>
                         <div class="history__2block-text ">
                             Практичні роботи розпочалися навесні 1935 року. Керувати ними було доручено старшому викладачеві кафедри ботаніки М. С. Кривошею. У 1937 році були проведені посадки захисної смуги навколо майбутнього саду та висаджені дерева на центральній алеї. У кінці
                             центральної алеї розпочалося створення ботанічного кола, у його центрі планувалося побудувати басейн для вирощування водних рослин, зокрема рослин Нижньодніпровських плавнів.
                         </div>
-                        <img src="img/tree.jpg " alt="tree " class="history__3block-image ">
+                        <img src="{% static 'img/tree.jpg' %}" alt="tree " class="history__3block-image ">
                         <div class="history__3block-text ">
                             <p>Зліва від центральної алеї було закладено колекційний плодовий сад з місцевих сортів плодових дерев та кущів. Справа від центральної алеї зроблені посадки хвойних — сосни та біоти, а далі — т. з. «Мічурінський сад», який за
                                 свідченням професора Ківера Ф. В. та викладача Кривчені Є. І. був гордістю ботанічного саду. У ньому росли 10 сортів яблунь та інших плодових дерев, які були виведені І. В. Мічуріним.
@@ -67,84 +69,13 @@
                 </div>
             </section>
 
-            <section class="page__contacts contacts ">
-                <div class="contacts__container _container ">
-                    <h1 class="contacts__title " id="contacts ">
-                        Контакти
-                    </h1>
-                    <div class="contacts__body ">
-                        <div class="contacts__title-con ">
-                            Наш телефон:
-                            <div class="contacts__text-con ">
-                                <a href="tel:+38(0552)33-70-87 " class="contacts__link ">+38(0552)33-70-87</a>
-                            </div>
-                        </div>
-                        <div class="contacts__title-con ">
-                            <br>Наша адреса:
-                            <div class="contacts__text-con ">
-                                <a href="https://goo.gl/maps/GAMzcUENS8uiSn7u5 " target="_blank " class="contacts__link ">Миколаївське шосе, 29</a>
-                            </div>
-                        </div>
-                        <div class="contacts__title-con ">
-                            <br>E-Mail:
-                            <div class="contacts__text-con ">
-                                <a href="mailto:gardenksu@gmail.com " class="contacts__link ">gardenksu@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="contacts__title-con ">
-                            <br>Instagram:
-                            <div class="contacts__text-con ">
-                                <a href="https://www.instagram.com/botanical_garden_ks/ " target="_blank " class="contacts__link ">@botanical_garden_ks</a>
-                            </div>
-                        </div>
-
-                        <div class="contacts__block ">
-                            <div class="contacts__block-text ">
-                                Поставте
-                            </div>
-                            <div class="contacts__block-text ">
-                                <br>питання
-                            </div>
-                            <div class="contacts__block-text ">
-                                <br>саме
-                            </div>
-                            <div class="contacts__block-text ">
-                                <br>зараз:
-                            </div>
-
-                            <div class="contacts__block-form ">
-                                <form action="# " method="post ">
-                                    <ul>
-                                        <li>
-                                            <input placeholder="Ім 'я:" type="text" id="name" name="user_name">
-                                        </li>
-                                        <li>
-                                            <input placeholder="Номер телефону:" type="number" id="tel" name="phone_number">
-                                        </li>
-                                        <li>
-                                            <input placeholder="E-Mail:" type="email" id="mail" name="user_mail">
-                                        </li>
-                                        <li>
-                                            <textarea placeholder="Повідомлення:" id="msg" name="user_message" class="message-area"></textarea>
-                                        </li>
-                                        <li class="button">
-                                            <button type="submit" class="form-button">Надіслати</button>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </section>
         </main>
 
         <div class="to-top ">
-            <a href="history.html#main" title="Back to Top "><img src="img/round-arrow.svg " alt=" "></a>
+            <a href="history.html#main" title="Back to Top "><img src="{% static 'img/round-arrow.svg' %}" alt=" "></a>
         </div>
     </div>
 </body>
 
 </html>
+{% endblock content %}

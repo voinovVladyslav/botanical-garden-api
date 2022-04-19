@@ -53,7 +53,7 @@
                                     16 Oct 2021 ⠀⠀⠀|⠀⠀⠀ #tropic
                                 </div>
                                 <div class="item-news__text ">В Ботанічному саду вже йде підготовка до весни &#128522 Висаджуємо нові сорти тюльпанів &#127802 весна обіцяє бути яскравою &#127804 </div>
-                                <div class="item-news__image "><img src="img/flower.jpg " alt="flower " width="509px " height="357px "></div>
+                                <div class="item-news__image "><img src="{% static 'img/flower.jpg' %}" alt="flower " width="509px " height="357px "></div>
                             </div>
                         </div>
                         <div class="news__column ">
@@ -63,7 +63,7 @@
                                     11 Mar 2022 ⠀⠀⠀|⠀⠀⠀ #spring
                                 </div>
                                 <div class="item-news__text ">В Ботанічному саду 💚 вже прокинулись, зачаровуючи своєю ніжністю і жагою до життя перші весняні квіточки!</div>
-                                <div class="item-news__image "><img src="img/news-flower.jpg " alt="news-flower " width="509px " height="357px "></div>
+                                <div class="item-news__image "><img src="{% static 'img/news-flower.jpg' %}" alt="news-flower " width="509px " height="357px "></div>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                         Розклад роботи та вартість платних послуг
                     </h1>
                     <div class="schedule__body ">
-                        <img src="img/calendar.svg " alt="calendar " class="calendar ">
+                        <img src="{% static 'img/calendar.svg' %}" alt="calendar " class="calendar ">
                         <div class="schedule__days ">
                             <div class="schedule__days-block ">
                                 <div class="schedule__days-line ">
@@ -143,87 +143,8 @@
                     </div>
                 </div>
             </section>
-
-            <section class="page__contacts contacts ">
-                <div class="contacts__container _container ">
-                    <h1 class="contacts__title " id="contacts ">
-                        Контакти
-                    </h1>
-                    <div class="contacts__body ">
-                        <div class="contacts__title-con ">
-                            Наш телефон:
-                            <div class="contacts__text-con ">
-                                <a href="tel:+38(0552)33-70-87 " class="contacts__link ">+38(0552)33-70-87</a>
-                            </div>
-                        </div>
-                        <div class="contacts__title-con ">
-                            <br>Наша адреса:
-                            <div class="contacts__text-con ">
-                                <a href="https://goo.gl/maps/GAMzcUENS8uiSn7u5 " target="_blank " class="contacts__link ">Миколаївське шосе, 29</a>
-                            </div>
-                        </div>
-                        <div class="contacts__title-con ">
-                            <br>E-Mail:
-                            <div class="contacts__text-con ">
-                                <a href="mailto:gardenksu@gmail.com " class="contacts__link ">gardenksu@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="contacts__title-con ">
-                            <br>Instagram:
-                            <div class="contacts__text-con ">
-                                <a href="https://www.instagram.com/botanical_garden_ks/ " target="_blank " class="contacts__link ">@botanical_garden_ks</a>
-                            </div>
-                        </div>
-
-                        <div class="contacts__block ">
-                            <div class="contacts__block-text ">
-                                Поставте
-                            </div>
-                            <div class="contacts__block-text ">
-                                <br>питання
-                            </div>
-                            <div class="contacts__block-text ">
-                                <br>саме
-                            </div>
-                            <div class="contacts__block-text ">
-                                <br>зараз:
-                            </div>
-
-                            <div class="contacts__block-form ">
-                                <form action="# " method="post ">
-                                    <ul>
-                                        <li>
-                                            <input placeholder="Ім 'я:" type="text" id="name" name="user_name">
-                                        </li>
-                                        <li>
-                                            <input placeholder="Номер телефону:" type="number" id="tel" name="phone_number">
-                                        </li>
-                                        <li>
-                                            <input placeholder="E-Mail:" type="email" id="mail" name="user_mail">
-                                        </li>
-                                        <li>
-                                            <textarea placeholder="Повідомлення:" id="msg" name="user_message" class="message-area"></textarea>
-                                        </li>
-                                        <li class="button">
-                                            <button type="submit" class="form-button">Надіслати</button>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <div class="to-top ">
-            <a href="history.html#main" title="Back to Top "><img src="img/round-arrow.svg " alt=" "></a>
-        </div>
     </div>
 </body>
 
 </html>
-
 {% endblock content %}

@@ -16,6 +16,7 @@
     <div class="wrapper">
         <main class="page ">
             <section class="page__main-block main-block ">
+                {% block main-block %}
                 <div class="main-block__container _container ">
                     <div class="main-block__body ">
                         <div class="main-block__square ">
@@ -28,13 +29,14 @@
                             Ознайомтеся з цікавою історією заснування Ботанічного саду ХДУ
                         </div>
                         <div class="main-block__buttons ">
-                            <a href="main.html#main " class="main-block__button ">Повернутися на головну</a>
+                            <a href="/ " class="main-block__button ">Повернутися на головну</a>
                         </div>
-                        <div class="history__main-block__image ">
+                        <div class="main-block__image ">
                             <img src="{% static 'img/bro.svg' %}" alt="mainpage_image1 ">
                         </div>
                     </div>
                 </div>
+                {% endblock main-block %}
             </section>
             <section class="page__history history ">
                 <div class="history__container _container ">

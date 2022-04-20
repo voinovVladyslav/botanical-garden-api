@@ -255,8 +255,6 @@
             .main-block__image {
                 display: flex;
                 position: absolute;
-                left: 672px;
-                top: 233px;
                 width: 512px;
                 height: 514px;
             }
@@ -516,7 +514,7 @@
                 line-height: 143%;
                 display: inline-block;
             }
-            
+            /*
             .str__block-image {
                 position: absolute;
                 top: -48px;
@@ -524,6 +522,7 @@
                 transition: all .2s linear;
                 visibility: hidden;
             }
+            */
             
             .str__block-last {
                 width: 300px;

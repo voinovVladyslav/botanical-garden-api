@@ -1,3 +1,24 @@
-<form method="post">
-    {{ form }}
-</form>>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>form</title>
+</head>
+
+<body>
+    <form method="post">
+        {{ form }}
+    </form>>
+    <li class="button">
+        <button type="submit" class="form-button">Надіслати</button>
+    </li>
+</body>
+
+</html>

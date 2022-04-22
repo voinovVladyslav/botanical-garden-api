@@ -9,12 +9,14 @@ def thanks(request):
 
 
 def contact(request):
+    
     if request.method == 'POST':
         form = ContactForm(request.POST)
 
         if form.is_valid():
             cd = form.cleaned_data
-            return HttpResponseRedirect('/thanks')
+            print(cd)
+            return HttpResponseRedirect('thanks')
 
     else:
         form = ContactForm()

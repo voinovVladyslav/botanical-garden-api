@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,15 +10,61 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>form</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+    <title>Ваше запитання</title>
 </head>
 
 <body>
-    <div class="contacts__block-form ">
-        <form action="" method="post ">
-            {{ form }}
-        </form>
-    </div>
+
+
+    <div class="contacts__newbody ">
+        <div class="contacts__newtitle-con ">
+            Наш телефон:
+            <div class="contacts__text-con ">
+                <a href="tel:+38(0552)33-70-87 " class="contacts__link ">+38(0552)33-70-87</a>
+            </div>
+        </div>
+        <div class="contacts__newtitle-con ">
+            <br>Наша адреса:
+            <div class="contacts__text-con ">
+                <a href="https://goo.gl/maps/GAMzcUENS8uiSn7u5 " target="_blank " class="contacts__link ">Миколаївське шосе, 29</a>
+            </div>
+        </div>
+        <div class="contacts__newtitle-con ">
+            <br>E-Mail:
+            <div class="contacts__text-con ">
+                <a href="mailto:gardenksu@gmail.com " class="contacts__link ">gardenksu@gmail.com</a>
+            </div>
+        </div>
+        <div class="contacts__newtitle-con ">
+            <br>Instagram:
+            <div class="contacts__newtext-con ">
+                <a href="https://www.instagram.com/botanical_garden_ks/ " target="_blank " class="contacts__link ">@botanical_garden_ks</a>
+            </div>
+        </div>
+        <div class="contacts__new_block ">
+
+            <div class="contacts__newblock-text ">
+                Поставте
+            </div>
+            <div class="contacts__newblock-text ">
+                <br>питання
+            </div>
+            <div class="contacts__newblock-text ">
+                <br>саме
+            </div>
+            <div class="contacts__newblock-text ">
+                <br>зараз:
+            </div>
+            <div class="contact__new_form ">
+                <form action="" method="post ">
+                    {{ form.as_ul }}
+                    <li class="button">
+                        <button type="submit" class="form-button">Надіслати</button>
+                    </li>
+                </form>
+            </div>
+        </div>
 </body>
 
 </html>

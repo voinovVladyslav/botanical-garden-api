@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html lang="uk">
-{% block content %}
+
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    {% block content %}
     <div class="wrapper">
         <main class="page ">
             <section class="page__main-block main-block ">
@@ -22,6 +23,7 @@
                         <div class="main-block__square ">
 
                         </div>
+
                         <h1 class="main-block__title ">
                             Вітаємо у ботанічному саду Херсонського державного університету!
                         </h1>
@@ -144,7 +146,7 @@
                 </div>
             </section>
     </div>
+    {% endblock content %}
 </body>
 
 </html>
-{% endblock content %}

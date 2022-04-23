@@ -47,6 +47,10 @@
         <div class="to-top">
             <a href="#" title="back to Top"><img src="{% static 'img/round-arrow.svg' %}" alt=""></a>
         </div>
+        <div>
+            <spam>Hello, {{ request.user }}</spam>
+            <spam><a href="/auth/login">Logout</a></spam>
+        </div>
     </div>
 </body>
 

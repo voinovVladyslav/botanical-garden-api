@@ -986,6 +986,7 @@
         .link404:hover {
             color: rgba(145, 89, 25, 1);
         }
+        /*-----new contacts form-----*/
         
         .contacts__newbody {
             overflow: hidden;
@@ -1062,6 +1063,7 @@
         .contacts__link {
             color: rgba(70, 132, 121, 1);
         }
+        /*-----thanks page-----*/
         
         .thanks-page {
             overflow: hidden;
@@ -1101,4 +1103,75 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        /*-----login-----*/
+        
+        .page__login {}
+        
+        .login__block {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 600px;
+            border-radius: 18px;
+            background: rgba(240, 250, 237, 1);
+            box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+        }
+        
+        .login__block-text {
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 60%;
+            margin-left: 85px;
+        }
+        
+        .login__block-text:nth-child(2n+1) {
+            color: #468479;
+        }
+        
+        .login__block-text:first-child {
+            margin-top: 100px;
+        }
+        
+        .login__block-text:last-child {
+            margin-bottom: 290px;
+        }
+        
+        .login__block-form {
+            float: right;
+            margin: -158px 69px 26px 366px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 152%;
+            color: rgba(46, 54, 62, 1);
+        }
+        
+        input,
+        textarea {
+            width: 300px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #999;
+            background: none;
+            margin-bottom: 50px;
+        }
+        
+        .message-area {
+            height: 119px;
+        }
+        
+        .form-button {
+            float: left;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all .35s linear;
+            background: rgba(133, 228, 208, 1);
+            width: 110px;
+            height: 40px;
+            border-radius: 12px;
+        }
+        
+        .form-button:hover {
+            background: #468479ad;
         }

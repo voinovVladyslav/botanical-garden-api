@@ -2,5 +2,5 @@ ll_env/
 *.log
 *.pot
 *.pyc
-/__pycache__/*
-/migrations/*
+**/__pycache__/**
+**/migrations/**

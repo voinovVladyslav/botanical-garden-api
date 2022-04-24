@@ -138,7 +138,8 @@
         }
         
         .header__menu {
-            margin: 0 0 0 563px;
+            float: left;
+            margin: 0 0 0 40px;
         }
         
         @media (max-width: 992px) {
@@ -166,10 +167,77 @@
         .menu__list {
             display: flex;
             flex-wrap: wrap;
+            position: absolute;
         }
         
         .menu__item:not(:last-child) {
-            margin: 0 42px 0 0;
+            margin: 0 21px 0 0;
+        }
+        
+        .auth-image__block {
+            color: rgba(46, 54, 62, 1);
+            line-height: 143%;
+            float: right;
+            width: 30px;
+        }
+        
+        .auth-image__item {
+            height: 30px;
+            width: 30px;
+            float: right;
+        }
+        
+        .auth-image__link {
+            width: 30px;
+            float: right;
+        }
+        
+        .auth-logout__text {
+            color: rgba(46, 54, 62, 1);
+            float: right;
+        }
+        
+        .auth-hello__text {
+            transition: all .2s linear;
+            color: rgba(46, 54, 62, 1);
+        }
+        
+        .auth-image__item:hover~.auth-hello__text {
+            color: white;
+            transition: all .2s linear;
+        }
+        
+        .login__list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 750px;
+        }
+        
+        .auth-login__block {
+            margin-left: 66px;
+            margin-right: 21px;
+        }
+        
+        .auth-login__text {
+            color: rgba(46, 54, 62, 1);
+            line-height: 143%;
+            font-weight: 425;
+            transition: color .2s linear;
+        }
+        
+        .auth-login__text:hover {
+            color: rgba(109, 165, 154, 1);
+        }
+        
+        .auth-register__text {
+            color: rgba(46, 54, 62, 1);
+            line-height: 143%;
+            font-weight: 425;
+            transition: color .2s linear;
+        }
+        
+        .auth-register__text:hover {
+            color: rgba(109, 165, 154, 1);
         }
         
         .menu__link {

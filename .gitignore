@@ -1,1 +1,5 @@
 ll_env/
+*.log
+*.pot
+*.pyc
+__pycache__

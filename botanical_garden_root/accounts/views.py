@@ -1,4 +1,3 @@
-import re
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -6,6 +5,9 @@ from django.contrib import messages
 from .forms import RegisterUserForm
 
 # Create your views here.
+def profile(request):
+    context = {}
+    return render(request, 'accounts/profile.html', context)
 
 def registerPage(request):   
 

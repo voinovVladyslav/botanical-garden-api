@@ -1,7 +1,57 @@
-<h1>Register</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" name="Create User">
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Авторизація</title>
+</head>
+
+<body>
+    {% block content %}
+    <section class="page__register register">
+        <div class="register__container _container ">
+            <div class="register__body ">
+                <div class="register__block ">
+                    <img src="{% static 'img/reg-img.svg' %}" alt="register image" class="register__block-image">
+                    <div class="register__block-auth">
+                        <div class="register__block-text ">
+                            Реєстрація
+                        </div>
+                        <div class="register__block-form ">
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <ul>
+                                    <li>
+                                        <input placeholder="Ім'я користувача:" type="text" id="user_name" name="user_name">
+                                    </li>
+                                    <li>
+                                        <input placeholder="E-Mail:" type="text" id="user_name" name="user_name">
+                                    </li>
+                                    <li>
+                                        <input placeholder="Пароль:" type="password" id="password" name="password">
+                                    </li>
+                                    <li>
+                                        <input placeholder="Підтвердження пароля:" type="password" id="password" name="password">
+                                    </li>
+                                    <li class="register__button-block">
+                                        <button type="submit" class="register-button" name="Create User">Зареєструватися</button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                        {% for message in messages %} {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock content %}
+</body>
+
+</html>

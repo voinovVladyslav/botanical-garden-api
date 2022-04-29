@@ -18,7 +18,7 @@
         <div class="login__container _container ">
             <div class="login__body ">
                 <div class="login__block ">
-                    <img src="{% static 'img/login-img.svg' %}" alt="login image" class="login__block-image">
+                    <img src="{% static 'img/login-img2.svg' %}" alt="login image" class="login__block-image">
                     <div class="login__block-auth">
                         <div class="login__block-text ">
                             Авторизація
@@ -40,6 +40,7 @@
                                 </ul>
                             </form>
                         </div>
+                        {% for message in messages %} {% endfor %}
                     </div>
                 </div>
             </div>

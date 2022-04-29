@@ -1113,35 +1113,36 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 800px;
+            width: 900px;
             height: 600px;
             border-radius: 18px;
             background: rgba(240, 250, 237, 1);
             box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+            display: flex;
+        }
+        
+        .login__block-auth {
+            margin: 135px 75px;
         }
         
         .login__block-text {
+            text-align: left;
+            margin: 40px 0 0 0;
             font-weight: 700;
             font-size: 36px;
             line-height: 60%;
-            margin-left: 85px;
-        }
-        
-        .login__block-text:nth-child(2n+1) {
             color: #468479;
         }
         
-        .login__block-text:first-child {
-            margin-top: 100px;
-        }
-        
-        .login__block-text:last-child {
-            margin-bottom: 290px;
+        .login__block-image {
+            margin: 135px 75px;
+            width: 300px;
+            height: 300px;
         }
         
         .login__block-form {
-            float: right;
-            margin: -158px 69px 26px 366px;
+            text-align: left;
+            margin: 40px 0 0 0;
             font-weight: 500;
             font-size: 18px;
             line-height: 152%;
@@ -1151,18 +1152,27 @@
         input,
         textarea {
             width: 300px;
+            height: 40px;
             box-sizing: border-box;
             border-bottom: 1px solid #999;
             background: none;
-            margin-bottom: 50px;
+            margin-bottom: 33px;
         }
         
-        .message-area {
-            height: 119px;
+        .login__button-block {
+            display: inline;
         }
         
-        .form-button {
-            float: left;
+        .login__button-reg {
+            font-size: 14px;
+            float: right;
+            padding-top: 6.5px;
+            color: rgba(46, 54, 62, 1);
+            text-decoration: underline;
+        }
+        
+        .login-button {
+            text-align: center;
             font-weight: 600;
             font-size: 16px;
             transition: all .35s linear;

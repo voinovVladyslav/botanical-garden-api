@@ -26,29 +26,29 @@
                     {% block nav %}
                     <ul class="menu__list">
                         <li class="menu__item">
-                            <a href="/news" class="menu__link">Новини</a>
+                            <a href="{% url 'main' %}" class="menu__link">Новини</a>
                         </li>
                         <li class="menu__item">
-                            <a href="/history" class="menu__link">Історія</a>
+                            <a href="{% url 'history' %}" class="menu__link">Історія</a>
                         </li>
                         <li class="menu__item">
-                            <a href="/structure" class="menu__link">Структура</a>
+                            <a href="{% url 'structure' %}" class="menu__link">Структура</a>
                         </li>
                         <li class="menu__item">
-                            <a href="/contact" class="menu__link">Контакти</a>
+                            <a href="{% url 'contact' %}" class="menu__link">Контакти</a>
                         </li>
                     </ul>
 
                     <ul class="login__list">
                         <li>
                             <div class="auth-login__block">
-                                <a href="/auth/login" class="auth-login__text">Увійти</a>
+                                <a href="{% url 'login' %}" class="auth-login__text">Увійти</a>
                             </div>
                         </li>
 
                         <li>
                             <div class="auth-register__block">
-                                <a href="/auth/registration" class="auth-register__text">Реєстрація</a>
+                                <a href="{% url 'registration' %}" class="auth-register__text">Реєстрація</a>
                             </div>
                         </li>
                         <!--<li>

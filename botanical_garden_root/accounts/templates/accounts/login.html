@@ -18,39 +18,28 @@
         <div class="login__container _container ">
             <div class="login__body ">
                 <div class="login__block ">
-                    <div class="login__block-text ">
-                        Поставте
-                    </div>
-                    <div class="login__block-text ">
-                        <br>питання
-                    </div>
-                    <div class="login__block-text ">
-                        <br>саме
-                    </div>
-                    <div class="login__block-text ">
-                        <br>зараз:
-                    </div>
-
-                    <div class="login__block-form ">
-                        <form action="# " method="post ">
-                            <ul>
-                                <li>
-                                    <input placeholder="Ім 'я:" type="text" id="name" name="user_name">
-                                </li>
-                                <li>
-                                    <input placeholder="Номер телефону:" type="number" id="tel" name="phone_number">
-                                </li>
-                                <li>
-                                    <input placeholder="E-Mail:" type="email" id="mail" name="user_mail">
-                                </li>
-                                <li>
-                                    <textarea placeholder="Повідомлення:" id="msg" name="user_message" class="message-area"></textarea>
-                                </li>
-                                <li class="button">
-                                    <button type="submit" class="form-button">Надіслати</button>
-                                </li>
-                            </ul>
-                        </form>
+                    <img src="{% static 'img/login-img.svg' %}" alt="login image" class="login__block-image">
+                    <div class="login__block-auth">
+                        <div class="login__block-text ">
+                            Авторизація
+                        </div>
+                        <div class="login__block-form ">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <ul>
+                                    <li>
+                                        <input placeholder="Ім'я користувача:" type="text" id="user_name" name="user_name">
+                                    </li>
+                                    <li>
+                                        <input placeholder="Пароль" type="password" id="password" name="password">
+                                    </li>
+                                    <li class="login__button-block">
+                                        <button type="submit" class="login-button">Увійти</button>
+                                        <a href="{% url 'registration' %}" class="login__button-reg">Немає акаунта?</a>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

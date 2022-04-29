@@ -5,4 +5,4 @@ from .models import News
 class CreateNews(ModelForm):
     class Meta:
         model = News
-        fields = ['title', 'context', 'preview']
+        fields = '__all__'

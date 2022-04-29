@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import News
 from .forms import CreateNews
 
@@ -18,9 +18,10 @@ def news_single(request, news_pk):
 def create_news(request):
 
     if request.method == 'POST':
-        form = CreateNews(request.POST)
+        form = CreateNews(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('/news')
     else:
         form = CreateNews()
 

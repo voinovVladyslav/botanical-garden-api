@@ -1,6 +1,6 @@
 <h2>Create News</h2>
 
-<form method="POST" action="">
+<form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" name="Create News">

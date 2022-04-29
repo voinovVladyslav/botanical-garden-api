@@ -23,12 +23,13 @@
                         <div class="login__block-text ">
                             Авторизація
                         </div>
+
                         <div class="login__block-form ">
                             <form action="" method="POST">
                                 {% csrf_token %}
                                 <ul>
                                     <li>
-                                        <input placeholder="Ім'я користувача:" type="text" id="user_name" name="user_name">
+                                        <input placeholder="Ім'я користувача:" type="text" id="username" name="username">
                                     </li>
                                     <li>
                                         <input placeholder="Пароль" type="password" id="password" name="password">
@@ -40,7 +41,7 @@
                                 </ul>
                             </form>
                         </div>
-                        {% for message in messages %} {% endfor %}
+                        {% for message in messages %} {{message}} {% endfor %}
                     </div>
                 </div>
             </div>

@@ -17,6 +17,7 @@ def registerPage(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'account was created for' + user)
+            return redirect('/user/login')
 
     else:
         form = RegisterUserForm()

@@ -20,7 +20,9 @@ def create_news(request):
     if request.method == 'POST':
         form = CreateNews(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            t = form.save(commit=False)
+            t.author = request.user
+            t.save()
             return redirect('/news')
     else:
         form = CreateNews()

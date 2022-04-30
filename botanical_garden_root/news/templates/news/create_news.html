@@ -2,6 +2,8 @@
 
 <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    <input type="text" name="title" maxlength="100" required="" id="id_title" placeholder="title">
+    <textarea name="context" cols="40" rows="10" id="id_context" placeholder="context"></textarea>
+    <input type="file" name="preview" accept="image/*" id="id_preview" placeholder="img">
     <input type="submit" name="Create News">
 </form>

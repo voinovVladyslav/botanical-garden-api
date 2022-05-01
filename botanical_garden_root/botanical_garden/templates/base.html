@@ -38,7 +38,21 @@
                             <a href="{% url 'contact' %}" class="menu__link">Контакти</a>
                         </li>
                     </ul>
+                    {% if request.user.is_authenticated %}
+                    <ul class="login__list">
+                        <li>
+                            <div class="auth-login__block">
+                                <a href="" class="auth-login__text">{{request.user}}</a>
+                            </div>
+                        </li>
 
+                        <li>
+                            <div class="auth-register__block">
+                                <a href="{% url 'logout' %}" class="auth-register__text">Вийти</a>
+                            </div>
+                        </li>
+                    </ul>
+                    {% else %}
                     <ul class="login__list">
                         <li>
                             <div class="auth-login__block">
@@ -51,16 +65,8 @@
                                 <a href="{% url 'registration' %}" class="auth-register__text">Реєстрація</a>
                             </div>
                         </li>
-                        <!--<li>
-                            <div class="auth-image__block">
-                                <a href="#" class="auth-image__link">
-                                    <img src="{% static 'img/dead-bush.svg' %}" alt="dead-b" class="auth-image__item">
-                                </a>
-                            </div>
-                            <div class="auth-hello__text">some text</div>
-                            <div class="auth-logout__block"><a href="/auth/login" class="auth-logout__text">Logout</a></div>
-                        </li>-->
                     </ul>
+                    {% endif %}
 
                     {% endblock nav %}
                 </nav>

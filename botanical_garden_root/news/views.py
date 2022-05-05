@@ -19,7 +19,7 @@ def news_single(request, news_pk):
     return render(request, 'news/news_single.html', context=context)
 
 
-@allowed_users(allowed_roles=['news_manager', 'admin'])
+@allowed_users(allowed_roles=['manager', 'admin'])
 def create_news(request):
 
     if request.method == 'POST':

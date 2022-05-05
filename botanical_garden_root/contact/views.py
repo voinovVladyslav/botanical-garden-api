@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from .forms import ContactForm
-
+from .models import Contact
 
 def thanks(request):
     return render(request, 'contact/thanks.html')
@@ -22,3 +22,17 @@ def contact(request):
         form = ContactForm()
     
     return render(request, 'contact/contact.html', {'form': form})
+
+
+def contact_all(request):
+    contacts = Contact.objects.all()
+
+    context = {'contacts':contacts}
+    return render(request, 'contact/contact_all.html', context)
+
+
+def contact_single(request, contact_pk):
+    contact = Contact.objects.get(id=contact_pk)
+
+    context = {'contact':contact}
+    return render(request, 'contact/contact_single.html', context)

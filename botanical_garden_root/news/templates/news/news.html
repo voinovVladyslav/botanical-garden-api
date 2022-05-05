@@ -1,6 +1,6 @@
 {% load static %}
 <h1>News</h1>
 {% for n in news %}
-    <p>{{ n.title }}</p> 
+    <a href="{% url 'news_single' n.pk %}">{{ n.title }}</a> 
     <img src="{{ n.preview.url }}">  
 {% endfor %}

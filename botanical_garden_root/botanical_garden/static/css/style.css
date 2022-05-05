@@ -194,7 +194,11 @@
         
         .auth-logout__text {
             color: rgba(46, 54, 62, 1);
-            float: right;
+        }
+        
+        .auth-logout__image {
+            width: 19px;
+            height: 23px;
         }
         
         .auth-hello__text {
@@ -210,19 +214,18 @@
         .login__list {
             display: flex;
             flex-wrap: wrap;
-            margin-left: 750px;
+            margin-left: 860px;
         }
         
-        .auth-login__block {
-            margin-left: 66px;
-            margin-right: 21px;
-        }
+        .auth-login__block {}
         
         .auth-login__text {
+            font-size: 16px;
             color: rgba(46, 54, 62, 1);
             line-height: 143%;
             font-weight: 425;
             transition: color .2s linear;
+            margin-right: 20px;
         }
         
         .auth-login__text:hover {
@@ -231,7 +234,7 @@
         
         .auth-register__text {
             color: rgba(46, 54, 62, 1);
-            line-height: 143%;
+            font-size: 16px;
             font-weight: 425;
             transition: color .2s linear;
         }
@@ -1249,10 +1252,12 @@
             float: left;
         }
         
-        .register__button-reg {
+        .register__button-login {
             font-size: 14px;
-            float: left;
-            padding-top: 6.5px;
+            line-height: 1.2;
+            float: right;
+            padding: 4px 0 0 25px;
+            text-align: right;
             color: rgba(46, 54, 62, 1);
             text-decoration: underline;
         }

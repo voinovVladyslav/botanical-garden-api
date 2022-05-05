@@ -42,13 +42,15 @@
                     <ul class="login__list">
                         <li>
                             <div class="auth-login__block">
-                                <a href="" class="auth-login__text">{{request.user}}</a>
+                                <a href="{% url 'profile' %}" class="auth-login__text">{{request.user}}</a>
                             </div>
                         </li>
-
                         <li>
                             <div class="auth-register__block">
-                                <a href="{% url 'logout' %}" class="auth-register__text">Вийти</a>
+                                <a href="{% url 'logout' %}" class="auth-logout__text">
+                                    <img src="{% static 'img/logout.svg' %}" alt="logout" class="auth-logout__image">
+                                </a>
+
                             </div>
                         </li>
                     </ul>
@@ -66,9 +68,7 @@
                             </div>
                         </li>
                     </ul>
-                    {% endif %}
-
-                    {% endblock nav %}
+                    {% endif %} {% endblock nav %}
                 </nav>
 
             </div>

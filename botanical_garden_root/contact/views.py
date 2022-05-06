@@ -5,6 +5,7 @@ from news.decorators import allowed_users
 from .forms import ContactForm
 from .models import Contact
 
+
 def thanks(request):
     return render(request, 'contact/thanks.html')
 

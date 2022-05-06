@@ -3,12 +3,23 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import Group
 
+from .models import Customer
+
 from .forms import RegisterUserForm
+from news.decorators import allowed_users
 
 # Create your views here.
+@allowed_users(['customer'])
 def profile(request):
-    context = {}
+    customer = request.user.customer
+    
+    context = {'customer':customer}
     return render(request, 'accounts/profile.html', context)
+
+
+def settings(request):
+    context = {}
+    return render(request, 'accounts/settings.html', context)
 
 def registerPage(request):   
 
@@ -18,10 +29,11 @@ def registerPage(request):
             user = form.save()
             username = form.cleaned_data.get('username')
 
-            group = Group.objects.get(name='default_user')
+            group = Group.objects.get(name='customer')
             user.groups.add(group)
-            
-            messages.success(request, 'account was created for' + username)
+
+            Customer.objects.create(user=user)
+            messages.success(request, 'account was created for ' + username)
             return redirect('login')
 
     else:

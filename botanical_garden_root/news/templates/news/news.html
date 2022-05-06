@@ -1,6 +1,50 @@
-{% load static %}
-<h1>News</h1>
-{% for n in news %}
-    <a href="{% url 'news_single' n.pk %}">{{ n.title }}</a> 
-    <img src="{{ n.preview.url }}">  
-{% endfor %}
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Новини ботанічного саду</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <main class="page ">
+            <section class="page__main-block main-block ">
+                {% block main-block %}
+                <div class="main-block__container _container ">
+                    <div class="main-block__body ">
+                        <div class="main-block__square ">
+
+                        </div>
+                        <h1 class="main-block__title ">
+                            У Ботанічному саду вже прокинулись перші весняні квіточки
+                        </h1>
+                        <div class="main-block__text ">
+                            У Ботанічному саду вже прокинулись, зачаровуючи своєю ніжністю перші весняні квіточки
+                        </div>
+                        <div class="main-block__buttons ">
+                            <a href="/ " class="main-block__button ">Читати далі</a>
+                        </div>
+                        <div class="main-block__image ">
+                            <img src="{% static 'img/bro.svg' %}" alt="mainpage_image1 ">
+                        </div>
+                    </div>
+                </div>
+                {% endblock main-block %}
+            </section>
+        </main>
+    </div>
+    <h1>News</h1>
+    {% for n in news %}
+    <a href="{% url 'news_single' n.pk %}">{{ n.title }}</a>
+    <img src="{{ n.preview.url }}"> {% endfor %}
+</body>
+{% endblock content %}
+
+</html>

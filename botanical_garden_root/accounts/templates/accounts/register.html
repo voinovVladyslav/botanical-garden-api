@@ -27,18 +27,34 @@
                             <form method="POST" action="">
                                 {% csrf_token %}
                                 <ul>
+                                    {% if form.username.errors %}
                                     <li>
-                                        <input placeholder="Ім'я користувача:" type="text" id="id_username" name="username" required>
+                                        <input placeholder="{{ form.username.errors.as_text }}" type="text" id="id_username_red" name="username" required>
+
                                     </li>
+                                    {% else %}
+                                    <li>
+                                        <input placeholder="Ім 'я користувача:" type="text" id="id_username" name="username" required>
+                                    </li>
+                                    {% endif %}
                                     <li>
                                         <input placeholder="E-Mail:" type="email" id="id_email" name="email" required>
                                     </li>
+
+                                    {{ form.email.errors }}
+
                                     <li>
                                         <input placeholder="Пароль:" type="password" id="id_password1" name="password1" autocomplete="new-password" required>
                                     </li>
+
+                                    {{ form.password1.errors }}
+
                                     <li>
                                         <input placeholder="Підтвердження пароля:" type="password" required id="id_password2" name="password2" autocomplete="new-password">
                                     </li>
+
+                                    {{ form.password2.errors }}
+
                                     <li class="register__button-block">
                                         <button type="submit" class="register-button" name="Create User">Зареєструватися</button>
                                         <a href="{% url 'login' %}" class="register__button-login">Уже маєте<br>акаунт?</a>

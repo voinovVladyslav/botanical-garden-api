@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Customer
 
-from .forms import RegisterUserForm
+from .forms import RegisterUserForm, CustomerFrom
 from news.decorators import allowed_users
 
 # Create your views here.
@@ -21,7 +21,15 @@ def profile(request):
 
 @login_required(login_url='login')
 def settings(request):
-    context = {}
+    customer = request.user.customer
+    form = CustomerFrom(instance=customer)
+
+    if request.method == 'POST':
+        form = CustomerFrom(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+
+    context = {'form':form}
     return render(request, 'accounts/settings.html', context)
 
 

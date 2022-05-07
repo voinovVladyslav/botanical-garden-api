@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
 
 from .models import Customer
 
@@ -9,6 +10,7 @@ from .forms import RegisterUserForm
 from news.decorators import allowed_users
 
 # Create your views here.
+@login_required(login_url='login')
 @allowed_users(['customer'])
 def profile(request):
     customer = request.user.customer
@@ -17,9 +19,11 @@ def profile(request):
     return render(request, 'accounts/profile.html', context)
 
 
+@login_required(login_url='login')
 def settings(request):
     context = {}
     return render(request, 'accounts/settings.html', context)
+
 
 def registerPage(request):   
 
@@ -60,6 +64,7 @@ def loginPage(request):
     return render(request, 'accounts/login.html')
 
 
+@login_required(login_url='login')
 def logoutUser(request):
     logout(request)
     return redirect('main')

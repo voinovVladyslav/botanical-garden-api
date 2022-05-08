@@ -37,23 +37,36 @@
                                         <input placeholder="Ім 'я користувача:" type="text" id="id_username" name="username" required>
                                     </li>
                                     {% endif %}
+                                    {% if form.email.errors %}
+                                    <li>
+                                        <input placeholder="{{ form.email.errors.as_text }}" type="email" id="id_email" name="email" required>
+                                    </li>
+                                    {% else %}
                                     <li>
                                         <input placeholder="E-Mail:" type="email" id="id_email" name="email" required>
                                     </li>
+                                    {% endif %}
 
-                                    {{ form.email.errors }}
-
+                                    {% if form.password1.errors %}
+                                    <li>
+                                        <input placeholder="{{ form.password1.errors.as_text }}" type="password" id="id_password1" name="password1" autocomplete="new-password" required>
+                                    </li>
+                                    {% else %}
                                     <li>
                                         <input placeholder="Пароль:" type="password" id="id_password1" name="password1" autocomplete="new-password" required>
                                     </li>
+                                    {% endif %}
 
-                                    {{ form.password1.errors }}
-
+                                    {% if form.password1.errors %}
+                                    <li>
+                                        <input placeholder="{{ form.password2.errors.as_text }}" type="password" required id="id_password2" name="password2" autocomplete="new-password">
+                                    </li>
+                                    {% else %}
                                     <li>
                                         <input placeholder="Підтвердження пароля:" type="password" required id="id_password2" name="password2" autocomplete="new-password">
                                     </li>
-
-                                    {{ form.password2.errors }}
+                                    {% endif %}
+                                    
 
                                     <li class="register__button-block">
                                         <button type="submit" class="register-button" name="Create User">Зареєструватися</button>
@@ -62,7 +75,6 @@
                                 </ul>
                             </form>
                         </div>
-                        {% for message in messages %} {{message}} {% endfor %}
                     </div>
                 </div>
             </div>

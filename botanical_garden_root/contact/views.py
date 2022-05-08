@@ -16,8 +16,7 @@ def contact(request):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            cd = form.cleaned_data
-            print(cd)
+            form.save()
             return HttpResponseRedirect('thanks')
 
     else:
@@ -28,7 +27,7 @@ def contact(request):
 
 @allowed_users(['manager', 'admin'])
 def contact_all(request):
-    contacts = Contact.objects.all()
+    contacts = Contact.objects.all().order_by('-id')
 
     context = {'contacts':contacts}
     return render(request, 'contact/contact_all.html', context)

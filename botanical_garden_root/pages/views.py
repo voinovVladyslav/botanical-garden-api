@@ -1,5 +1,5 @@
 from django.http import HttpResponseNotFound
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 
 
 def main(request):
@@ -12,7 +12,3 @@ def history(request):
 
 def structure(request):
     return render(request, 'pages/structure.html')
-
-
-def handler404(request, *args, **kwargs):
-    return render(request, '404.html', status=404)

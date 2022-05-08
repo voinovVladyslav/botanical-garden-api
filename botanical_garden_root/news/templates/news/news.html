@@ -16,17 +16,17 @@
     <div class="wrapper">
         <main class="page ">
             <section class="page__main-block main-block ">
-                {% block main-block %}
+                {% block main-block %} {% for n in firstnews %}
                 <div class="main-block__container _container ">
                     <div class="main-block__body ">
                         <div class="main-block__square ">
 
                         </div>
                         <h1 class="main-block__title ">
-                            У Ботанічному саду вже прокинулись перші весняні квіточки
+                            {{ n.title }}
                         </h1>
                         <div class="main-block__text ">
-                            У Ботанічному саду вже прокинулись, зачаровуючи своєю ніжністю перші весняні квіточки
+                            {{ n.context }}
                         </div>
                         <div class="main-block__buttons ">
                             <a href="#first_news " class="main-block__button ">Читати далі</a>
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                {% endblock main-block %}
+                {% endfor %} {% endblock main-block %}
             </section>
             <section class="page__newspage news " id="first_news">
                 <div class="newspage__container _container ">

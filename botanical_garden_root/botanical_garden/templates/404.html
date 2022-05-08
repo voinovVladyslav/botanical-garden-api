@@ -1,1 +1,27 @@
-<
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Помилка 404</title>
+</head>
+
+<body>
+
+    <div class="page404">
+        <div class="image404">
+            <img src="{% static 'img/dead-bush.svg' %}" alt="dead-bush">
+        </div>
+        <div class="text404">
+            404.<br>Тут нічого нема.<br>Повертайтеся на <a href="{% url 'main' %}" class="link404">головну</a> сторінку.
+        </div>
+    </div>
+</body>
+
+</html>

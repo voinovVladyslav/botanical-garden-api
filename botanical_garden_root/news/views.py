@@ -7,8 +7,9 @@ from .decorators import allowed_users
 
 def news_all(request):
     news = News.objects.all().order_by('-id')
+    firstnews = News.objects.all().order_by('-id')[:1]
 
-    context = {'news': news}
+    context = {'news': news, 'firstnews': firstnews}
     return render(request, 'news/news.html', context=context)
 
 

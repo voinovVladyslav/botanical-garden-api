@@ -1,2 +1,1 @@
-# botanicalGarden
-Botanical Garden Website
+# Kherson State University Botanical garden website

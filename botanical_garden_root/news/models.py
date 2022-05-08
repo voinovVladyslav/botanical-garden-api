@@ -8,6 +8,7 @@ class News(models.Model):
     preview = models.ImageField(null=True, blank=True)
     publication_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    hashtag = models.CharField(max_length=20, null=True, blank=True)
 
 
     def __str__(self):

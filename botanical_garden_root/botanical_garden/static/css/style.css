@@ -312,6 +312,8 @@ html {
 }
 
 .main-block__buttons {
+    position: absolute;
+    bottom: 215px;
     display: inline-flex;
 }
 

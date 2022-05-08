@@ -1406,3 +1406,22 @@ textarea {
 .item-newspage>*:not(:last-child) {
     margin: 0px 0px 10px 0px;
 }
+
+
+/*-----single news page-----*/
+
+.singlenews__body {}
+
+.page__singlenews {
+    background: rgba(240, 250, 237, 1);
+    overflow: hidden;
+}
+
+.singlenews__item {
+    margin: 190px 0 85px 0;
+    height: 640px;
+    border-radius: 15px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    padding: 32px;
+}

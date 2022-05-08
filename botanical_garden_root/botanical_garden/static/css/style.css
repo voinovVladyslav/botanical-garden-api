@@ -351,8 +351,6 @@ html {
 /*-----news-block-----*/
 
 .page__news {
-    margin: 85px 0 0 0;
-    width: 1920px;
     height: 930px;
     background: rgba(240, 250, 237, 1);
 }
@@ -448,7 +446,6 @@ html {
 
 .page__history {
     padding: 85px 0 0 0;
-    width: 1920px;
     height: 1275px;
     background: rgba(240, 250, 237, 1);
 }
@@ -554,7 +551,6 @@ html {
 /*-----sctructure-----*/
 
 .page__str {
-    width: 1920px;
     height: 1020px;
     background: rgba(240, 250, 237, 1);
     display: inline-block;
@@ -650,7 +646,6 @@ html {
 /*-----map-----*/
 
 .page__map {
-    width: 1920px;
     height: 680px;
     background: white;
     margin-bottom: 85px;
@@ -668,10 +663,8 @@ html {
 /*-----scehdule-----*/
 
 .page__schedule {
-    width: 1920px;
     height: 790px;
     background: rgba(240, 250, 237, 1);
-    display: inline-block;
 }
 
 .schedule__title {
@@ -873,10 +866,8 @@ html {
 /*-----contacts-----*/
 
 .page__contacts {
-    width: 1920px;
     height: 845px;
     margin-bottom: 85px;
-    display: inline-block;
 }
 
 .contacts__title {
@@ -893,6 +884,7 @@ html {
     line-height: 152%;
     width: 240px;
     margin-top: 7px;
+    position: absolute;
 }
 
 .contacts__title-con:first-child {
@@ -1080,7 +1072,7 @@ textarea {
     line-height: 152%;
     width: 240px;
     margin-top: 7px;
-    margin: 0px 0px 0px 370px;
+    margin-left: 19%;
 }
 
 .contacts__newtitle-con:first-child {

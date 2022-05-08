@@ -2,8 +2,20 @@
 
 <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="text" name="title" maxlength="100" required="" id="id_title" placeholder="title">
-    <textarea name="context" cols="40" rows="10" id="id_context" placeholder="context"></textarea>
-    <input type="file" name="preview" accept="image/*" id="id_preview" placeholder="img">
-    <input type="submit" name="Create News">
+
+    <p><label for="id_title">Title:</label> 
+    
+    <input type="text" name="title" maxlength="100" required="" id="id_title"></p>
+    
+    <p><label for="id_context">Context:</label>
+    <textarea name="context" cols="40" rows="10" id="id_context"></textarea></p>
+    
+    <p><label for="id_preview">Preview:</label>
+    <input type="file" name="preview" accept="image/*" id="id_preview"></p>
+    
+    <p><label for="id_hashtag">Hashtag:</label>
+    <input type="text" name="hashtag" maxlength="20" id="id_hashtag"></p>
+
+    <button type="submit" class="create-news">Add news</button>
+    </form>
 </form>

@@ -6,7 +6,7 @@ from .decorators import allowed_users
 # Create your views here.
 
 def news_all(request):
-    news = News.objects.all()
+    news = News.objects.all().order_by('-id')
 
     context = {'news': news}
     return render(request, 'news/news.html', context=context)

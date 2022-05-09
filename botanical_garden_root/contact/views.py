@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
 
-from news.decorators import allowed_users
+from botanical_garden.decorators import allowed_users
 from .forms import ContactForm
 from .models import Contact
 
@@ -16,8 +15,10 @@ def contact(request):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('thanks')
+            f = form.save(commit=False)
+            f.user = request.user
+            f.save()
+            return redirect('thanks')
 
     else:
         form = ContactForm()

@@ -552,6 +552,7 @@ html {
 
 .page__str {
     height: 1020px;
+    width: 100%;
     background: rgba(240, 250, 237, 1);
     display: inline-block;
 }

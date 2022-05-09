@@ -1470,6 +1470,105 @@ textarea {
 }
 
 .footer__phone-img {
-    height: 32px;
-    width: 32px;
+    height: 64px;
+    width: 64px;
+}
+
+
+/*-----user-profile-----*/
+
+.page__user-profile {
+    position: absolute;
+    width: 100%;
+    height: 929px;
+    background: rgba(240, 250, 237, 1);
+    overflow: hidden;
+}
+
+.user-profile__body {
+    display: flex;
+}
+
+.profile__pic-block {
+    margin-top: 170px;
+    width: 384px;
+    height: 384px;
+    border-radius: 15px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    padding-top: 40px;
+}
+
+.profile__pic {
+    text-align: center;
+}
+
+.profile__pic-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+}
+
+.profile__pic-name {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 152%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.settings-link {}
+
+.profile__pic-button {
+    background: rgba(133, 228, 208, 1);
+    border-radius: 18px;
+    width: 180px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 15px 102px;
+}
+
+.profile__pic-button:hover {
+    background-color: rgba(130, 206, 193, 1);
+}
+
+.profile__info-block {
+    margin-top: 170px;
+    margin-left: 15px;
+    width: 781px;
+    height: 384px;
+    border-radius: 15px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    padding: 32px;
+}
+
+.profile__info-string {
+    display: flex;
+    margin-bottom: 12px;
+    border-bottom: rgba(46, 54, 62, 0.1) solid 1px;
+}
+
+.profile__info-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    position: absolute;
+}
+
+.profile__info-text {
+    margin-left: 300px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 0.7);
 }

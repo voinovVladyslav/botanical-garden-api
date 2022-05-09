@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
+    <title>
+        {% block title %} Ботанічний сад ХДУ {% endblock title %}
+    </title>
+</head>
+
+<body>
+
+    </div>
+    <footer class="footer" id="main">
+        {% block footer %}
+        <div class="footer__text">
+            ©KSU, 2022
+        </div>
+        <a href="/" class="footer__logo">
+            <img src="{% static 'img/logo.svg' %}" alt="logo">
+        </a>
+        <div class="footer__links">
+            <a href="/" class="footer__inst">
+                <img src="{% static 'img/instagram.svg' %}" alt="inst" class="footer__inst-img">
+            </a>
+            <a href="/" class="footer__mail">
+                <img src="{% static 'img/mail.svg' %}" alt="mail" class="footer__mail-img">
+            </a>
+            <a href="/" class="footer__phone-link">
+                <img src="{% static 'img/phone.svg' %}" alt="phone" class="footer__phone-img">
+            </a>
+        </div>
+        {% endblock footer %}
+    </footer>
+
+</body>
+
+</html>

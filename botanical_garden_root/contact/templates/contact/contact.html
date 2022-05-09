@@ -60,16 +60,10 @@
                     {% csrf_token %}
                     <ul>
                         <li>
-                            <input placeholder="Ваше ім'я:" type="text" id="user_name" name="name" required>
+                            <input placeholder="Тема питання:" type="text" id="topic" name="topic" required maxlength="50">
                         </li>
                         <li>
-                            <input placeholder="Номер телефону:" type="tel" id="phone_number" name="phone" required>
-                        </li>
-                        <li>
-                            <input placeholder="E-Mail:" type="email" id="user_email" name="email" required>
-                        </li>
-                        <li>
-                            <textarea placeholder="Ваше повідомлення:" id="user_message" name="user_message" class="message-area" required></textarea>
+                            <textarea placeholder="Ваше повідомлення:" id="message" name="message" class="message-area" required maxlength="1000"></textarea>
                         </li>
                         <li class="button">
                             <button type="submit" value="Submit" class="form-button">Надіслати</button>

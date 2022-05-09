@@ -1406,8 +1406,6 @@ textarea {
 
 /*-----single news page-----*/
 
-.singlenews__body {}
-
 .page__singlenews {
     background: rgba(240, 250, 237, 1);
     overflow: hidden;
@@ -1431,6 +1429,7 @@ textarea {
     max-height: 300px;
     display: flex;
     padding-bottom: 120px;
+    border-top: rgba(46, 54, 62, 0.1) solid 1px;
 }
 
 .footer__text {

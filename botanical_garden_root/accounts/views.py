@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 
 from .models import Customer
 
 from .forms import RegisterUserForm, CustomerFrom
-from news.decorators import allowed_users
+from botanical_garden.decorators import allowed_users, already_authenticated
 
 # Create your views here.
 @login_required(login_url='login')
@@ -28,24 +27,25 @@ def settings(request):
         form = CustomerFrom(request.POST, instance=customer)
         if form.is_valid():
             form.save()
+        return redirect('profile')
 
     context = {'form':form}
     return render(request, 'accounts/settings.html', context)
 
 
-def registerPage(request):   
+@already_authenticated
+def registerPage(request):
 
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
 
             group = Group.objects.get(name='customer')
             user.groups.add(group)
 
-            Customer.objects.create(user=user)
-            messages.success(request, 'account was created for ' + username)
+            Customer.objects.create(user=user, email=email)
             return redirect('login')
 
     else:
@@ -55,19 +55,17 @@ def registerPage(request):
     return render(request, 'accounts/register.html', context)
 
 
+@already_authenticated
 def loginPage(request):
 
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
-        
 
         if user is not None:
             login(request, user)
             return redirect('main')
-        else:
-            messages.info(request, 'invalid data')
 
     return render(request, 'accounts/login.html')
 

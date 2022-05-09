@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import News
 from .forms import CreateNews
-from .decorators import allowed_users
+from botanical_garden.decorators import allowed_users
 
 # Create your views here.
 

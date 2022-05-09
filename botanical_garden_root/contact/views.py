@@ -15,7 +15,9 @@ def contact(request):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            f = form.save(commit=False)
+            f.user = request.user
+            f.save()
             return redirect('thanks')
 
     else:

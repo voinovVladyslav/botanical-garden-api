@@ -1,5 +1,5 @@
 <h2>Contact All</h2>
 
 {% for contact in contacts %}
-    <a href="{% url 'contact_single' contact.pk %}">{{contact.user_name}}</a>
+    <a href="{% url 'contact_single' contact.pk %}">{{contact.topic}}</a>
 {% endfor %}

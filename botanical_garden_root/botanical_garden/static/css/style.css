@@ -1526,6 +1526,7 @@ textarea {
     height: 60px;
     display: flex;
     align-items: center;
+    text-align: center;
     padding: 0 20px;
     font-weight: 600;
     font-size: 14px;
@@ -1571,4 +1572,8 @@ textarea {
     font-size: 18px;
     line-height: 152%;
     color: rgba(38, 50, 56, 0.7);
+}
+
+.profile-input {
+    margin-bottom: -5px;
 }

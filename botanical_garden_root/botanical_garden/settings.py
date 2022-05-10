@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'accounts.apps.AccountsConfig',
     'news.apps.NewsConfig',
+    'excursion.apps.ExcursionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

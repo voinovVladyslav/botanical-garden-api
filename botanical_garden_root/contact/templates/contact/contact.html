@@ -57,10 +57,18 @@
             </div>
             <div class="contact__new_form ">
                 <form action="" method="POST">
-                    {% csrf_token %} {{ form.as_ul }}
-                    <li class="button">
-                        <button type="submit" value="Submit" class="form-button">Надіслати</button>
-                    </li>
+                    {% csrf_token %}
+                    <ul>
+                        <li>
+                            <input placeholder="Тема питання:" type="text" id="topic" name="topic" required maxlength="50">
+                        </li>
+                        <li>
+                            <textarea placeholder="Ваше повідомлення:" id="message" name="message" class="message-area" required maxlength="1000"></textarea>
+                        </li>
+                        <li class="button">
+                            <button type="submit" value="Submit" class="form-button">Надіслати</button>
+                        </li>
+                    </ul>
                 </form>
             </div>
         </div>

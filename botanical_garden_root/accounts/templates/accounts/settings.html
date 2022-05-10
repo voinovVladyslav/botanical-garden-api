@@ -37,7 +37,7 @@
                                             Ім'я:
                                         </div>
                                         <div class="profile__info-text">
-                                            <li><input type="text" id="name" name="name" required class="profile-input" placeholder="{{ customer.name }}"></li>
+                                            <li><input type="text" id="name" name="name" class="profile-input" value="{{ customer.name }}"></li>
                                         </div>
                                     </div>
                                     <div class="profile__info-string">
@@ -45,7 +45,7 @@
                                             Прізвище:
                                         </div>
                                         <div class="profile__info-text">
-                                            <li><input type="text" id="surname" name="surname" required class="profile-input"></li>
+                                            <li><input type="text" id="surname" name="surname" class="profile-input" value="{{ customer.surname }}"></li>
                                         </div>
                                     </div>
                                     <div class="profile__info-string">
@@ -53,7 +53,7 @@
                                             Номер телефона:
                                         </div>
                                         <div class="profile__info-text">
-                                            <li><input type="tel" id="phone" name="phone" required class="profile-input"></li>
+                                            <li><input type="tel" id="phone" name="phone" class="profile-input" value="{{ customer.phone }}"></li>
                                         </div>
                                     </div>
                                     <div class="profile__info-string">
@@ -61,15 +61,7 @@
                                             E-Mail:
                                         </div>
                                         <div class="profile__info-text">
-                                            <li><input type="email" id="email" name="email" required class="profile-input"></li>
-                                        </div>
-                                    </div>
-                                    <div class="profile__info-string">
-                                        <div class="profile__info-title">
-                                            Дата приєднання:
-                                        </div>
-                                        <div class="profile__info-text">
-                                            <li><input type="text" id="date_created" name="date_created" required class="profile-input"></li>
+                                            <li><input type="email" id="email" name="email" class="profile-input" value="{{ customer.email }}"></li>
                                         </div>
                                     </div>
                                     <li>
@@ -88,22 +80,3 @@
 
 
 </html>
-
-
-<!-- <h1>Settings</h1>
-<form action='' method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update information</button>
-</form>
-
-
-<form action="" method="POST">
-                                    <input type="text" id="name" name="name" required>
-                                    <input type="text" id="surname" name="surname" required>
-                                    <input type="text" id="phone" name="phone" required>
-                                    <input type="text" id="email" name="email" required>
-                                    <input type="text" id="date_created" name="date_created" required>
-                                    <button class="profile__pic-button" type="Submit">Зберегти налаштування</button>
-                                </form>
--->

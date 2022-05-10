@@ -675,11 +675,11 @@ html {
     color: rgba(46, 54, 62, 1);
 }
 
-.calendar {
+.excursion__block-body {
+    height: 586px;
+    width: 574px;
+    background: white;
     float: left;
-    transition: all .2s linear;
-    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
-    border-radius: 18px;
 }
 
 .schedule__days-block {
@@ -1470,8 +1470,8 @@ textarea {
 }
 
 .footer__phone-img {
-    height: 64px;
-    width: 64px;
+    height: 32px;
+    width: 32px;
 }
 
 

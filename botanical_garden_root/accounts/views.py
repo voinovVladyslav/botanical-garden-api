@@ -29,7 +29,7 @@ def settings(request):
             form.save()
         return redirect('profile')
 
-    context = {'form':form}
+    context = {'form':form, 'customer':customer}
     return render(request, 'accounts/settings.html', context)
 
 

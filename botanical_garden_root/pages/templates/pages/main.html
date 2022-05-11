@@ -91,7 +91,25 @@
                     <div class="schedule__body ">
                         <div class="excursion__block-body">
                             <form action="" method="POST">
-                                <button type="Submit">submit</button>
+                                {% csrf_token %}
+                                <ul>                                    
+                                    <li>
+                                        <input type="date" name="excursion_date" class="form-control" required id="id_excursion_date">
+                                    </li>
+                                    <li>
+                                        <input type="time" name="excursion_time" class="form-control" required id="id_excursion_time">
+                                    </li>
+                                    <li>
+                                        <select name="excursion_type" required="" id="id_excursion_type">
+                                            <option value="Індивідуальні відвідування" selected>Індивідуальні відвідування</option>
+                                            <option value="Екскурсія для дорослих">Екскурсія для дорослих</option>
+                                            <option value="Екскурсія для дітей">Екскурсія для дітей</option>
+                                            <option value="Проведення заходів">Проведення заходів</option>
+                                            <option value="Фото - відеозйомки">Фото - відеозйомки</option>                                  
+                                        </select>
+                                    </li>
+                                    <button type="Submit">submit</button>
+                                </ul>
                             </form>
                         </div>
                         <div class="schedule__days ">

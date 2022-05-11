@@ -11,7 +11,7 @@ class RegisterUserForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
         
 
-class CustomerFrom(ModelForm):
+class CustomerForm(ModelForm):
     class Meta:
         model = Customer
         fields = '__all__'

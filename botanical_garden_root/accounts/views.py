@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Customer
 
-from .forms import RegisterUserForm, CustomerFrom
+from .forms import RegisterUserForm, CustomerForm
 from botanical_garden.decorators import allowed_users, already_authenticated
 
 # Create your views here.
@@ -21,10 +21,10 @@ def profile(request):
 @login_required(login_url='login')
 def settings(request):
     customer = request.user.customer
-    form = CustomerFrom(instance=customer)
+    form = CustomerForm(instance=customer)
 
     if request.method == 'POST':
-        form = CustomerFrom(request.POST, instance=customer)
+        form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
             form.save()
         return redirect('profile')

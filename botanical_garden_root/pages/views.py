@@ -1,9 +1,22 @@
-from django.http import HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+
+from excursion.forms import ExcursionForm
 
 
 def main(request):
-    return render(request, 'pages/main.html')
+    
+    if request.method == "POST":
+        form = ExcursionForm(request.POST)
+        if form.is_valid():
+            t = form.save(commit=False)
+            t.person = request.user
+            t.save()
+            return redirect('profile')
+    else:
+        form = ExcursionForm()
+
+    context = {'form': form}
+    return render(request, 'pages/main.html', context)
 
 
 def history(request):

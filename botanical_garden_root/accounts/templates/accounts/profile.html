@@ -73,11 +73,11 @@
                             </div>
                             <div class="profile__info-string">
                                 <div class="profile__info-title">
-                                    Excursions:
+                                    Заплановані екскурсії:
                                 </div>
                                 {% for excursion in excursions %}
                                 <div class="profile__info-text">
-                                    {{ excursion.excursion_type }}  {{ excursion.excursion_date }}  {{ excursion.excursion_time }}
+                                    {{ excursion.excursion_type }}, {{ excursion.excursion_date }} {{ excursion.excursion_time }}
                                 </div>
                                 {% endfor %}
                             </div>

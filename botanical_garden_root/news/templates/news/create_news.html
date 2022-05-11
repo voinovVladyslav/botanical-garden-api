@@ -1,21 +1,45 @@
-<h2>Create News</h2>
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<form method="POST" action="" enctype="multipart/form-data">
-    {% csrf_token %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Реєстрація</title>
+</head>
 
-    <p><label for="id_title">Title:</label> 
-    
-    <input type="text" name="title" maxlength="100" required="" id="id_title"></p>
-    
-    <p><label for="id_context">Context:</label>
-    <textarea name="context" cols="40" rows="10" id="id_context"></textarea></p>
-    
-    <p><label for="id_preview">Preview:</label>
-    <input type="file" name="preview" accept="image/*" id="id_preview"></p>
-    
-    <p><label for="id_hashtag">Hashtag:</label>
-    <input type="text" name="hashtag" maxlength="20" id="id_hashtag"></p>
+<body>
+    {% block content %}
+    <section class="page__create-news create-news">
+        <div class="create-news__container _container ">
+            <div class="create-news__body ">
+                <div class="create-news__block ">
+                    <img src="{% static 'img/create-news.svg' %}" alt="create-news image" class="create-news__block-image">
+                    <div class="create-news__block-auth">
+                        <div class="create-news__block-text ">
+                            Додайте новину:
+                        </div>
+                        <div class="create-news__block-form ">
+                            <form method="POST" action="" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="text" name="title" maxlength="100" required="" id="id_title" placeholder="Заголовок:">
+                                <input type="text" name="hashtag" maxlength="20" id="id_hashtag" placeholder="Хештег:">
+                                <textarea name="context" cols="40" rows="10" id="id_context" placeholder="Текст новини:"></textarea>
+                                <input type="file" name="preview" accept="image/*" id="id_preview" placeholder="Фотографія:">
+                                <button type="submit" class="create-news-button">Додати новину</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <button type="submit" class="create-news">Add news</button>
-    </form>
-</form>
+    {% endblock content %}
+</body>
+
+</html>

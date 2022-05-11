@@ -96,9 +96,20 @@
                                     <li>
                                         <input type="date" name="excursion_date" class="form-control" required id="id_excursion_date">
                                     </li>
+                                    {% if form.excursion_date.errors %}
+                                    <li>
+                                        <p>{{ form.excursion_date.errors.as_text }}</p>
+                                    </li>
+                                    {% endif %}
                                     <li>
                                         <input type="time" name="excursion_time" class="form-control" required id="id_excursion_time">
                                     </li>
+                                    {% if form.excursion_time.errors %}
+                                    <li>
+                                        <p>{{ form.excursion_time.errors.as_text }}</p>
+                                    </li>
+                                    {% endif %}
+                                    
                                     <li>
                                         <select name="excursion_type" required="" id="id_excursion_type">
                                             <option value="Індивідуальні відвідування" selected>Індивідуальні відвідування</option>
@@ -108,7 +119,11 @@
                                             <option value="Фото - відеозйомки">Фото - відеозйомки</option>                                  
                                         </select>
                                     </li>
-                                    <button type="Submit">submit</button>
+                                    {% if request.user.is_authenticated %}
+                                        <button type="Submit">submit</button>
+                                    {% else %}
+                                        <button type="Submit" disabled>submit</button>
+                                    {% endif %}
                                 </ul>
                             </form>
                         </div>

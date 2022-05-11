@@ -4,7 +4,6 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 
 from .models import Customer
-
 from .forms import RegisterUserForm, CustomerForm
 from botanical_garden.decorators import allowed_users, already_authenticated
 
@@ -13,8 +12,9 @@ from botanical_garden.decorators import allowed_users, already_authenticated
 @allowed_users(['customer'])
 def profile(request):
     customer = request.user.customer
-    
-    context = {'customer':customer}
+    excursions = request.user.customer.excursion_set.all()
+
+    context = {'customer': customer, 'excursions': excursions}
     return render(request, 'accounts/profile.html', context)
 
 

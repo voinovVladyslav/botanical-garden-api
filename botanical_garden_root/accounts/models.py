@@ -10,6 +10,7 @@ class Customer(models.Model):
     email = models.EmailField(null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     
+    
 
     def __str__(self) -> str:
         return self.user.username

@@ -9,7 +9,7 @@ def main(request):
         form = ExcursionForm(request.POST)
         if form.is_valid():
             t = form.save(commit=False)
-            t.person = request.user
+            t.person = request.user.customer
             t.save()
             return redirect('profile')
     else:

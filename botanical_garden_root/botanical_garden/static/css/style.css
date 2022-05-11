@@ -1101,22 +1101,13 @@ textarea {
 }
 
 .thanks-image {
-    height: 300px;
-    width: 300px;
-}
-
-.thanks-title {
-    font-weight: 900;
-    font-size: 36px;
-    line-height: 143%;
-    text-align: center;
-    color: rgba(46, 54, 62, 1);
-    margin: 15% 0 0 0;
+    height: 500px;
+    width: 500px;
 }
 
 .thanks-text {
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 900;
+    font-size: 36px;
     line-height: 143%;
     text-align: center;
     color: rgba(46, 54, 62, 1);
@@ -1127,6 +1118,26 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.thanks-page__button {
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all .35s linear;
+    background: rgba(133, 228, 208, 1);
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.thanks-page__button:hover {
+    background: #468479ad;
+}
+
+.thanks-page__button-block {
+    text-align: center;
+    margin-top: 15px;
 }
 
 

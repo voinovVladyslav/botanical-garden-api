@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
     <title>Дякуємо за звернення!</title>
-    <meta http-equiv="refresh" content="7; url = /" />
+    <!--<meta http-equiv="refresh" content="7; url = /" /> -->
 </head>
 
 <body>
@@ -20,17 +20,16 @@
             <section class="page__thanks-page thanks-page ">
                 <div class="thanks-page__container _container ">
                     <div class="thanks-page__body">
-
-                        <h1 class="thanks-title">
-                            Дякуємо, що зв'язалися з нами!
-                        </h1>
-                        <div class="thanks-text">
-                            Ми отримали Ваше повідомлення<br>та опрацюємо його якомога швидше.<br>Через 7 секунд Ви будете автоматично перенаправлені на головну сторінку.<br>Якщо цього не сталося - натисніть на дерево нижче.
-                        </div>
                         <div class="thanks-image-block">
-                            <a href="/">
-                                <img src="{% static 'img/oak.svg' %}" alt="" class="thanks-image">
-                            </a>
+                            <img src="{% static 'img/thanks.svg' %}" alt="" class="thanks-image">
+                        </div>
+                        <div class="thanks-text">
+                            Дякуємо за звернення!
+                        </div>
+                        <div class="thanks-page__button-block">
+                            <button class="thanks-page__button">
+                            На головну
+                        </button>
                         </div>
                     </div>
                 </div>

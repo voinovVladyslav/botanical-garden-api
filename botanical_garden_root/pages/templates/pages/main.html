@@ -92,8 +92,9 @@
                         <div class="excursion__block-body">
                             <form action="" method="POST">
                                 {% csrf_token %}
-                                <ul>                                    
+                                <ul>
                                     <li>
+                                        Оберіть дату екскурсії:<br>
                                         <input type="date" name="excursion_date" class="form-control" required id="id_excursion_date">
                                     </li>
                                     {% if form.excursion_date.errors %}
@@ -102,6 +103,7 @@
                                     </li>
                                     {% endif %}
                                     <li>
+                                        Оберіть час екскурсії:<br>
                                         <input type="time" name="excursion_time" class="form-control" required id="id_excursion_time">
                                     </li>
                                     {% if form.excursion_time.errors %}
@@ -109,8 +111,9 @@
                                         <p>{{ form.excursion_time.errors.as_text }}</p>
                                     </li>
                                     {% endif %}
-                                    
+
                                     <li>
+                                        Оберіть тип екскурсії:<br>
                                         <select name="excursion_type" required="" id="id_excursion_type">
                                             <option value="Індивідуальні відвідування" selected>Індивідуальні відвідування</option>
                                             <option value="Екскурсія для дорослих">Екскурсія для дорослих</option>
@@ -120,9 +123,11 @@
                                         </select>
                                     </li>
                                     {% if request.user.is_authenticated %}
-                                        <button type="Submit">submit</button>
-                                    {% else %}
-                                        <button type="Submit" disabled>submit</button>
+                                    <button type="Submit" class="excursion__button">Записатися на екскурсію</button> {% else %}
+                                    <button type="Submit" disabled class="excursion__button-disabled">Записатися на екскурсію</button>
+                                    <div class="please-register__text">
+                                        Для запису на екскурсію необхідно бути авторизованим на сайті
+                                    </div>
                                     {% endif %}
                                 </ul>
                             </form>

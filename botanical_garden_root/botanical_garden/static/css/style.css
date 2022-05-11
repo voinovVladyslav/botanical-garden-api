@@ -675,13 +675,6 @@ html {
     color: rgba(46, 54, 62, 1);
 }
 
-.excursion__block-body {
-    height: 586px;
-    width: 574px;
-    background: white;
-    float: left;
-}
-
 .schedule__days-block {
     width: 500px;
     height: 87.85px;
@@ -735,7 +728,7 @@ html {
 
 .schedule__hours-line {
     width: 17px;
-    height: 105px;
+    height: 115px;
     background: #85E4D0;
     border-radius: 14px;
     margin: 9px 23px;
@@ -1576,4 +1569,92 @@ textarea {
 
 .profile-input {
     margin-bottom: -5px;
+}
+
+
+/*-----excursion form-----*/
+
+.excursion__block-body {
+    height: 586px;
+    width: 574px;
+    border-radius: 15px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    float: left;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    padding: 30px;
+    transition: .2s all linear;
+    padding-top: 132px;
+}
+
+.excursion__block-body:hover {
+    transform: scale(1.05);
+}
+
+#id_excursion_type {
+    font-family: Montserrat;
+    color: rgba(38, 50, 56, 1);
+    font-size: 16px;
+    border-bottom: 1px solid #999;
+    width: 300px;
+    height: 30px;
+}
+
+.excursion__button {
+    background: rgba(133, 228, 208, 1);
+    border-radius: 18px;
+    width: 300px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 20px 108.5px;
+}
+
+.excursion__button-disabled {
+    background: rgba(133, 228, 208, 0.5);
+    border-radius: 18px;
+    width: 300px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 20px 108.5px;
+}
+
+.please-register__text {
+    width: 300px;
+    text-align: center;
+    font-size: 14px;
+    line-height: normal;
+    margin-left: 108.5px;
+}
+
+#id_excursion_time {
+    width: 514px;
+}
+
+#id_excursion_date {
+    width: 514px;
+}
+
+#id_excursion_type {
+    width: 514px;
 }

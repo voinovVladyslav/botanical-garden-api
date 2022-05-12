@@ -30,7 +30,7 @@
                             Відчуй єднання людини з природою завітавши до ботанічного саду Херсонського державного університета.
                         </div>
                         <div class="main-block__buttons ">
-                            <a href="#schedule " class="main-block__button ">Дізнатися розклад</a>
+                            <a href="#schedule " class="main-block__button ">Записатися на екскурсію</a>
                         </div>
                         <div class="main-block__image ">
                             <img src="{% static 'img/bboy.svg' %}" alt="mainpage_image1 ">
@@ -123,8 +123,7 @@
                                         </select>
                                     </li>
                                     {% if request.user.is_authenticated %}
-                                    <button type="Submit" class="excursion__button">Записатися на екскурсію</button> 
-                                    {% else %}
+                                    <button type="Submit" class="excursion__button">Записатися на екскурсію</button> {% else %}
                                     <button type="Submit" disabled class="excursion__button-disabled">Записатися на екскурсію</button>
                                     <div class="please-register__text">
                                         Для запису на екскурсію необхідно бути авторизованим на сайті

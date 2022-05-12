@@ -675,13 +675,6 @@ html {
     color: rgba(46, 54, 62, 1);
 }
 
-.excursion__block-body {
-    height: 586px;
-    width: 574px;
-    background: white;
-    float: left;
-}
-
 .schedule__days-block {
     width: 500px;
     height: 87.85px;
@@ -735,7 +728,7 @@ html {
 
 .schedule__hours-line {
     width: 17px;
-    height: 105px;
+    height: 115px;
     background: #85E4D0;
     border-radius: 14px;
     margin: 9px 23px;
@@ -1108,22 +1101,13 @@ textarea {
 }
 
 .thanks-image {
-    height: 300px;
-    width: 300px;
-}
-
-.thanks-title {
-    font-weight: 900;
-    font-size: 36px;
-    line-height: 143%;
-    text-align: center;
-    color: rgba(46, 54, 62, 1);
-    margin: 15% 0 0 0;
+    height: 500px;
+    width: 500px;
 }
 
 .thanks-text {
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 900;
+    font-size: 36px;
     line-height: 143%;
     text-align: center;
     color: rgba(46, 54, 62, 1);
@@ -1134,6 +1118,26 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.thanks-page__button {
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all .35s linear;
+    background: rgba(133, 228, 208, 1);
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.thanks-page__button:hover {
+    background: #468479ad;
+}
+
+.thanks-page__button-block {
+    text-align: center;
+    margin-top: 15px;
 }
 
 
@@ -1576,4 +1580,245 @@ textarea {
 
 .profile-input {
     margin-bottom: -5px;
+}
+
+
+/*-----excursion form-----*/
+
+.excursion__block-body {
+    height: 586px;
+    width: 574px;
+    border-radius: 15px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+    float: left;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    padding: 30px;
+    transition: .2s all linear;
+    padding-top: 132px;
+}
+
+.excursion__block-body:hover {
+    transform: scale(1.05);
+}
+
+#id_excursion_type {
+    font-family: Montserrat;
+    color: rgba(38, 50, 56, 1);
+    font-size: 16px;
+    border-bottom: 1px solid #999;
+    width: 300px;
+    height: 30px;
+}
+
+.excursion__button {
+    background: rgba(133, 228, 208, 1);
+    border-radius: 18px;
+    width: 300px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 20px 108.5px;
+}
+
+.excursion__button-disabled {
+    background: rgba(133, 228, 208, 0.5);
+    border-radius: 18px;
+    width: 300px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 20px 108.5px;
+}
+
+.please-register__text {
+    width: 300px;
+    text-align: center;
+    font-size: 14px;
+    line-height: normal;
+    margin-left: 108.5px;
+}
+
+#id_excursion_time {
+    width: 514px;
+}
+
+#id_excursion_date {
+    width: 514px;
+}
+
+#id_excursion_type {
+    width: 514px;
+}
+
+
+/*-----create news-----*/
+
+.page__create-news {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(240, 250, 237, 1);
+}
+
+.create-news__block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 900px;
+    height: 600px;
+    border-radius: 18px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    display: flex;
+}
+
+.create-news__block-auth {
+    margin: 85px 95px;
+}
+
+.create-news__block-text {
+    text-align: left;
+    margin: -8.5px 0 0 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    color: #468479;
+    width: 350px;
+}
+
+.create-news__block-image {
+    position: absolute;
+    margin: 135px 415px;
+    width: 500px;
+    height: 300px;
+}
+
+.create-news__block-form {
+    width: 300px;
+    text-align: left;
+    margin: 35px 0 0 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 152%;
+    color: rgba(46, 54, 62, 1);
+}
+
+#id_title,
+#id_hashtag,
+#id_context,
+#id_preview {
+    text-align: left;
+    width: 300px;
+    height: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #999;
+    background: none;
+    margin-bottom: 33px;
+}
+
+#id_context {
+    height: 90px;
+    resize: none;
+}
+
+.create-news__button-block {
+    display: inline;
+    float: left;
+}
+
+.create-news__button-login {
+    font-size: 14px;
+    line-height: 1.2;
+    float: right;
+    padding: 4px 0 0 25px;
+    text-align: right;
+    color: rgba(46, 54, 62, 1);
+    text-decoration: underline;
+}
+
+.create-news-button {
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all .35s linear;
+    background: rgba(133, 228, 208, 1);
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+}
+
+.create-news-button:hover {
+    background: #468479ad;
+}
+
+
+/*----single-contact-----*/
+
+.page__all-contacts {
+    position: absolute;
+    width: 100%;
+    height: 929px;
+    background: rgba(240, 250, 237, 1);
+    overflow: hidden;
+}
+
+.all-contacts__body {
+    display: flex;
+}
+
+.all-contacts__block {
+    margin-top: 170px;
+    width: 100%;
+    height: fit-content;
+    border-radius: 15px;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    background-color: #fff;
+}
+
+.all-contacts__title {
+    padding-left: 30px;
+    font-size: 22px;
+    line-height: 60px;
+    font-weight: 600;
+    color: rgba(46, 54, 62, 1);
+}
+
+.all-contacts__single {
+    font-size: 18px;
+    line-height: normal;
+    margin-left: 53px;
+}
+
+.single-contacts__topic {
+    margin-left: 30px;
+    width: 1120px;
+}
+
+.all-contacts__single:last-child {
+    margin-bottom: 30px;
+}
+
+.single-contacts__topic:last-child {
+    margin-bottom: 30px;
 }

@@ -8,10 +8,9 @@ def allowed_users(allowed_roles=[]):
             if request.user.groups.exists():
                 group = request.user.groups.all()
 
-
-            for i in group:
-                if i.name in allowed_roles:
-                    return view_func(request, *args, **kwargs)
+                for i in group:
+                    if i.name in allowed_roles:
+                        return view_func(request, *args, **kwargs)
                 
             return render(request, 'permision_denied.html')
 

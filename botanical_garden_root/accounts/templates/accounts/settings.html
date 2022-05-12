@@ -23,9 +23,19 @@
                             <div class="profile__pic">
                                 <img src="{% static 'img/profile-picture.svg' %}" alt="profile-picture" class="profile__pic-img">
                             </div>
-                            <div class="profile__pic-name">
-                                {{ customer.name }} {{ customer.surname }}
-                            </div>
+                            {% if customer.name is not None and customer.surname is not None %}
+                                <div class="profile__pic-name">
+                                    {{ customer.name }} {{ customer.surname }}
+                                </div>
+                            {% elif customer.name %}
+                                <div class="profile__pic-name">
+                                    {{ customer.name }}
+                                </div>
+                            {% else %}
+                                <div class="profile__pic-name">
+                                    Додайте ваші дані
+                                </div>
+                            {% endif %}
 
                         </div>
                         <div class="profile__info-block">
@@ -37,7 +47,11 @@
                                             Ім'я:
                                         </div>
                                         <div class="profile__info-text">
-                                            <li><input type="text" id="name" name="name" class="profile-input" value="{{ customer.name }}"></li>
+                                            {% if customer.name is not None %}
+                                                <li><input type="text" id="name" name="name" class="profile-input" value="{{ customer.name }}"></li>
+                                            {% else %}
+                                                <li><input type="text" id="name" name="name" class="profile-input"></li>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="profile__info-string">
@@ -45,7 +59,11 @@
                                             Прізвище:
                                         </div>
                                         <div class="profile__info-text">
-                                            <li><input type="text" id="surname" name="surname" class="profile-input" value="{{ customer.surname }}"></li>
+                                            {% if customer.surname is not None %}
+                                                <li><input type="text" id="surname" name="surname" class="profile-input" value="{{ customer.surname }}"></li>
+                                            {% else %}
+                                            <li><input type="text" id="surname" name="surname" class="profile-input"></li>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="profile__info-string">
@@ -53,7 +71,11 @@
                                             Номер телефона:
                                         </div>
                                         <div class="profile__info-text">
-                                            <li><input type="tel" id="phone" name="phone" class="profile-input" value="{{ customer.phone }}"></li>
+                                            {% if customer.phone is not None %}
+                                                <li><input type="tel" id="phone" name="phone" class="profile-input" value="{{ customer.phone }}"></li>
+                                            {% else %}
+                                                <li><input type="tel" id="phone" name="phone" class="profile-input" value="{{ customer.phone }}"></li>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="profile__info-string">
@@ -61,7 +83,11 @@
                                             E-Mail:
                                         </div>
                                         <div class="profile__info-text">
-                                            <li><input type="email" id="email" name="email" class="profile-input" value="{{ customer.email }}"></li>
+                                            {% if customer.phone is not None %}
+                                                <li><input type="email" id="email" name="email" class="profile-input" value="{{ customer.email }}"></li>
+                                            {% else %}
+                                                <li><input type="email" id="email" name="email" class="profile-input"></li>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <li>

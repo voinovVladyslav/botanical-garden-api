@@ -9,7 +9,12 @@ def news_all(request):
     news = News.objects.all().order_by('-id')
     firstnews = News.objects.all().order_by('-id')[:1]
 
-    context = {'news': news, 'firstnews': firstnews}
+    if request.user.groups.filter(name='manager').exists():
+        ismanager = True
+    else:
+        ismanager = False
+
+    context = {'news': news, 'firstnews': firstnews, 'ismanager':ismanager}
     return render(request, 'news/news.html', context=context)
 
 
@@ -40,8 +45,8 @@ def create_news(request):
 @allowed_users_pk(allowed_roles=['manager', 'admin'])
 def update_news(request, news_pk):
     news = News.objects.get(id=news_pk)
-    
-    form = CreateNews(request.FILES, instance=news)
+    print("context", news.context)
+    form = CreateNews(instance=news)
     if request.method == 'POST':
         form = CreateNews(request.POST, request.FILES, instance=news)
         if form.is_valid():
@@ -50,5 +55,15 @@ def update_news(request, news_pk):
             t.save()
             return redirect('news_all')
     
-    context = {'form': form}
-    return render(request, 'news/create_news.html', context=context)
+    context = {'form': form, 'news':news}
+    return render(request, 'news/update_news.html', context=context)
+
+@allowed_users_pk(allowed_roles=['manager', 'admin'])
+def delete_news(request, news_pk):
+    news = News.objects.get(id=news_pk)
+
+    if request.method == 'POST':
+        news.delete()
+        return redirect('news_all')
+    context = {'news': news}
+    return render(request, 'news/delete_news.html', context)

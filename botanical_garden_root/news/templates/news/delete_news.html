@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{ news.title }}</title>
+</head>
+
+<body>
+    <section class="page__singlenews news " id="first_news">
+        <div class="newspage__container _container ">
+            <div class="singlenews__body ">
+                <div class="newspage__column ">
+                    <div class="singlenews__item item-singlenews ">
+                        <h3 class="item-newspage__title ">
+                            {{ news.title }}
+                        </h3>
+                        <div class=" item-newspage__image-block ">
+                            <img src="{{ news.preview.url }} " alt="news-image " class="item-newspage__image ">
+                        </div>
+                        <div class="item-newspage__date ">
+                            {{ news.publication_date }} ⠀⠀⠀|⠀⠀⠀ {{ news.hashtag }}
+                        </div>
+                        <div class="item-newspage__text ">
+                            {{ news.context }}
+                        </div>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <a href="{% url 'news_all' %}">Back</a>
+                            <button type="submit" name="create-news-button">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock content %}
+
+</html>

@@ -1,0 +1,10 @@
+<h1>Excursions</h1>
+
+{% if excurions %}
+    <a href="{% url 'main' %}">Записатися</a>
+{% endif %}
+
+{% for excursion in excursions %}
+    <p>{{ excursion.excursion_type }}, {{ excursion.excursion_date }} {{ excursion.excursion_time }}
+        <a href="{% url 'delete_excursion' excursion.id %}">delete</a></p>
+{% endfor %}

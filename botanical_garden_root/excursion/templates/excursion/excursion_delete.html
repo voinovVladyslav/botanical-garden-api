@@ -1,0 +1,7 @@
+<h1>Delete</h1>
+<p>You want delete {{ excursion.excursion_type }}, {{ excursion.excursion_date }} {{ excursion.excursion_time }}</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'excursions' %}">Back</a>
+    <button type="submit">Delete</button>
+</form>

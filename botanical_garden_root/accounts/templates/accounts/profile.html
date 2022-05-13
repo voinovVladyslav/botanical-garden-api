@@ -99,16 +99,16 @@
                                     {{ customer.date_created }}
                                 </div>
                             </div>
-                            {% for excursion in excursions %}
+                           
                             <div class="profile__info-string">
                                 <div class="profile__info-title">
                                     Заплановані екскурсії:
                                 </div>
                                 <div class="profile__info-text">
-                                    {{ excursion.excursion_type }}, {{ excursion.excursion_date }} {{ excursion.excursion_time }}
+                                    <a href="{% url 'excursions' %}">All</a>
                                 </div>
                             </div>
-                            {% endfor %}
+                            
                         </div>
                     </div>
                 </div>

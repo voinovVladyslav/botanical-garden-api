@@ -19,7 +19,7 @@
                 <div class="newspage__column ">
                     <div class="singlenews__item item-singlenews ">
                         <h3 class="item-newspage__title ">
-                            <a href="{% url 'news_single'}">{{ news.title }}</a>
+                            {{ news.title }}
                         </h3>
                         <div class=" item-newspage__image-block ">
                             <img src="{{ news.preview.url }} " alt="news-image " class="item-newspage__image ">

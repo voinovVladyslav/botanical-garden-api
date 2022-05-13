@@ -37,19 +37,19 @@ def validate_date(value):
 def validate_time(value):
     if  value.hour < 8:
         raise ValidationError(
-            _(f'Записатися на {value.hour} годину неможливо, занадто рано'),
+            _('Записатися раніше 8:30 неможливо'),
             params={'value':value}
         )
 
     if  value.hour >= 15 and value.minute != 0:
         raise ValidationError(
-            _(f'Записатися на {value.hour} годину неможливо, занадто пізно'),
+            _('Записатися пізніше 15 години неможливо'),
             params={'value':value}
         )
 
     if  value.hour == 8 and value.minute < 30:
         raise ValidationError(
-            _(f'Записатися на {value.hour}:{value.minute} неможливо, занадто рано'),
+            _('Записатися раніше 8:30 неможливо'),
             params={'value':value}
         )
     

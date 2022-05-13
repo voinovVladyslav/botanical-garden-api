@@ -15,6 +15,7 @@ def profile(request):
     
     for excursion in excursions:
         excursion.excursion_time = excursion.excursion_time.strftime('%H:%M')
+        excursion.excursion_date = excursion.excursion_date.strftime('%D') 
 
     context = {'customer': customer, 'excursions': excursions}
     return render(request, 'accounts/profile.html', context)

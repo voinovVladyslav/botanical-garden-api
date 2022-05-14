@@ -1,7 +1,44 @@
-<h1>Delete</h1>
-<p>You want delete {{ excursion.excursion_type }}, {{ excursion.excursion_date }} {{ excursion.excursion_time }}</p>
-<form action="" method="POST">
-    {% csrf_token %}
-    <a href="{% url 'excursions' %}">Back</a>
-    <button type="submit">Delete</button>
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Реєстрація</title>
+</head>
+
+<body>
+    {% block content %}
+    <section class="page__exc-delete exc-delete">
+        <div class="exc-delete__container _container ">
+            <div class="exc-delete__body ">
+                <div class="exc-delete__block ">
+                    <div class="exc-delete__block-auth">
+                        <div class="exc-delete__block-text ">
+                            Ви дійсно хочете видалити цю екскурсію?
+                        </div>
+                        <div class="exc-delete__block-form ">
+                            {{ excursion.excursion_type }}, {{ excursion.excursion_date }} {{ excursion.excursion_time }}
+                            <a href="{% url 'excursions' %}">
+                                <button class="exc-delete-button">Скасувати</button>
+                            </a>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="exc-delete-button">Видалити</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock content %}
+</body>
+
+</html>

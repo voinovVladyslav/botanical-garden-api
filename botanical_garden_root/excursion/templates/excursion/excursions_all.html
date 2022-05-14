@@ -1,12 +1,57 @@
-<h1>All excursions</h1>
+{% extends 'base.html' %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<p>Upcoming</p>
-{% for exc in upcoming %}
-<p>{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person.name }}</p>
-{% endfor %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Профіль користувача</title>
+</head>
 
-<p>Passed</p>
-{% for exc in passed %}
-<p>{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person }}</p>
-{% endfor %}
+<body>
+    {% block content %}
+    <div class="wrapper">
+        <main class="page">
+            <section class="page__all-exc all-exc">
+                <div class="all-exc__container _container">
+                    <div class="all-exc__body ">
+                        <div class="all-exc__block">
+                            <div class="all-exc__title">
+                                Майбутні екскурсії:
+                            </div>
+                            <div class="all-exc__topic">
+                                <ol>
+                                    {% for exc in upcoming %}
+                                    <li class="all-exc__single">{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person.name }} — {{ exc.excursion_type }}</li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
 
+                        </div>
+
+                        <div class="all-exc__block">
+                            <div class="all-exc__title">
+                                Завершені екскурсії:
+                            </div>
+                            <div class="all-exc__topic">
+                                <ol>
+                                    {% for exc in passed %}
+                                    <li class="all-exc__single">{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person.name }} — {{ exc.excursion_type }}</li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

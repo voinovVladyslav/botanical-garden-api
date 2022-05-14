@@ -30,6 +30,11 @@
                         <div class="item-newspage__text ">
                             {{ news.context }}
                         </div>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <a href="{% url 'news_all' %}">Back</a>
+                            <button type="submit" name="create-news-button">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -11,12 +11,8 @@ from botanical_garden.decorators import allowed_users, already_authenticated
 @login_required(login_url='login')
 def profile(request):
     customer = request.user.customer
-    excursions = request.user.customer.excursion_set.all()
     
-    for excursion in excursions:
-        excursion.excursion_time = excursion.excursion_time.strftime('%H:%M')
-
-    context = {'customer': customer, 'excursions': excursions}
+    context = {'customer': customer}
     return render(request, 'accounts/profile.html', context)
 
 

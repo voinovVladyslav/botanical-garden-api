@@ -17,6 +17,25 @@ def allowed_users(allowed_roles=[]):
         return wrapper_func
     return decorator
 
+
+def allowed_users_pk(allowed_roles=[]):
+    def decorator(view_func):
+        def wrapper_func(request, news_pk, *args, **kwargs):
+            
+            group = None
+            if request.user.groups.exists():
+                group = request.user.groups.all()
+
+                for i in group:
+                    if i.name in allowed_roles:
+                        return view_func(request, news_pk,*args, **kwargs)
+                
+            return render(request, 'permision_denied.html', status=403)
+
+        return wrapper_func
+    return decorator
+
+
 def already_authenticated(view_func):
     def wrapper_func(request, *args, **kwargs):
 

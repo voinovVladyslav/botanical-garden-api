@@ -1,0 +1,12 @@
+<h1>All excursions</h1>
+
+<p>Upcoming</p>
+{% for exc in upcoming %}
+<p>{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person.name }}</p>
+{% endfor %}
+
+<p>Passed</p>
+{% for exc in passed %}
+<p>{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person }}</p>
+{% endfor %}
+

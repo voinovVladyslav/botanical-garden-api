@@ -1,10 +1,21 @@
 <h1>Excursions</h1>
 
-{% if excurions %}
+{% if not upcoming %}
     <a href="{% url 'main' %}">Записатися</a>
 {% endif %}
 
-{% for excursion in excursions %}
-    <p>{{ excursion.excursion_type }}, {{ excursion.excursion_date }} {{ excursion.excursion_time }}
-        <a href="{% url 'delete_excursion' excursion.id %}">delete</a></p>
+<p>Upcoming</p>
+{% for u in upcoming %}
+    <p>{{ u.excursion_type }}, {{ u.excursion_date }} {{ u.excursion_time }}
+        <a href="{% url 'delete_excursion' u.id %}">delete</a></p>
+{% endfor %}
+
+<p>Passed</p>
+
+{% if not passed %}
+    <p>Ви ще не відвідали щодної екскурсії</p>
+{% endif %}
+
+{% for p in passed %}
+    <p>{{ p.excursion_type }}, {{ p.excursion_date }} {{ p.excursion_time }}
 {% endfor %}

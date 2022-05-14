@@ -24,17 +24,17 @@
                                 <img src="{% static 'img/profile-picture.svg' %}" alt="profile-picture" class="profile__pic-img">
                             </div>
                             {% if customer.name is not None and customer.surname is not None %}
-                                <div class="profile__pic-name">
-                                    {{ customer.name }} {{ customer.surname }}
-                                </div>
+                            <div class="profile__pic-name">
+                                {{ customer.name }} {{ customer.surname }}
+                            </div>
                             {% elif customer.name %}
-                                <div class="profile__pic-name">
-                                    {{ customer.name }}
-                                </div>
+                            <div class="profile__pic-name">
+                                {{ customer.name }}
+                            </div>
                             {% else %}
-                                <div class="profile__pic-name">
-                                    Додайте ваші дані
-                                </div>
+                            <div class="profile__pic-name">
+                                Додайте ваші дані
+                            </div>
                             {% endif %}
                             <a href="{% url 'settings' %}" class="settings-link">
                                 <button class="profile__pic-button">Налаштування профіля</button>
@@ -46,13 +46,13 @@
                                     Ім'я:
                                 </div>
                                 {% if customer.name is not None %}
-                                    <div class="profile__info-text">
-                                        {{ customer.name }}
-                                    </div>
+                                <div class="profile__info-text">
+                                    {{ customer.name }}
+                                </div>
                                 {% else %}
-                                    <div class="profile__info-text">
-                                        Немає
-                                    </div>
+                                <div class="profile__info-text">
+                                    Немає
+                                </div>
                                 {% endif %}
                             </div>
                             <div class="profile__info-string">
@@ -60,13 +60,13 @@
                                     Прізвище:
                                 </div>
                                 {% if customer.surname is not None%}
-                                    <div class="profile__info-text">
-                                        {{ customer.surname }}
-                                    </div>
+                                <div class="profile__info-text">
+                                    {{ customer.surname }}
+                                </div>
                                 {% else %}
-                                    <div class="profile__info-text">
-                                        Немає
-                                    </div>
+                                <div class="profile__info-text">
+                                    Немає
+                                </div>
                                 {% endif %}
                             </div>
                             <div class="profile__info-string">
@@ -74,13 +74,13 @@
                                     Номер телефона:
                                 </div>
                                 {% if customer.phone is not None %}
-                                    <div class="profile__info-text">
-                                        {{ customer.phone }}
-                                    </div>
+                                <div class="profile__info-text">
+                                    {{ customer.phone }}
+                                </div>
                                 {% else %}
-                                    <div class="profile__info-text">
-                                        Немає
-                                    </div>
+                                <div class="profile__info-text">
+                                    Немає
+                                </div>
                                 {% endif %}
                             </div>
                             <div class="profile__info-string">
@@ -101,41 +101,39 @@
                             </div>
 
                             {% if ismanager %}
-                            <div class="profile__info-string">
-                                <div class="profile__info-title">
-                                    Повідомлення:
+                            <div class="profile__manager-buttons">
+                                <div class="profile__manager-button-block">
+                                    <a href="{% url 'contact_all' %}">
+                                        <button class="profile__manager-button">
+                                        Усі повідомлення
+                                    </button>
+                                    </a>
                                 </div>
-                                <div class="profile__info-text">
-                                    <a href="{% url 'contact_all' %}">Contact</a>
+                                <div class="profile__manager-button-block">
+                                    <a href="{% url 'create_news' %}">
+                                        <button class="profile__manager-button">
+                                        Створити новину
+                                    </button>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="profile__info-string">
-                                <div class="profile__info-title">
-                                    Create news:
+                                <div class="profile__manager-button-block">
+                                    <a href="{% url 'excursions_all' %}">
+                                        <button class="profile__manager-button">
+                                        Усі екскурсії
+                                    </button>
+                                    </a>
                                 </div>
-                                <div class="profile__info-text">
-                                    <a href="{% url 'create_news' %}">New</a>
-                                </div>
-                            </div>
-                            <div class="profile__info-string">
-                                <div class="profile__info-title">
-                                    Excursions:
-                                </div>
-                                <div class="profile__info-text">
-                                    <a href="{% url 'excursions_all' %}">Excursions</a>
-                                </div>
-                            </div>
-                            {% else %}
-                            <div class="profile__info-string">
-                                <div class="profile__info-title">
-                                    Заплановані екскурсії:
-                                </div>
-                                <div class="profile__info-text">
-                                    <a href="{% url 'excursions' %}">All</a>
+                                {% else %}
+                                <div class="profile__exc-button-block">
+                                    <a href="{% url 'excursions' %}">
+                                        <button class="profile__exc-button">
+                                        Мої екскурсії
+                                    </button>
+                                    </a>
                                 </div>
                             </div>
                             {% endif %}
-                            
+
                         </div>
                     </div>
                 </div>

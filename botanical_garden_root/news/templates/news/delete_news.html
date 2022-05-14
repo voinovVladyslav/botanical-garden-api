@@ -32,9 +32,13 @@
                         </div>
                         <form action="" method="POST">
                             {% csrf_token %}
-                            <a href="{% url 'news_all' %}">Back</a>
-                            <button type="submit" name="create-news-button">Delete</button>
+                            <button type="submit" class="delete-news-button">Видалити</button>
                         </form>
+                        <a href="{% url 'news_all' %}">
+                            <button class="delete-news-backbutton">
+                                Скасувати
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>

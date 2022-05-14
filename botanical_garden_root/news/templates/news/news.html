@@ -45,11 +45,14 @@
                         <div class="newspage__column ">
                             <div class="newspage__item item-newspage ">
                                 <h3 class="item-newspage__title ">
-                                    <a href="{% url 'news_single' n.id %}">{{ n.title }}</a>
-                                    {% if ismanager %}
-                                        <a href="{% url 'update_news' n.id %}">Update</a>
-                                        <a href="{% url 'delete_news' n.id %}">Delete</a>
-                                    {% endif %}
+                                    <a href="{% url 'news_single' n.id %}">{{ n.title }}</a> {% if ismanager %}
+                                    <a href="{% url 'delete_news' n.id %}">
+                                        <img src="{% static 'img/delete-black.svg' %}" alt="delete" style="margin-top: 5px; float: right;">
+
+                                    </a>
+                                    <a href="{% url 'update_news' n.id %}">
+                                        <img src="{% static 'img/edit-black.svg' %}" alt="edit" style="margin-top: 5px; float: right; margin-right: 10px;">
+                                    </a> {% endif %}
                                 </h3>
                                 <div class=" item-newspage__image-block ">
                                     <img src="{{ n.preview.url }} " alt="news-image " class="item-newspage__image ">

@@ -99,7 +99,33 @@
                                     {{ customer.date_created }}
                                 </div>
                             </div>
-                           
+
+                            {% if ismanager %}
+                            <div class="profile__info-string">
+                                <div class="profile__info-title">
+                                    Повідомлення:
+                                </div>
+                                <div class="profile__info-text">
+                                    <a href="{% url 'contact_all' %}">Contact</a>
+                                </div>
+                            </div>
+                            <div class="profile__info-string">
+                                <div class="profile__info-title">
+                                    Create news:
+                                </div>
+                                <div class="profile__info-text">
+                                    <a href="{% url 'create_news' %}">New</a>
+                                </div>
+                            </div>
+                            <div class="profile__info-string">
+                                <div class="profile__info-title">
+                                    Excursions:
+                                </div>
+                                <div class="profile__info-text">
+                                    <a href="{% url 'excursions_all' %}">Excursions</a>
+                                </div>
+                            </div>
+                            {% else %}
                             <div class="profile__info-string">
                                 <div class="profile__info-title">
                                     Заплановані екскурсії:
@@ -108,6 +134,7 @@
                                     <a href="{% url 'excursions' %}">All</a>
                                 </div>
                             </div>
+                            {% endif %}
                             
                         </div>
                     </div>

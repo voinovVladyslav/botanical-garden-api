@@ -5,9 +5,12 @@ from news.models import News
 
 def main(request):
     news = News.objects.all().order_by('-id')[:2]
-    first_news = news[0]
-    second_news = news[1]
+    try:
+        first_news, second_news = news[0], news[1]
+    except:
+        first_news, second_news = None, None
 
+        
     if request.method == "POST":
         form = ExcursionForm(request.POST)
         if form.is_valid():

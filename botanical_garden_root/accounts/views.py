@@ -12,7 +12,12 @@ from botanical_garden.decorators import allowed_users, already_authenticated
 def profile(request):
     customer = request.user.customer
     
-    context = {'customer': customer}
+    if request.user.groups.filter(name='manager').exists():
+        ismanager = True
+    else:
+        ismanager = False
+
+    context = {'customer': customer, 'ismanager': ismanager}
     return render(request, 'accounts/profile.html', context)
 
 

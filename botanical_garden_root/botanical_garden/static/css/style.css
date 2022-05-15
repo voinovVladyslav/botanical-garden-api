@@ -174,32 +174,31 @@ html {
     padding: 5px 0;
 }
 
-.menu__list {
+.menu__list__loggedin {
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
+    width: 1030px;
+    padding-top: 20.5px !important;
+}
+
+.menu__list__notlogged {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1030px;
+    padding-top: 0px !important;
 }
 
 .menu__item:not(:last-child) {
     margin: 0 21px 0 0;
 }
 
+.menu__item {}
+
 .auth-image__block {
     color: rgba(46, 54, 62, 1);
     line-height: 143%;
     float: right;
     width: 30px;
-}
-
-.auth-image__item {
-    height: 30px;
-    width: 30px;
-    float: right;
-}
-
-.auth-image__link {
-    width: 30px;
-    float: right;
 }
 
 .auth-logout__text {
@@ -209,11 +208,7 @@ html {
 .auth-logout__image {
     width: 25px;
     height: 25px;
-}
-
-.auth-hello__text {
-    transition: all .2s linear;
-    color: rgba(46, 54, 62, 1);
+    margin-top: -26px;
 }
 
 .auth-image__item:hover~.auth-hello__text {
@@ -224,7 +219,8 @@ html {
 .login__list {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 855px;
+    position: relative;
+    float: right;
 }
 
 .auth-login__text {
@@ -234,6 +230,17 @@ html {
     font-weight: 425;
     transition: color .2s linear;
     margin-right: 15px;
+    margin-top: -24px;
+}
+
+.auth-loggedin__text {
+    font-size: 16px;
+    color: rgba(46, 54, 62, 1);
+    line-height: 143%;
+    font-weight: 425;
+    transition: color .2s linear;
+    margin-right: 15px;
+    margin-top: -24px;
 }
 
 .auth-login__text:hover {
@@ -245,6 +252,7 @@ html {
     font-size: 16px;
     font-weight: 425;
     transition: color .2s linear;
+    margin-top: -21px;
 }
 
 .auth-register__text:hover {
@@ -1155,6 +1163,7 @@ textarea {
     background: rgba(240, 250, 237, 1);
     box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
     display: flex;
+    margin-top: 30px;
 }
 
 .login__block-auth {
@@ -1229,6 +1238,7 @@ textarea {
     width: 100%;
     height: 100%;
     background: rgba(240, 250, 237, 1);
+    position: absolute;
 }
 
 .register__block {
@@ -1242,6 +1252,7 @@ textarea {
     border-radius: 18px;
     box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
     display: flex;
+    margin-top: 30px;
 }
 
 .register__block-auth {
@@ -1319,6 +1330,8 @@ textarea {
 
 .page__newspage {
     background: rgba(240, 250, 237, 1);
+    height: fit-content;
+    padding-bottom: 85px;
 }
 
 .item-newspage {
@@ -1548,6 +1561,49 @@ textarea {
     margin: 15px 102px;
 }
 
+.profile__save-button {
+    background: rgba(133, 228, 208, 1);
+    border-radius: 18px;
+    width: 180px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 22px 0px;
+}
+
+.profile__save-block {
+    display: flex;
+}
+
+.profile__cancel-button {
+    background: white;
+    border: solid 2px rgba(133, 228, 208, 1);
+    border-radius: 18px;
+    width: 180px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 22px 0 0 22px;
+}
+
 .profile__pic-button:hover {
     background-color: rgba(130, 206, 193, 1);
 }
@@ -1587,6 +1643,10 @@ textarea {
 
 .profile-input {
     margin-bottom: -5px;
+}
+
+.profile-input:last-child {
+    margin-bottom: -1px;
 }
 
 .profile__exc-button-block {
@@ -1659,7 +1719,7 @@ textarea {
     color: rgba(38, 50, 56, 1);
     padding: 30px;
     transition: .2s all linear;
-    padding-top: 132px;
+    padding-top: 106px;
 }
 
 .excursion__block-body:hover {
@@ -1712,7 +1772,7 @@ textarea {
 }
 
 .please-register__text {
-    width: 300px;
+    width: 305px;
     text-align: center;
     font-size: 14px;
     line-height: normal;

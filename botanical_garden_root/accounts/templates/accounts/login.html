@@ -1,4 +1,4 @@
-{% load static %}
+{% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    {% block content %}
+    {% block registration %} {% endblock registration %} {% block content %}
     <section class="page__login login">
         <div class="login__container _container ">
             <div class="login__body ">

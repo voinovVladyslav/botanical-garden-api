@@ -22,9 +22,9 @@
                 <a href="/" class="header__logo">
                     <img src="{% static 'img/logo.svg' %}" alt="logo">
                 </a>
+                {% if request.user.is_authenticated %}
                 <nav class="header__menu menu">
-                    {% block nav %}
-                    <ul class="menu__list">
+                    <ul class="menu__list__loggedin">
                         <li class="menu__item">
                             <a href="{% url 'news_all' %}" class="menu__link">Новини</a>
                         </li>
@@ -38,11 +38,12 @@
                             <a href="{% url 'contact' %}" class="menu__link">Контакти</a>
                         </li>
                     </ul>
-                    {% if request.user.is_authenticated %}
                     <ul class="login__list">
                         <li>
                             <div class="auth-login__block">
-                                <a href="{% url 'profile' %}" class="auth-login__text">{{request.user}}</a>
+                                <a href="{% url 'profile' %}">
+                                    <div class="auth-loggedin__text">{{request.user}}</div>
+                                </a>
                             </div>
                         </li>
                         <li>
@@ -50,27 +51,46 @@
                                 <a href="{% url 'logout' %}" class="auth-logout__text">
                                     <img src="{% static 'img/logout.svg' %}" alt="logout" class="auth-logout__image">
                                 </a>
-
                             </div>
                         </li>
                     </ul>
-                    {% else %}
+                </nav>
+                {% else %}
+                <nav class="header__menu menu">
+                    <ul class="menu__list__notlogged">
+                        <li class="menu__item">
+                            <a href="{% url 'news_all' %}" class="menu__link">Новини</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'history' %}" class="menu__link">Історія</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'structure' %}" class="menu__link">Структура</a>
+                        </li>
+                        <li class="menu__item">
+                            <a href="{% url 'contact' %}" class="menu__link">Контакти</a>
+                        </li>
+                    </ul>
+                    {% block registration %}
                     <ul class="login__list">
                         <li>
                             <div class="auth-login__block">
-                                <a href="{% url 'login' %}" class="auth-login__text">Увійти</a>
+                                <a href="{% url 'login' %}">
+                                    <div class="auth-login__text">Увійти</div>
+                                </a>
                             </div>
                         </li>
-
                         <li>
                             <div class="auth-register__block">
-                                <a href="{% url 'registration' %}" class="auth-register__text">Реєстрація</a>
+                                <a href="{% url 'registration' %}">
+                                    <div class="auth-register__text">Реєстрація</div>
+                                </a>
                             </div>
                         </li>
                     </ul>
-                    {% endif %} {% endblock nav %}
+                    {% endblock registration %}
                 </nav>
-
+                {% endif %}
             </div>
             {% endblock header %}
         </header>
@@ -78,7 +98,6 @@
         <div class="to-top">
             <a href="#" title="back to Top"><img src="{% static 'img/round-arrow.svg' %}" alt=""></a>
         </div>
-
     </div>
 </body>
 {% include 'footer.html' %}

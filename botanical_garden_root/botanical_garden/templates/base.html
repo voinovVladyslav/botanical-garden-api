@@ -71,6 +71,7 @@
                             <a href="{% url 'contact' %}" class="menu__link">Контакти</a>
                         </li>
                     </ul>
+                    {% block registration %}
                     <ul class="login__list">
                         <li>
                             <div class="auth-login__block">
@@ -87,6 +88,7 @@
                             </div>
                         </li>
                     </ul>
+                    {% endblock registration %}
                 </nav>
                 {% endif %}
             </div>

@@ -1558,6 +1558,49 @@ textarea {
     margin: 15px 102px;
 }
 
+.profile__save-button {
+    background: rgba(133, 228, 208, 1);
+    border-radius: 18px;
+    width: 180px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 22px 0px;
+}
+
+.profile__save-block {
+    display: flex;
+}
+
+.profile__cancel-button {
+    background: white;
+    border: solid 2px rgba(133, 228, 208, 1);
+    border-radius: 18px;
+    width: 180px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152%;
+    color: rgba(38, 50, 56, 1);
+    transition: background-color .2s linear;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    margin: 22px 0 0 22px;
+}
+
 .profile__pic-button:hover {
     background-color: rgba(130, 206, 193, 1);
 }
@@ -1597,6 +1640,10 @@ textarea {
 
 .profile-input {
     margin-bottom: -5px;
+}
+
+.profile-input:last-child {
+    margin-bottom: -1px;
 }
 
 .profile__exc-button-block {

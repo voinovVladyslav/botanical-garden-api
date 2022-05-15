@@ -8,7 +8,7 @@ from botanical_garden.decorators import allowed_users, allowed_users_pk
 def news_all(request):
     news = News.objects.all().order_by('-id')
     firstnews = News.objects.all().order_by('-id')[:1]
-
+    
     if request.user.groups.filter(name='manager').exists():
         ismanager = True
     else:

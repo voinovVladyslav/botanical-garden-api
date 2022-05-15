@@ -174,32 +174,31 @@ html {
     padding: 5px 0;
 }
 
-.menu__list {
+.menu__list__loggedin {
     display: flex;
     flex-wrap: wrap;
-    position: absolute;
+    width: 1030px;
+    padding-top: 20.5px !important;
+}
+
+.menu__list__notlogged {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1030px;
+    padding-top: 0px !important;
 }
 
 .menu__item:not(:last-child) {
     margin: 0 21px 0 0;
 }
 
+.menu__item {}
+
 .auth-image__block {
     color: rgba(46, 54, 62, 1);
     line-height: 143%;
     float: right;
     width: 30px;
-}
-
-.auth-image__item {
-    height: 30px;
-    width: 30px;
-    float: right;
-}
-
-.auth-image__link {
-    width: 30px;
-    float: right;
 }
 
 .auth-logout__text {
@@ -209,11 +208,7 @@ html {
 .auth-logout__image {
     width: 25px;
     height: 25px;
-}
-
-.auth-hello__text {
-    transition: all .2s linear;
-    color: rgba(46, 54, 62, 1);
+    margin-top: -26px;
 }
 
 .auth-image__item:hover~.auth-hello__text {
@@ -224,7 +219,8 @@ html {
 .login__list {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 855px;
+    position: relative;
+    float: right;
 }
 
 .auth-login__text {
@@ -234,6 +230,17 @@ html {
     font-weight: 425;
     transition: color .2s linear;
     margin-right: 15px;
+    margin-top: -24px;
+}
+
+.auth-loggedin__text {
+    font-size: 16px;
+    color: rgba(46, 54, 62, 1);
+    line-height: 143%;
+    font-weight: 425;
+    transition: color .2s linear;
+    margin-right: 15px;
+    margin-top: -24px;
 }
 
 .auth-login__text:hover {
@@ -245,6 +252,7 @@ html {
     font-size: 16px;
     font-weight: 425;
     transition: color .2s linear;
+    margin-top: -21px;
 }
 
 .auth-register__text:hover {
@@ -1712,7 +1720,7 @@ textarea {
 }
 
 .please-register__text {
-    width: 300px;
+    width: 305px;
     text-align: center;
     font-size: 14px;
     line-height: normal;

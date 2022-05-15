@@ -44,27 +44,29 @@
                 <div class="news__container _container ">
                     <h1 class="news__title " id="news ">
                         Нещодавні новини
-                        <a href="{% url 'news_all' %}" class="news__viewall ">View all</a>
+                        <a href="{% url 'news_all' %}" class="news__viewall ">Дивитися далі</a>
                     </h1>
                     <div class="news__body ">
                         <div class="news__column ">
                             <div class="news__item item-news ">
-                                <h3 class="item-news__title ">Підготовка до весни</h3>
+                                <h3 class="item-news__title ">{{ first_news.title }}</h3>
                                 <div class="item-news__date ">
-                                    16 Oct 2021 ⠀⠀⠀|⠀⠀⠀ #tropic
+                                    {{ first_news.publication_date }}
+                                    <span style="margin: 0 20px;"> | </span> {{ first_news.hashtag }}
                                 </div>
-                                <div class="item-news__text ">В Ботанічному саду вже йде підготовка до весни &#128522 Висаджуємо нові сорти тюльпанів &#127802 весна обіцяє бути яскравою &#127804 </div>
-                                <div class="item-news__image "><img src="{% static 'img/flower.jpg' %}" alt="flower " width="509px " height="357px "></div>
+                                <div class="item-news__text ">{{ first_news.context }}</div>
+                                <div class="item-news__image "><img src="{{ first_news.preview.url }}" alt="flower " width="509px " height="357px "></div>
                             </div>
                         </div>
                         <div class="news__column ">
                             <div class="news__item item-news ">
-                                <h3 class="item-news__title ">Весна прийшла</h3>
+                                <h3 class="item-news__title ">{{ second_news.title }}</h3>
                                 <div class="item-news__date ">
-                                    11 Mar 2022 ⠀⠀⠀|⠀⠀⠀ #spring
+                                    {{ second_news.publication_date }}
+                                    <span style="margin: 0 20px;"> | </span> {{ second_news.hashtag }}
                                 </div>
-                                <div class="item-news__text ">В Ботанічному саду 💚 вже прокинулись, зачаровуючи своєю ніжністю і жагою до життя перші весняні квіточки!</div>
-                                <div class="item-news__image "><img src="{% static 'img/news-flower.jpg' %}" alt="news-flower " width="509px " height="357px "></div>
+                                <div class="item-news__text ">{{ second_news.context }}</div>
+                                <div class="item-news__image "><img src="{{second_news.preview.url }}" alt="news-flower " width="509px " height="357px "></div>
                             </div>
                         </div>
                     </div>

@@ -1327,6 +1327,8 @@ textarea {
 
 .page__newspage {
     background: rgba(240, 250, 237, 1);
+    height: fit-content;
+    padding-bottom: 85px;
 }
 
 .item-newspage {

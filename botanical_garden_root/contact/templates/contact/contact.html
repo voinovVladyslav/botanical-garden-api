@@ -65,9 +65,18 @@
                         <li>
                             <textarea placeholder="Ваше повідомлення:" id="message" name="message" class="message-area" required maxlength="1000"></textarea>
                         </li>
-                        <li class="button">
-                            <button type="submit" value="Submit" class="form-button">Надіслати</button>
-                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li class="button">
+                                <button type="submit" value="Submit" class="form-button">Надіслати</button>
+                            </li>
+                        {% else %}
+                            <li>
+                                <button type="submit" value="Submit" disabled class="form-button">Надіслати</button>
+                            </li>
+                            <li>
+                                <p>Register first</p>
+                            </li>
+                        {% endif %}
                     </ul>
                 </form>
             </div>

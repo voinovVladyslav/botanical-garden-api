@@ -17,7 +17,7 @@ def main(request):
             t = form.save(commit=False)
             t.person = request.user.customer
             t.save()
-            return redirect('profile')
+            return redirect('excursions')
     else:
         form = ExcursionForm()
 

@@ -30,8 +30,13 @@
                                 <input type="text" name="hashtag" maxlength="20" id="id_hashtag" placeholder="Хештег:">
                                 <textarea name="context" cols="40" rows="10" id="id_context" placeholder="Текст новини:"></textarea>
                                 <input type="file" name="preview" accept="image/*" id="id_preview" placeholder="Фотографія:">
-                                <button type="submit" class="create-news-button">Додати новину</button>
+                                <button type="submit" class="edit-news-button">Додати</button>
                             </form>
+                            <a href="{% url 'news_all' %}">
+                                <button class="edit-news-backbutton">
+                                    Скасувати
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

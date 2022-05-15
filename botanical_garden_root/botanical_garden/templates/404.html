@@ -9,18 +9,34 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600&display=swap&subset=cyrillic-ext" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.ico' %}">
     <title>Помилка 404</title>
+    <!--<meta http-equiv="refresh" content="7; url = /" /> -->
 </head>
 
 <body>
-
-    <div class="page404">
-        <div class="image404">
-            <img src="{% static 'img/dead-bush.svg' %}" alt="dead-bush">
-        </div>
-        <div class="text404">
-            404.<br>Тут нічого нема.<br>Повертайтеся на <a href="{% url 'main' %}" class="link404">головну</a> сторінку.
-        </div>
+    <div class="wrapper">
+        <main class="page ">
+            <section class="page__thanks-page thanks-page ">
+                <div class="thanks-page__container _container ">
+                    <div class="thanks-page__body">
+                        <div class="thanks-image-block">
+                            <img src="{% static 'img/404rafik.svg' %}" alt="" class="thanks-image">
+                        </div>
+                        <div class="thanks-text">
+                            Сторінку не знайдено!
+                        </div>
+                        <div class="thanks-page__button-block">
+                            <a href="{% url 'main' %}">
+                                <button class="thanks-page__button">
+                                На головну
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 

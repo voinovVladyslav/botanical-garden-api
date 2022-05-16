@@ -95,6 +95,7 @@
                             <form action="{% url 'main' %}" method="POST">
                                 {% csrf_token %}
                                 <ul>
+                                    {% if request.user.is_authenticated %}
                                     <li>
                                         Оберіть дату екскурсії:<br>
                                         <input type="date" name="excursion_date" class="form-control" required id="id_excursion_date">
@@ -124,12 +125,41 @@
                                             <option value="Фото-відеозйомки">Фото-відеозйомки</option>                                  
                                         </select>
                                     </li>
-                                    {% if request.user.is_authenticated %}
                                     <button type="Submit" class="excursion__button">Записатися на екскурсію</button>
                                     <div class="please-register__text">
                                         Записатися на екскурсію можна мінімум за годину до кінця робочого дня
                                     </div>
+
                                     {% else %}
+                                    <li>
+                                        Оберіть дату екскурсії:<br>
+                                        <input type="date" name="excursion_date" class="form-control" required id="id_excursion_date" disabled>
+                                    </li>
+                                    {% if form.excursion_date.errors %}
+                                    <li>
+                                        <p>{{ form.excursion_date.errors.as_text }}</p>
+                                    </li>
+                                    {% endif %}
+                                    <li>
+                                        Оберіть час екскурсії:<br>
+                                        <input type="time" name="excursion_time" class="form-control" required id="id_excursion_time" disabled>
+                                    </li>
+                                    {% if form.excursion_time.errors %}
+                                    <li>
+                                        <p>{{ form.excursion_time.errors.as_text }}</p>
+                                    </li>
+                                    {% endif %}
+
+                                    <li>
+                                        Оберіть тип екскурсії:<br>
+                                        <select name="excursion_type" required="" id="id_excursion_type" disabled>
+                                            <option value="Індивідуальні відвідування" selected>Індивідуальні відвідування</option>
+                                            <option value="Екскурсія для дорослих">Екскурсія для дорослих</option>
+                                            <option value="Екскурсія для дітей">Екскурсія для дітей</option>
+                                            <option value="Проведення заходів">Проведення заходів</option>
+                                            <option value="Фото-відеозйомки">Фото-відеозйомки</option>                                  
+                                        </select>
+                                    </li>
                                     <button type="Submit" disabled class="excursion__button-disabled">Записатися на екскурсію</button>
                                     <div class="please-register__text">
                                         Для запису на екскурсію необхідно бути авторизованим на сайті

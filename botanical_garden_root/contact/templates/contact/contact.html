@@ -59,25 +59,31 @@
                 <form action="" method="POST">
                     {% csrf_token %}
                     <ul>
+                        {% if request.user.is_authenticated %}
                         <li>
                             <input placeholder="Тема питання:" type="text" id="topic" name="topic" required maxlength="50">
                         </li>
                         <li>
                             <textarea placeholder="Ваше повідомлення:" id="message" name="message" class="message-area" required maxlength="1000"></textarea>
                         </li>
-                        {% if request.user.is_authenticated %}
-                            <li class="button">
-                                <button type="submit" value="Submit" class="form-button">Надіслати</button>
-                            </li>
+
+                        <li class="button">
+                            <button type="submit" value="Submit" class="form-button">Надіслати</button>
+                        </li>
                         {% else %}
-                            <li>
-                                <button type="submit" value="Submit" disabled class="form-button">Надіслати</button>
-                            </li>
-                            <li>
-                                <p>Register first</p>
-                            </li>
-                        {% endif %}
+                        <li>
+                            <input placeholder="Тема питання:" type="text" id="topic" name="topic" required maxlength="50" disabled>
+                        </li>
+                        <li>
+                            <textarea placeholder="Ваше повідомлення:" id="message" name="message" class="message-area" required maxlength="1000" disabled></textarea>
+                        </li>
+                        <li>
+                            <div class="register__first">
+                                Для відправки повідомлень необхідно бути авторизованим на сайті
+                            </div>
+                        </li>
                     </ul>
+                    {% endif %}
                 </form>
             </div>
         </div>

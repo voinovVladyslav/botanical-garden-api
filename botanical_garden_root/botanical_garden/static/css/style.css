@@ -455,7 +455,8 @@ html {
 .page__history {
     padding: 85px 0 0 0;
     height: 1275px;
-    background: rgba(240, 250, 237, 1);
+    background: white;
+    border-top: rgba(46, 54, 62, 0.1) solid 1px;
 }
 
 .history__title {

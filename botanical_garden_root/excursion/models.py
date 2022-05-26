@@ -41,11 +41,6 @@ def validate_time(value):
             params={'value':value}
         )
 
-    if  value.hour >= 15 and value.minute != 0:
-        raise ValidationError(
-            _('Записатися пізніше 15 години неможливо'),
-            params={'value':value}
-        )
 
     if  value.hour == 8 and value.minute < 30:
         raise ValidationError(
@@ -53,6 +48,17 @@ def validate_time(value):
             params={'value':value}
         )
     
+    if  value.hour == 15 and value.minute != 0:
+        raise ValidationError(
+            _('Записатися пізніше 15 години неможливо'),
+            params={'value':value}
+        )
+    
+    if value.hour > 15:
+        raise ValidationError(
+            _('Записатися пізніше 15 години неможливо'),
+            params={'value':value}
+        )
 
 
 class Excursion(models.Model):

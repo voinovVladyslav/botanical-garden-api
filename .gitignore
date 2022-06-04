@@ -4,3 +4,4 @@ ll_env/
 *.pyc
 **/__pycache__/**
 **/migrations/**
+.env

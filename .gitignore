@@ -1,7 +1,6 @@
-ll_env/
+venv/
 *.log
 *.pot
 *.pyc
 **/__pycache__/**
-**/migrations/**
 .env

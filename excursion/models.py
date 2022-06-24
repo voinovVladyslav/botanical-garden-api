@@ -2,7 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from datetime import date
+from datetime import date, time
 from accounts.models import Customer
 
 EXCURSION_TYPE_CHOICES = [
@@ -35,26 +35,15 @@ def validate_date(value):
 
 
 def validate_time(value):
-    if  value.hour < 8:
+    starttime = time(hour=8, minute=30) 
+    endtime = time(hour= 16, minute=0) 
+    if  value < starttime:
         raise ValidationError(
-            _('Записатися раніше 8:30 неможливо'),
-            params={'value':value}
-        )
-
-
-    if  value.hour == 8 and value.minute < 30:
-        raise ValidationError(
-            _('Записатися раніше 8:30 неможливо'),
+        _('Записатися раніше 8:30 неможливо'),
             params={'value':value}
         )
     
-    if  value.hour == 15 and value.minute != 0:
-        raise ValidationError(
-            _('Записатися пізніше 15 години неможливо'),
-            params={'value':value}
-        )
-    
-    if value.hour > 15:
+    if value > endtime:
         raise ValidationError(
             _('Записатися пізніше 15 години неможливо'),
             params={'value':value}

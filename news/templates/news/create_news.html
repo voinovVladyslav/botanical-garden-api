@@ -24,7 +24,7 @@
                             Додайте новину:
                         </div>
                         <div class="create-news__block-form ">
-                            <form method="POST" action="" enctype="multipart/form-data">
+                            <form method="POST" action="{% url 'create_news' %}" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <input type="text" name="title" maxlength="100" required="" id="id_title" placeholder="Заголовок:">
                                 <input type="text" name="hashtag" maxlength="20" id="id_hashtag" placeholder="Хештег:">

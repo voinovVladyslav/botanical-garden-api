@@ -27,7 +27,13 @@ def news_single(request, news_pk):
 
 @allowed_users(allowed_roles=['manager'])
 def create_news(request):
+    form = CreateNews()
+    context = {'form': form}
+    return render(request, 'news/create_news.html', context=context)
 
+
+@allowed_users(allowed_roles=['manager'])
+def create_news_only(request):
     if request.method == 'POST':
         form = CreateNews(request.POST, request.FILES)
         if form.is_valid():
@@ -35,11 +41,6 @@ def create_news(request):
             t.author = request.user
             t.save()
             return redirect('news_all')
-    else:
-        form = CreateNews()
-
-    context = {'form': form}
-    return render(request, 'news/create_news.html', context=context)
 
 
 @allowed_users_pk(allowed_roles=['manager'])

@@ -25,7 +25,7 @@ def news_single(request, news_pk):
     return render(request, 'news/news_single.html', context=context)
 
 
-@allowed_users(allowed_roles=['manager', 'admin'])
+@allowed_users(allowed_roles=['manager'])
 def create_news(request):
 
     if request.method == 'POST':
@@ -42,7 +42,7 @@ def create_news(request):
     return render(request, 'news/create_news.html', context=context)
 
 
-@allowed_users_pk(allowed_roles=['manager', 'admin'])
+@allowed_users_pk(allowed_roles=['manager'])
 def update_news(request, news_pk):
     news = News.objects.get(id=news_pk)
     print("context", news.context)
@@ -58,7 +58,7 @@ def update_news(request, news_pk):
     context = {'form': form, 'news':news}
     return render(request, 'news/update_news.html', context=context)
 
-@allowed_users_pk(allowed_roles=['manager', 'admin'])
+@allowed_users_pk(allowed_roles=['manager'])
 def delete_news(request, news_pk):
     news = News.objects.get(id=news_pk)
 

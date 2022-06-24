@@ -39,7 +39,7 @@ def excursions_delete(request, excursions_pk):
     return render(request, 'excursion/excursion_delete.html', context)
 
 
-@allowed_users(['manager', 'admin'])
+@allowed_users(['manager'])
 def excursions_all(request):
     excursions = Excursion.objects.all().order_by('excursion_date', 'excursion_time')
 

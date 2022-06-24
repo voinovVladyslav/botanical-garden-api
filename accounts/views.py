@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Customer
 from .forms import RegisterUserForm, CustomerForm
-from botanical_garden.decorators import allowed_users, already_authenticated
+from botanical_garden.decorators import already_authenticated
 
 # Create your views here.
 @login_required(login_url='login')

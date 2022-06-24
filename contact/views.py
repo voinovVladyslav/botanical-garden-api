@@ -26,7 +26,7 @@ def contact(request):
     return render(request, 'contact/contact.html', {'form': form})
 
 
-@allowed_users(['manager', 'admin'])
+@allowed_users(['manager'])
 def contact_all(request):
     contacts = Contact.objects.all().order_by('-id')
 
@@ -34,7 +34,7 @@ def contact_all(request):
     return render(request, 'contact/contact_all.html', context)
 
 
-@allowed_users(['manager', 'admin'])
+@allowed_users(['manager'])
 def contact_single(request, contact_pk):
     contact = Contact.objects.get(id=contact_pk)
 

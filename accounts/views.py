@@ -38,7 +38,7 @@ def change_profile(request):
         form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
             form.save()
-        return redirect('profilke')
+        return redirect('profile')
     raise Http404() 
 
 

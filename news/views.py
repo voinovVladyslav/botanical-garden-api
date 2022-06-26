@@ -48,25 +48,35 @@ def create_news_only(request):
 @allowed_users_pk(allowed_roles=['manager'])
 def update_news(request, news_pk):
     news = News.objects.get(id=news_pk)
-    print("context", news.context)
     form = CreateNews(instance=news)
-    if request.method == 'POST':
-        form = CreateNews(request.POST, request.FILES, instance=news)
-        if form.is_valid():
-            t = form.save(commit=False)
-            t.author = request.user
-            t.save()
-            return redirect('news_all')
     
     context = {'form': form, 'news':news}
     return render(request, 'news/update_news.html', context=context)
+
+
+@allowed_users_pk(allowed_roles=['manager'])
+def update_news_only(request, news_pk):
+    news = News.objects.get(id=news_pk)
+    if request.method == 'POST':
+        form = CreateNews(request.POST, request.FILES, instance=news)
+        if form.is_valid():
+            form.save()
+            return redirect('news_all')
+    raise Http404()
+
 
 @allowed_users_pk(allowed_roles=['manager'])
 def delete_news(request, news_pk):
     news = News.objects.get(id=news_pk)
 
+    context = {'news': news}
+    return render(request, 'news/delete_news.html', context)
+
+
+@allowed_users_pk(allowed_roles=['manager'])
+def delete_news_only(request, news_pk):
+    news = News.objects.get(id=news_pk)
     if request.method == 'POST':
         news.delete()
         return redirect('news_all')
-    context = {'news': news}
-    return render(request, 'news/delete_news.html', context)
+    raise Http404()

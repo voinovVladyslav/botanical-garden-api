@@ -30,7 +30,7 @@
                         <div class="item-newspage__text ">
                             {{ news.context }}
                         </div>
-                        <form action="" method="POST">
+                        <form action="{% url 'delete_news_only' news.pk %}" method="POST">
                             {% csrf_token %}
                             <button type="submit" class="delete-news-button">Видалити</button>
                         </form>

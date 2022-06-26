@@ -56,7 +56,7 @@
                 <br>зараз:
             </div>
             <div class="contact__new_form ">
-                <form action="" method="POST">
+                <form action="{% url 'contact_submit' %}" method="POST">
                     {% csrf_token %}
                     <ul>
                         {% if request.user.is_authenticated %}

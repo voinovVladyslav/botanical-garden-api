@@ -27,7 +27,7 @@
                             <a href="{% url 'excursions' %}">
                                 <button class="exc-delete-button">Скасувати</button>
                             </a>
-                            <form action="" method="POST">
+                            <form action="{% url 'delete_excursion_only' excursion.pk %}" method="POST">
                                 {% csrf_token %}
                                 <button type="submit" class="exc-delete-button">Видалити</button>
                             </form>

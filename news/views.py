@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 from .models import News
 from .forms import CreateNews
@@ -41,6 +42,7 @@ def create_news_only(request):
             t.author = request.user
             t.save()
             return redirect('news_all')
+    raise Http404()
 
 
 @allowed_users_pk(allowed_roles=['manager'])

@@ -39,7 +39,7 @@
 
                         </div>
                         <div class="profile__info-block">
-                            <form action="" method="POST">
+                            <form action="{% url 'update_profile' %}" method="POST">
                                 {% csrf_token %}
                                 <ul>
                                     <div class="profile__info-string">
@@ -74,7 +74,7 @@
                                             {% if customer.phone is not None %}
                                             <li><input type="tel" id="phone" name="phone" class="profile-input" value="{{ customer.phone }}"></li>
                                             {% else %}
-                                            <li><input type="tel" id="phone" name="phone" class="profile-input" value="{{ customer.phone }}"></li>
+                                            <li><input type="tel" id="phone" name="phone" class="profile-input"></li>
                                             {% endif %}
                                         </div>
                                     </div>

@@ -6,7 +6,6 @@ Developed by **[Voinov Vladyslav](https://github.com/voinovVladyslav)** and **[D
 
 ## To-Do
 
-- Refactor existing site
 - Write test
 - Make API
 - Connect API to existing frontend

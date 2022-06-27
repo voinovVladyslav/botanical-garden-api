@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from botanical_garden.decorators import allowed_users
 from .models import Excursion
+from .forms import ExcursionForm
 from datetime import date 
 
 
@@ -52,20 +53,19 @@ def excursions_delete_only(request, excursions_pk):
 @allowed_users(['manager'])
 def excursions_all(request):
     excursions = Excursion.objects.all().order_by('excursion_date', 'excursion_time')
-
-    upcoming = []
-    passed = []
-
-    for e in excursions:
-        if e.excursion_date < date.today():
-            e.excursion_time = e.excursion_time.strftime('%H:%M')
-            e.excursion_date = e.excursion_date.strftime('%D')
-            passed.append(e)
-        else:
-            e.excursion_time = e.excursion_time.strftime('%H:%M')
-            e.excursion_date = e.excursion_date.strftime('%D')
-            upcoming.append(e)
-            
+    upcoming, passed = format_excursions(excursions)
 
     context = {'upcoming': upcoming, 'passed': passed}
     return render(request, 'excursion/excursions_all.html', context)
+
+
+@login_required(login_url='login')
+def add_excursion(request):
+    if request.method == "POST":
+        form = ExcursionForm(request.POST)
+        if form.is_valid():
+            t = form.save(commit=False)
+            t.person = request.user.customer
+            t.save()
+            return redirect('excursions')
+    return Http404()

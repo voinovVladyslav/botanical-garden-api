@@ -11,15 +11,7 @@ def main(request):
         first_news, second_news = None, None
 
         
-    if request.method == "POST":
-        form = ExcursionForm(request.POST)
-        if form.is_valid():
-            t = form.save(commit=False)
-            t.person = request.user.customer
-            t.save()
-            return redirect('excursions')
-    else:
-        form = ExcursionForm()
+    form = ExcursionForm()
 
     context = {'form': form, 'first_news': first_news, 'second_news': second_news}
     return render(request, 'pages/main.html', context)

@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="login__block-form ">
-                            <form action="" method="POST">
+                            <form action="{% url 'login_user' %}" method="POST">
                                 {% csrf_token %}
                                 <ul>
                                     <li>
@@ -41,7 +41,6 @@
                                 </ul>
                             </form>
                         </div>
-                        {% for message in messages %} {{message}} {% endfor %}
                     </div>
                 </div>
             </div>

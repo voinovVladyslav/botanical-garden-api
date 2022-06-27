@@ -66,6 +66,11 @@ def registerUser(request):
 
 @already_authenticated
 def loginPage(request):
+    return render(request, 'accounts/login.html')
+
+
+@already_authenticated
+def loginUser(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -74,9 +79,7 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             return redirect('main')
-
-    return render(request, 'accounts/login.html')
-
+    return redirect('login')
 
 @login_required(login_url='login')
 def logoutUser(request):

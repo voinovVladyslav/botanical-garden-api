@@ -87,9 +87,15 @@
                                 <div class="profile__info-title">
                                     E-Mail:
                                 </div>
+                                {% if customer.email is not None %}
                                 <div class="profile__info-text">
                                     {{ customer.email }}
                                 </div>
+                                {% else %}
+                                <div class="profile__info-text">
+                                    Немає
+                                </div>
+                                {% endif %}
                             </div>
                             <div class="profile__info-string">
                                 <div class="profile__info-title">

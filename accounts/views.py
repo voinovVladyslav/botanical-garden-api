@@ -44,6 +44,12 @@ def change_profile(request):
 
 @already_authenticated
 def registerPage(request):
+    form = RegisterUserForm()
+    context = {'form': form}
+    return render(request, 'accounts/register.html', context)
+
+
+def registerUser(request):
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
@@ -55,12 +61,7 @@ def registerPage(request):
 
             Customer.objects.create(user=user, email=email)
             return redirect('login')
-
-    else:
-        form = RegisterUserForm()
-
-    context = {'form': form}
-    return render(request, 'accounts/register.html', context)
+    return Http404()
 
 
 @already_authenticated

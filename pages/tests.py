@@ -51,3 +51,9 @@ class HistoryPageTest(TestCase):
         response = self.client.get('/history')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'pages/history.html')
+
+class StructurePageTest(TestCase):
+    def test_url_using_right_template(self):
+        response = self.client.get('/structure')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'pages/structure.html')

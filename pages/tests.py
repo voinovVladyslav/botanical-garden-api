@@ -45,3 +45,9 @@ class HomePageTest(TestCase):
         self.assertNotContains(response, news1)
         self.assertContains(response, news2)
         self.assertContains(response, news3)
+
+class HistoryPageTest(TestCase):
+    def test_url_using_right_template(self):
+        response = self.client.get('/history')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'pages/history.html')

@@ -1,27 +1,5 @@
 from django.test import TestCase
-from django.contrib.auth.models import User, Group
-from django.contrib.auth import login
-
-from accounts.models import Customer
-
-
-class LogInUsers():
-    def create_default_user(self):
-        user = User.objects.create(
-            username='default_user',
-            email='default@gmail.com',
-            password1='django1357',
-            password2='django1357'
-        )
-
-        group = Group.objects.get(name='customer')
-        user.groups.add(group)
-        
-        Customer.objects.create(user=user)
-        self.user = user
-
-    def login_default_user(self):
-        login(self.user)
+from django.contrib.auth import get_user_model
 
 
 class ContactPageTest(TestCase):
@@ -32,6 +10,16 @@ class ContactPageTest(TestCase):
 
 
 class SubmitContactPage(TestCase):
+    def setUp(self):
+        User = get_user_model()
+        self.user = User.objects.create(username='default_user', email='default@gmail.com', password='default_password')
+        
     def test_redirect_if_not_logged_in(self):
         response = self.client.get('/contact/submit/')
         self.assertEqual(response.status_code, 302) 
+
+    def test_show_page_when_logged_in(self):
+        self.client.login(username='default_user', password='default_password')
+        response = self.client.get('/contact/submit/')
+        self.assertEqual(response.status_code, 200)
+        

@@ -24,12 +24,12 @@
                             Редагування:
                         </div>
                         <div class="create-news__block-form ">
-                            <form method="POST" action="{% url 'update_news_only' news.pk %}" enctype="multipart/form-data">
+                            <form method="POST" action="{% url 'update_news' news.pk %}" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <input type="text" name="title" maxlength="100" required="" id="id_title" placeholder="Заголовок:" value="{{ news.title }}">
                                 <input type="text" name="hashtag" maxlength="20" id="id_hashtag" placeholder="Хештег:" value="{{ news.hashtag }}">
                                 <textarea name="context" cols="40" rows="10" id="id_context" placeholder="Текст новини:">{{ news.context }}</textarea>
-                                <input type="file" name="preview" accept="image/*" id="id_preview" placeholder="Фотографія:">
+                                <input type="file" name="image" accept="image/*" id="id_image" placeholder="Фотографія:">
                                 <button type="submit" class="edit-news-button">Зберегти</button>
                             </form>
                             <a href="{% url 'news_all' %}">

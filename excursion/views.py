@@ -1,4 +1,4 @@
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
@@ -13,27 +13,27 @@ def format_excursions(excursions):
     passed = []
 
     for e in excursions:
-        if e.excursion_date < date.today():
-            e.excursion_time = e.excursion_time.strftime('%H:%M')
-            e.excursion_date = e.excursion_date.strftime('%D')
+        if e.date < date.today():
+            e.time = e.time.strftime('%H:%M')
+            e.date = e.date.strftime('%D')
             passed.append(e)
         else:
-            e.excursion_time = e.excursion_time.strftime('%H:%M')
-            e.excursion_date = e.excursion_date.strftime('%D')
+            e.time = e.time.strftime('%H:%M')
+            e.date = e.date.strftime('%D')
             upcoming.append(e)
     return upcoming, passed
 
 
 @login_required(login_url='login')
 def excursions(request):
-    excursions = request.user.customer.excursion_set.all().order_by('excursion_date', 'excursion_time')
+    excursions = request.user.customer.excursion_set.all().order_by('date', 'time')
     upcoming, passed = format_excursions(excursions)
     context = {'upcoming': upcoming, 'passed': passed}
     return render(request, 'excursion/excursions.html', context)
 
 
 @login_required(login_url='login')
-def excursions_delete(request, excursions_pk):
+def excursions_delete_page(request, excursions_pk):
     excursion = request.user.customer.excursion_set.get(id=excursions_pk)
 
     context = {'excursion': excursion}
@@ -41,7 +41,7 @@ def excursions_delete(request, excursions_pk):
 
 
 @login_required(login_url='login')
-def excursions_delete_only(request, excursions_pk):
+def excursions_delete(request, excursions_pk):
     excursion = request.user.customer.excursion_set.get(id=excursions_pk)
 
     if request.method == 'POST':
@@ -52,7 +52,7 @@ def excursions_delete_only(request, excursions_pk):
 
 @allowed_users(['manager'])
 def excursions_all(request):
-    excursions = Excursion.objects.all().order_by('excursion_date', 'excursion_time')
+    excursions = Excursion.objects.all().order_by('date', 'time')
     upcoming, passed = format_excursions(excursions)
 
     context = {'upcoming': upcoming, 'passed': passed}
@@ -60,7 +60,7 @@ def excursions_all(request):
 
 
 @login_required(login_url='login')
-def add_excursion(request):
+def excursion_create(request):
     if request.method == "POST":
         form = ExcursionForm(request.POST)
         if form.is_valid():
@@ -68,4 +68,6 @@ def add_excursion(request):
             t.person = request.user.customer
             t.save()
             return redirect('excursions')
-    return Http404()
+        else:
+            return redirect('main')
+    raise Http404()

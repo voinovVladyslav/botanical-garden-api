@@ -92,32 +92,32 @@
                     </h1>
                     <div class="schedule__body ">
                         <div class="excursion__block-body">
-                            <form action="{% url 'add_excursion' %}" method="POST">
+                            <form action="{% url 'excursion_create' %}" method="POST">
                                 {% csrf_token %}
                                 <ul>
                                     {% if request.user.is_authenticated %}
                                     <li>
                                         Оберіть дату екскурсії:<br>
-                                        <input type="date" name="excursion_date" class="form-control" required id="id_excursion_date">
+                                        <input type="date" name="date" class="form-control" required id="id_date">
                                     </li>
-                                    {% if form.excursion_date.errors %}
+                                    {% if form.date.errors %}
                                     <li>
-                                        <p>{{ form.excursion_date.errors.as_text }}</p>
+                                        <p>{{ form.date.errors.as_text }}</p>
                                     </li>
                                     {% endif %}
                                     <li>
                                         Оберіть час екскурсії:<br>
-                                        <input type="time" name="excursion_time" class="form-control" required id="id_excursion_time">
+                                        <input type="time" name="time" class="form-control" required id="id_time">
                                     </li>
-                                    {% if form.excursion_time.errors %}
+                                    {% if form.time.errors %}
                                     <li>
-                                        <p>{{ form.excursion_time.errors.as_text }}</p>
+                                        <p>{{ form.time.errors.as_text }}</p>
                                     </li>
                                     {% endif %}
 
                                     <li>
                                         Оберіть тип екскурсії:<br>
-                                        <select name="excursion_type" required="" id="id_excursion_type">
+                                        <select name="type" required="" id="id_type">
                                             <option value="Індивідуальні відвідування" selected>Індивідуальні відвідування</option>
                                             <option value="Екскурсія для дорослих">Екскурсія для дорослих</option>
                                             <option value="Екскурсія для дітей">Екскурсія для дітей</option>
@@ -133,26 +133,26 @@
                                     {% else %}
                                     <li>
                                         Оберіть дату екскурсії:<br>
-                                        <input type="date" name="excursion_date" class="form-control" required id="id_excursion_date" disabled>
+                                        <input type="date" name="date" class="form-control" required id="id_date" disabled>
                                     </li>
-                                    {% if form.excursion_date.errors %}
+                                    {% if form.date.errors %}
                                     <li>
-                                        <p>{{ form.excursion_date.errors.as_text }}</p>
+                                        <p>{{ form.date.errors.as_text }}</p>
                                     </li>
                                     {% endif %}
                                     <li>
                                         Оберіть час екскурсії:<br>
-                                        <input type="time" name="excursion_time" class="form-control" required id="id_excursion_time" disabled>
+                                        <input type="time" name="time" class="form-control" required id="id_time" disabled>
                                     </li>
-                                    {% if form.excursion_time.errors %}
+                                    {% if form.time.errors %}
                                     <li>
-                                        <p>{{ form.excursion_time.errors.as_text }}</p>
+                                        <p>{{ form.time.errors.as_text }}</p>
                                     </li>
                                     {% endif %}
 
                                     <li>
                                         Оберіть тип екскурсії:<br>
-                                        <select name="excursion_type" required="" id="id_excursion_type" disabled>
+                                        <select name="type" required="" id="id_type" disabled>
                                             <option value="Індивідуальні відвідування" selected>Індивідуальні відвідування</option>
                                             <option value="Екскурсія для дорослих">Екскурсія для дорослих</option>
                                             <option value="Екскурсія для дітей">Екскурсія для дітей</option>

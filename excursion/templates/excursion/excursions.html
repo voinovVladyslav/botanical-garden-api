@@ -30,8 +30,8 @@
                             <div class="all-exc__topic">
                                 <ol>
                                     {% for u in upcoming %}
-                                    <li class="all-exc__single">{{ u.excursion_date }}, {{ u.excursion_time }}, {{ u.person.name }} — {{ u.excursion_type }}
-                                        <a href="{% url 'delete_excursion' u.id %}">
+                                    <li class="all-exc__single">{{ u.date }}, {{ u.time }}, {{ u.person.name }} — {{ u.type }}
+                                        <a href="{% url 'delete_excursion_page' u.id %}">
                                             <img src="{% static 'img/delete.svg' %}" alt="delete" style="height: 16px; width: 16px; float: right; margin-right: 30px; margin-top: -2px;">
                                         </a>
                                     </li>
@@ -53,7 +53,7 @@
                             <div class="all-exc__topic">
                                 <ol>
                                     {% for p in passed %}
-                                    <li class="all-exc__single">{{ p.excursion_date }}, {{ p.excursion_time }}, {{ p.person.name }} — {{ p.excursion_type }}</li>
+                                    <li class="all-exc__single">{{ p.date }}, {{ p.time }}, {{ p.name }} — {{ p.type }}</li>
                                     {% endfor %}
                                 </ol>
                             </div>
@@ -68,23 +68,3 @@
 </body>
 
 </html>
-
-<!--<h1>Excursions</h1>
-
-{% if not upcoming %}
-    <a href="{% url 'main' %}">Записатися</a>
-{% endif %}
-
-<p>Upcoming</p>
-{% for u in upcoming %}
-    <p>{{ u.excursion_type }}, {{ u.excursion_date }} {{ u.excursion_time }}
-        <a href="{% url 'delete_excursion' u.id %}">delete</a></p>
-{% endfor %}
-
-<p>Passed</p>
-
-
-
-{% for p in passed %}
-    <p>{{ p.excursion_type }}, {{ p.excursion_date }} {{ p.excursion_time }}
-{% endfor %}

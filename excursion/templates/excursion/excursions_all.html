@@ -26,9 +26,9 @@
                             <div class="all-exc__topic">
                                 <ol>
                                     {% for exc in upcoming %} {% if exc.person.name %}
-                                    <li class="all-exc__single">{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person.name }} — {{ exc.excursion_type }}</li>
+                                    <li class="all-exc__single">{{ exc.date }}, {{ exc.time }}, {{ exc.person.name }} — {{ exc.type }}</li>
                                     {% else %}
-                                    <li class="all-exc__single">{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person.user.username }} — {{ exc.excursion_type }}</li>
+                                    <li class="all-exc__single">{{ exc.date }}, {{ exc.time }}, {{ exc.person.user.username }} — {{ exc.type }}</li>
                                     {% endif %} {% endfor %}
                                 </ol>
                             </div>
@@ -42,9 +42,9 @@
                             <div class="all-exc__topic">
                                 <ol>
                                     {% for exc in passed %} {% if exc.person.name %}
-                                    <li class="all-exc__single">{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person.name }} — {{ exc.excursion_type }}</li>
+                                    <li class="all-exc__single">{{ exc.date }}, {{ exc.time }}, {{ exc.person.name }} — {{ exc.type }}</li>
                                     {% else %}
-                                    <li class="all-exc__single">{{ exc.excursion_date }}, {{ exc.excursion_time }}, {{ exc.person.user.username }} — {{ exc.excursion_type }}</li>
+                                    <li class="all-exc__single">{{ exc.date }}, {{ exc.time }}, {{ exc.person.user.username }} — {{ exc.type }}</li>
                                     {% endif %} {% endfor %}
                                 </ol>
                             </div>

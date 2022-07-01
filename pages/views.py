@@ -10,7 +10,6 @@ def main(request):
     except:
         first_news, second_news = None, None
 
-        
     form = ExcursionForm()
 
     context = {'form': form, 'first_news': first_news, 'second_news': second_news}

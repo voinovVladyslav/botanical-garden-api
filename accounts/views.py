@@ -56,9 +56,6 @@ def register_user(request):
             user = form.save()
             email = form.cleaned_data.get('email')
 
-            group = Group.objects.get(name='customer')
-            user.groups.add(group)
-
             Customer.objects.create(user=user, email=email)
             return redirect('login')
     return Http404()

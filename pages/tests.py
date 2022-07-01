@@ -1,9 +1,11 @@
-from tkinter import W
 from django.test import TestCase
-from news.models import News
 from django.core.files.uploadedfile import SimpleUploadedFile
-from botanical_garden.settings import BASE_DIR
 import os
+
+from news.models import News
+from botanical_garden.settings import BASE_DIR
+from excursion.models import Excursion
+
 
 # Create your tests here.
 class HomePageTest(TestCase):
@@ -45,6 +47,30 @@ class HomePageTest(TestCase):
         self.assertNotContains(response, news1)
         self.assertContains(response, news2)
         self.assertContains(response, news3)
+
+    def test_can_create_excursion(self):
+        self.client.post(
+            '/',
+            data={
+                'date': ['2022-07-18'],
+                'time': ['11:00'],
+                'type': ['Індивідуальні відвідування'],
+            }
+        )
+        excursions = Excursion.objects.count()
+        self.assertEqual(excursions, 1)
+    
+    def test_redirect_after_POST(self):
+        response = self.client.post(
+            '/',
+            data={
+                'date': ['2022-07-18'],
+                'time': ['11:00'],
+                'type': ['Індивідуальні відвідування'],
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+
 
 class HistoryPageTest(TestCase):
     def test_url_using_right_template(self):

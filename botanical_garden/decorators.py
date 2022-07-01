@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
+from django.core.exceptions import PermissionDenied
 
 def allowed_users(allowed_roles=[]):
     def decorator(view_func):
@@ -12,8 +13,7 @@ def allowed_users(allowed_roles=[]):
                     if i.name in allowed_roles:
                         return view_func(request, *args, **kwargs)
                 
-            return render(request, 'permision_denied.html')
-
+            raise PermissionDenied()
         return wrapper_func
     return decorator
 
@@ -30,7 +30,7 @@ def allowed_users_pk(allowed_roles=[]):
                     if i.name in allowed_roles:
                         return view_func(request, news_pk,*args, **kwargs)
                 
-            return render(request, 'permision_denied.html', status=403)
+            raise PermissionDenied()
 
         return wrapper_func
     return decorator

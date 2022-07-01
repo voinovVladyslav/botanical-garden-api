@@ -57,17 +57,3 @@ def excursions_all(request):
 
     context = {'upcoming': upcoming, 'passed': passed}
     return render(request, 'excursion/excursions_all.html', context)
-
-
-@login_required(login_url='login')
-def excursion_create(request):
-    if request.method == "POST":
-        form = ExcursionForm(request.POST)
-        if form.is_valid():
-            t = form.save(commit=False)
-            t.person = request.user.customer
-            t.save()
-            return redirect('excursions')
-        else:
-            return redirect('main')
-    raise Http404()

@@ -92,7 +92,7 @@
                     </h1>
                     <div class="schedule__body ">
                         <div class="excursion__block-body">
-                            <form action="{% url 'excursion_create' %}" method="POST">
+                            <form action="{% url 'main' %}" method="POST">
                                 {% csrf_token %}
                                 <ul>
                                     {% if request.user.is_authenticated %}

@@ -52,9 +52,9 @@ def validate_time(value):
 
 class Excursion(models.Model):
     person = models.ForeignKey(Customer, blank=True, null=True ,on_delete=models.CASCADE)
-    excursion_date = models.DateField(null=True, validators=[validate_date])
-    excursion_time = models.TimeField(null=True, validators=[validate_time])
-    excursion_type = models.CharField(max_length=100, choices=EXCURSION_TYPE_CHOICES)
+    date = models.DateField(null=True, validators=[validate_date])
+    time = models.TimeField(null=True, validators=[validate_time])
+    type = models.CharField(max_length=100, choices=EXCURSION_TYPE_CHOICES)
     
     
     def __str__(self):

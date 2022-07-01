@@ -1,4 +1,4 @@
-from django.http import Http404, HttpResponseNotFound
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import Group
@@ -43,13 +43,13 @@ def change_profile(request):
 
 
 @already_authenticated
-def registerPage(request):
+def register_page(request):
     form = RegisterUserForm()
     context = {'form': form}
     return render(request, 'accounts/register.html', context)
 
 
-def registerUser(request):
+def register_user(request):
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
@@ -65,12 +65,12 @@ def registerUser(request):
 
 
 @already_authenticated
-def loginPage(request):
+def login_page(request):
     return render(request, 'accounts/login.html')
 
 
 @already_authenticated
-def loginUser(request):
+def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -82,6 +82,6 @@ def loginUser(request):
     return redirect('login')
 
 @login_required(login_url='login')
-def logoutUser(request):
+def logout_user(request):
     logout(request)
     return redirect('main')

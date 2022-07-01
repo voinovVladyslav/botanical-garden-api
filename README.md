@@ -6,10 +6,7 @@ Developed by **[Voinov Vladyslav](https://github.com/voinovVladyslav)** and **[D
 
 ## To-Do
 
-- delete rebundant code
-- Refactor names
 - Write test
 - Make API
-- Connect API to existing frontend
 - Write new frontend
 - Publish website

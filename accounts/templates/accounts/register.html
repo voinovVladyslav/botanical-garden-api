@@ -24,7 +24,7 @@
                             Реєстрація
                         </div>
                         <div class="register__block-form ">
-                            <form method="POST" action="{% url 'register_user' %}">
+                            <form method="POST" action="{% url 'registration' %}">
                                 {% csrf_token %}
                                 <ul>
                                     {% if form.username.errors %}

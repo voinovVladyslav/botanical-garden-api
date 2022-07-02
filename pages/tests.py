@@ -1,21 +1,29 @@
 from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.contrib.auth import get_user_model
 import os
 
 from news.models import News
 from botanical_garden.settings import BASE_DIR
 from excursion.models import Excursion
+from accounts.models import Customer
 
 
 # Create your tests here.
 class HomePageTest(TestCase):
+    def setUp(self):
+        User = get_user_model()
+        self.user = User.objects.create(username='pasha', email='default@gmail.com', password='pavlik135')
+        Customer.objects.create(user=self.user)
+        self.client.force_login(self.user)
+
     def create_news_objects(self, news_title):
         test_img_path = os.path.join(BASE_DIR, 'botanical_garden/static/test_img/welcome-cat.jpg')
         news = News.objects.create(
             title=news_title,
             context='context1',
             hashtag='#hashtag1',
-            preview=SimpleUploadedFile(
+            image=SimpleUploadedFile(
                 name='tree.jpg', 
                 content=open(test_img_path, 'rb').read(),
                 content_type='image/jpeg'

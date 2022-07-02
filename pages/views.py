@@ -15,7 +15,7 @@ def main(request):
         form = ExcursionForm(request.POST)
         if form.is_valid():
             t = form.save(commit=False)
-            t.person = request.user.customer
+            t.person = request.user
             t.save()
             return redirect('excursions')
 

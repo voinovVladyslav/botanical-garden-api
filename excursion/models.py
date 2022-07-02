@@ -1,9 +1,9 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 
 from datetime import date, time
-from accounts.models import Customer
 
 EXCURSION_TYPE_CHOICES = [
     ('Індивідуальні відвідування','Індивідуальні відвідування'),
@@ -51,11 +51,11 @@ def validate_time(value):
 
 
 class Excursion(models.Model):
-    person = models.ForeignKey(Customer, blank=True, null=True ,on_delete=models.CASCADE)
+    person = models.ForeignKey(User, blank=True, null=True ,on_delete=models.CASCADE)
     date = models.DateField(null=True, validators=[validate_date])
     time = models.TimeField(null=True, validators=[validate_time])
     type = models.CharField(max_length=100, choices=EXCURSION_TYPE_CHOICES)
     
     
     def __str__(self):
-        return self.person.user.username
+        return self.person.username

@@ -87,15 +87,15 @@ class AllContactPageTest(TestCase):
     def loginManager(self):
         User = get_user_model()
         group = Group.objects.get_or_create(name='manager')
-        self.user = User.objects.create(
+        self.manager = User.objects.create(
             username='manager',
             email='default@gmail.com',
             password='pavlik135',
         )
-        self.user.groups.set(group)
-        Customer.objects.create(user=self.user)
+        self.manager.groups.set(group)
+        Customer.objects.create(user=self.manager)
         
-        self.client.force_login(self.user)
+        self.client.force_login(self.manager)
 
     def test_unauthorised_user_permision_denied(self):
         response = self.client.get('/contact/all')
@@ -139,15 +139,15 @@ class ContactSinglePageTest(TestCase):
     def loginManager(self):
         User = get_user_model()
         group = Group.objects.get_or_create(name='manager')
-        self.user = User.objects.create(
+        self.manager = User.objects.create(
             username='manager',
             email='default@gmail.com',
             password='pavlik135',
         )
-        self.user.groups.set(group)
-        Customer.objects.create(user=self.user)
+        self.manager.groups.set(group)
+        Customer.objects.create(user=self.manager)
         
-        self.client.force_login(self.user)
+        self.client.force_login(self.manager)
 
     def test_unauthorised_user_permision_denied(self):
         response = self.client.get('/contact/1')

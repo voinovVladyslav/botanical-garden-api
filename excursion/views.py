@@ -26,7 +26,7 @@ def format_excursions(excursions):
 
 @login_required(login_url='login')
 def excursions(request):
-    excursions = request.user.customer.excursion_set.all().order_by('date', 'time')
+    excursions = request.user.excursion_set.all().order_by('date', 'time')
     upcoming, passed = format_excursions(excursions)
     context = {'upcoming': upcoming, 'passed': passed}
     return render(request, 'excursion/excursions.html', context)
@@ -34,7 +34,7 @@ def excursions(request):
 
 @login_required(login_url='login')
 def excursions_delete_page(request, excursions_pk):
-    excursion = request.user.customer.excursion_set.get(id=excursions_pk)
+    excursion = request.user.excursion_set.get(id=excursions_pk)
 
     context = {'excursion': excursion}
     return render(request, 'excursion/excursion_delete.html', context)
@@ -42,7 +42,7 @@ def excursions_delete_page(request, excursions_pk):
 
 @login_required(login_url='login')
 def excursions_delete(request, excursions_pk):
-    excursion = request.user.customer.excursion_set.get(id=excursions_pk)
+    excursion = request.user.excursion_set.get(id=excursions_pk)
 
     if request.method == 'POST':
         excursion.delete()

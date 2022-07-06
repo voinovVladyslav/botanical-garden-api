@@ -34,17 +34,23 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
 # Application definition
 
 INSTALLED_APPS = [
-    'pages.apps.PagesConfig',
-    'contact.apps.ContactConfig',
-    'accounts.apps.AccountsConfig',
-    'news.apps.NewsConfig',
-    'excursion.apps.ExcursionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # local 
+    'pages.apps.PagesConfig',
+    'contact.apps.ContactConfig',
+    'accounts.apps.AccountsConfig',
+    'news.apps.NewsConfig',
+    'excursion.apps.ExcursionConfig',
+    'api.apps.ApiConfig',
+
+    # third party
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -17,7 +17,14 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings 
 from django.conf.urls.static import static
+from rest_framework import routers
 
+from api import views
+
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +32,9 @@ urlpatterns = [
     path('contact/', include('contact.urls')),
     path('user/', include('accounts.urls')),
     path('news/', include('news.urls')),
+
+    path('api/', include(router.urls)),
+    path('api/auth/', include('rest_framework.urls', 'rest_framework'))
 ]
 
 

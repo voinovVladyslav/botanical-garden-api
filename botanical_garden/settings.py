@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from tkinter import W
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -52,6 +53,11 @@ INSTALLED_APPS = [
     # third party
     'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

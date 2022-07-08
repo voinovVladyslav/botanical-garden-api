@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-from tkinter import W
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,20 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # local 
-    'pages.apps.PagesConfig',
     'contact.apps.ContactConfig',
     'accounts.apps.AccountsConfig',
     'news.apps.NewsConfig',
     'excursion.apps.ExcursionConfig',
-    'api.apps.ApiConfig',
 
     # third party
     'rest_framework',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    #'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.PageNumberPagination',
+    #'PAGE_SIZE': 10,
 }
 
 MIDDLEWARE = [

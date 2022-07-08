@@ -4,5 +4,5 @@ venv/
 *.pyc
 **/__pycache__/**
 .env
-botanical_garden/static/img/news/*
-!botanical_garden/static/img/news/.gitkeep
+botanical_garden/static/news_img/*
+!botanical_garden/static/news_img/.gitkeep

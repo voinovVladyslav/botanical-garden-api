@@ -1,10 +1,12 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+
 from . import views
 
-# /user/excursions/
+
+router = routers.DefaultRouter()
+router.register(r'excursions', views.ExcursionViewSet)
+
 urlpatterns = [
-    path('', views.excursions, name='excursions'),
-    path('all', views.excursions_all, name='excursions_all'),
-    path('delete/<str:excursions_pk>', views.excursions_delete_page, name='delete_excursion_page'),
-    path('delete/<str:excursions_pk>/', views.excursions_delete, name='delete_excursion'),
+    path('', include(router.urls)),
 ]

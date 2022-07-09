@@ -5,9 +5,13 @@ from accounts.models import Customer
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    customer = serializers.HyperlinkedRelatedField(
+        view_name='customer-detail',
+        read_only=True
+    )
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'groups']
+        fields = ['url', 'username', 'email', 'groups', 'customer']
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):

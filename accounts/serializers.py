@@ -9,6 +9,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         view_name='customer-detail',
         read_only=True
     )
+
     class Meta:
         model = User
         fields = ['url', 'username', 'groups', 'customer']

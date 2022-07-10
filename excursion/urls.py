@@ -9,4 +9,5 @@ router.register(r'excursions', views.ExcursionViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('excursions/currentuser', views.ExcursionList.as_view()),
 ]

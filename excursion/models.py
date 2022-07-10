@@ -51,11 +51,11 @@ def validate_time(value):
 
 
 class Excursion(models.Model):
-    person = models.ForeignKey(User, blank=True, null=True ,on_delete=models.CASCADE)
+    user = models.ForeignKey(User, blank=True, null=True ,on_delete=models.CASCADE)
     date = models.DateField(null=True, validators=[validate_date])
     time = models.TimeField(null=True, validators=[validate_time])
     type = models.CharField(max_length=100, choices=EXCURSION_TYPE_CHOICES)
     
     
     def __str__(self):
-        return self.person.username
+        return self.user.username

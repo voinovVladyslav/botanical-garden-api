@@ -6,7 +6,7 @@ from .models import Excursion
 
 
 class ExcursionViewSet(viewsets.ModelViewSet):
-    queryset = Excursion.objects.all()
+    queryset = Excursion.objects.all().order_by('date', 'time')
     serializer_class = ExcursionSerializer
     permission_classes = [permissions.IsAuthenticated]
 

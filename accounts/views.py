@@ -2,12 +2,12 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 
 from .serializers import *
-from botanical_garden.permissions import IsAuthorOrReadOnly, OnlySelf, ReadOnly
+from botanical_garden.permissions import * 
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = [OnlySelf]
+    permission_classes = [ReadOnly]
 
 
 class GroupViewSet(viewsets.ModelViewSet):
@@ -19,4 +19,4 @@ class GroupViewSet(viewsets.ModelViewSet):
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all().order_by('-user')
     serializer_class = CustomerSerializer
-    permission_classes = [IsAuthorOrReadOnly]
+    permission_classes = [IsAuthorOrReadOnly, NoDelete, NoCreate]

@@ -51,8 +51,16 @@ class ReadOnly(permissions.BasePermission):
         return False
 
 
-class OnlySelf(permissions.BasePermission):
+class NoDelete(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         if request.method in permissions.SAFE_METHODS:
             return True
-        return request.user == obj
+        if request.method == 'DELETE':
+            return False
+        return True 
+
+class NoCreate(permissions.BasePermission):
+    def has_permission(self, request, view):
+        if request.method == 'POST':
+            return False
+        return True

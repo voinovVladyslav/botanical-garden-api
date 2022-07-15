@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from tkinter import W
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # local 
     'contact.apps.ContactConfig',
@@ -49,6 +51,12 @@ INSTALLED_APPS = [
 
     # third party
     'rest_framework',
+    'rest_framework.authtoken',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'rest_auth',
+    'rest_auth.registration',
 ]
 
 REST_FRAMEWORK = {
@@ -148,3 +156,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'botanical_garden/static/news_img')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SITE_ID = 1

@@ -1,14 +1,12 @@
-from django.urls import path, include
-from rest_framework import routers
+from django.urls import path
 
 from accounts import views
 
-
-router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
-router.register(r'customers', views.CustomerViewSet)
-
+# api/
 urlpatterns = [
-    path('', include(router.urls)),
+    path('users/', views.users, name='users'),
+    path('users/<str:pk>/', views.user_detail, name='user_detail'),
+    
+    path('customers/', views.customers, name='customers'),
+    path('customers/<str:pk>/', views.customer_detail, name='customer_detail'),
 ]

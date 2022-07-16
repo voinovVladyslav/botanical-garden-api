@@ -13,4 +13,4 @@ class Customer(models.Model):
     
 
     def __str__(self) -> str:
-       return self.name
+       return self.user.__str__()

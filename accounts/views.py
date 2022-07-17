@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User, Group
@@ -16,8 +17,32 @@ def users(request):
 
 @api_view(['GET'])
 def user_detail(request, pk):
-    user = User.objects.get(pk=pk)
+    try:
+        user = User.objects.get(pk=pk)
+    except:
+        data = {'error':'this user does not exists'}
+        return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+
     serializer = UserSerializer(user, context={'request':request})
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def groups(request):
+    groups = Group.objects.all()
+    serializer = GroupSerializer(groups, many=True, context={'request':request})
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def group_detail(request, pk):
+    try:
+        group = Group.objects.get(pk=pk)
+    except:
+        data = {'error':'this group does not exists'}
+        return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+
+    serializer = GroupSerializer(group, context={'request':request})
     return Response(serializer.data)
 
 
@@ -30,6 +55,11 @@ def customers(request):
 
 @api_view(['GET'])
 def customer_detail(request, pk):
-    customer = Customer.objects.get(pk=pk)
+    try:
+        customer = Customer.objects.get(pk=pk)
+    except:
+        data = {'error':'this customer does not exist'}
+        return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+    
     serializer = CustomerSerializer(customer, context={'request':request})
     return Response(serializer.data)

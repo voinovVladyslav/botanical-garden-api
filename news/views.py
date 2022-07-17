@@ -20,7 +20,7 @@ def news_detail(request, pk):
         news = News.objects.get(pk=pk)
     except:
         data = {'error':'this news does not exists'}
-        return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data=data, status=status.HTTP_404_NOT_FOUND)
         
     serializer = NewsSerializer(news, context={'request':request})
 

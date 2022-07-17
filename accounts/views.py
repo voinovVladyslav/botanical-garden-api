@@ -21,7 +21,7 @@ def user_detail(request, pk):
         user = User.objects.get(pk=pk)
     except:
         data = {'error':'this user does not exists'}
-        return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data=data, status=status.HTTP_404_NOT_FOUND)
 
     serializer = UserSerializer(user, context={'request':request})
     return Response(serializer.data)
@@ -40,7 +40,7 @@ def group_detail(request, pk):
         group = Group.objects.get(pk=pk)
     except:
         data = {'error':'this group does not exists'}
-        return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data=data, status=status.HTTP_404_NOT_FOUND)
 
     serializer = GroupSerializer(group, context={'request':request})
     return Response(serializer.data)
@@ -59,7 +59,7 @@ def customer_detail(request, pk):
         customer = Customer.objects.get(pk=pk)
     except:
         data = {'error':'this customer does not exist'}
-        return Response(data=data, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data=data, status=status.HTTP_404_NOT_FOUND)
     
     serializer = CustomerSerializer(customer, context={'request':request})
     return Response(serializer.data)

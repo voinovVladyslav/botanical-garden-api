@@ -63,3 +63,25 @@ def customer_detail(request, pk):
     
     serializer = CustomerSerializer(customer, context={'request':request})
     return Response(serializer.data)
+
+
+@api_view(['PUT'])
+def customer_update(request, pk):
+    try:
+        customer = Customer.objects.get(pk=pk)
+    except:
+        data = {'error':'this customer does not exist'}
+        return Response(data=data, status=status.HTTP_404_NOT_FOUND)
+
+    data = {}
+    if request.method == 'PUT':
+        serializers = CustomerSerializer(customer, data=request.data)  
+        if serializers.is_valid():
+            serializers.save()
+            data['success'] = 'successfuly updated'
+            return Response(data)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    data['error'] = 'only method PUT is allowed'
+    return Response(data=data)
+    

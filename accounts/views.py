@@ -82,6 +82,3 @@ def customer_update(request, pk):
             return Response(data)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    data['error'] = 'only method PUT is allowed'
-    return Response(data=data)
-    

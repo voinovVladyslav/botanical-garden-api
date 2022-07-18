@@ -1,13 +1,11 @@
-from django.urls import path, include
-from rest_framework import routers
+from django.urls import path
 
-from . import views
-
-
-router = routers.DefaultRouter()
-router.register(r'excursions', views.ExcursionViewSet)
+from excursion import views
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('excursions/currentuser', views.ExcursionList.as_view()),
+    path('',views.excursions, name='excursions'),
+    path('create',views.excursion_create, name='excursion_create'),
+    path('<str:pk>/',views.excursion_detail, name='excursion_detail'),
+    path('<str:pk>/update',views.excursion_update, name='excursion_update'),
+    path('<str:pk>/delete',views.excursion_delete, name='excursion_delete'),
 ]

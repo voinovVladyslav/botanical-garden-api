@@ -7,6 +7,8 @@ urlpatterns = [
     path('users/', views.users, name='users'),
     path('users/<str:pk>/', views.user_detail, name='user_detail'),
 
+    path('auth/registration', views.registration, name='registration'),
+
     path('groups/', views.groups, name='groups'),
     path('groups/<str:pk>/', views.group_detail, name='group_detail'),
     

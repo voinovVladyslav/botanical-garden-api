@@ -2,10 +2,9 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User, Group
-from accounts import serializers
 
 from accounts.models import Customer
-from accounts.serializers import CustomerSerializer, UserSerializer, GroupSerializer
+from accounts.serializers import * 
 
 
 @api_view(['GET'])
@@ -74,11 +73,26 @@ def customer_update(request, pk):
         return Response(data=data, status=status.HTTP_404_NOT_FOUND)
 
     data = {}
-    if request.method == 'PUT':
-        serializers = CustomerSerializer(customer, data=request.data)  
-        if serializers.is_valid():
-            serializers.save()
-            data['success'] = 'successfuly updated'
-            return Response(data)
-        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    serializer = CustomerSerializer(customer, data=request.data)  
+
+    if serializer.is_valid():
+        serializer.save()
+        data['success'] = 'successfuly updated'
+        return Response(data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+
+@api_view(['POST'])
+def registration(request):
+    serializer = RegistrationSerializer(data=request.data) 
+    data = {}
+
+    if serializer.is_valid():
+        user = serializer.save()
+        data['response'] = 'successfully registered a new user'
+        data['username'] = user.username
+        data['email'] = user.email 
+    else:
+        data = serializer.errors
+    return Response(data)
+        

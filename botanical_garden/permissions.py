@@ -36,31 +36,3 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         return request.user == obj.user
-
-class ReadOnly(permissions.BasePermission):
-    message = "Read only"
-
-    def has_permission(self, request, view):
-        if request.method == "POST":
-            return False
-        return True 
-
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        return False
-
-
-class NoDelete(permissions.BasePermission):
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        if request.method == 'DELETE':
-            return False
-        return True 
-
-class NoCreate(permissions.BasePermission):
-    def has_permission(self, request, view):
-        if request.method == 'POST':
-            return False
-        return True

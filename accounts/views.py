@@ -1,10 +1,12 @@
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User, Group
 
 from accounts.models import Customer
 from accounts.serializers import * 
+from botanical_garden.permissions import *
 
 
 @api_view(['GET'])
@@ -92,6 +94,8 @@ def registration(request):
         data['response'] = 'successfully registered a new user'
         data['username'] = user.username
         data['email'] = user.email 
+        token = Token.objects.get(user=user).key
+        data['token'] = token
     else:
         data = serializer.errors
     return Response(data)

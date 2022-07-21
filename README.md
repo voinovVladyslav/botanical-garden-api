@@ -2,11 +2,4 @@
 
 This is a Kherson State University project for creating a website for our botanical garden.  
 
-Developed by **[Voinov Vladyslav](https://github.com/voinovVladyslav)** and **[Danylo Morhun](https://github.com/danylo-morhun)**
-
-## To-Do
-
-- Write test
-- Make API
-- Write new frontend
-- Publish website
+This repository contains back-end part of website.

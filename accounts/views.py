@@ -2,11 +2,12 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.models import User, Group
 
 from accounts.models import Customer
 from accounts.serializers import * 
+from botanical_garden.permissions import IsManager
 
 
 @api_view(['GET'])
@@ -17,7 +18,6 @@ def users(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def user_detail(request, pk):
     try:
         user = User.objects.get(pk=pk)
@@ -49,7 +49,7 @@ def group_detail(request, pk):
 
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated, IsManager])
 def customers(request):
     customers = Customer.objects.all()
     serializer = CustomerSerializer(customers, many=True, context={'request':request})
@@ -65,7 +65,8 @@ def customer_detail(request, pk):
         data = {'error':'this customer does not exist'}
         return Response(data=data, status=status.HTTP_404_NOT_FOUND)
 
-    if request.user != customer.user:
+    group = Group.objects.get(name='manager')
+    if request.user != customer.user and group not in request.user.groups.all():
         return Response({'detail':'access denied'}, status=status.HTTP_403_FORBIDDEN)
     
     serializer = CustomerSerializer(customer, context={'request':request})

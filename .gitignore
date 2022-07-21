@@ -3,6 +3,6 @@ venv/
 *.pot
 *.pyc
 **/__pycache__/**
-.env
-botanical_garden/static/news_img/*
-!botanical_garden/static/news_img/.gitkeep
+config.py
+botanical_garden/static/media/*
+!botanical_garden/static/media/.gitkeep

@@ -30,8 +30,7 @@ def excursion_detail(request, pk):
 
 @api_view(['POST'])
 def excursion_create(request):
-    user = User.objects.first()
-    excursion = Excursion(user=user)
+    excursion = Excursion(user=request.user)
     serializer = ExcursionSerializer(excursion, data=request.data, context={'request':request})
     if serializer.is_valid():
         serializer.save()

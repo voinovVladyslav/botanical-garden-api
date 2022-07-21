@@ -30,8 +30,7 @@ def contact_detail(request, pk):
 
 @api_view(['POST'])
 def contact_create(request):
-    user = User.objects.first()
-    contact = Contact(user=user)
+    contact = Contact(user=request.user)
     serializer = ContactSerializer(contact, data=request.data, context={'request':request})
 
     if serializer.is_valid():

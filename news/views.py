@@ -30,8 +30,7 @@ def news_detail(request, pk):
 
 @api_view(['POST'])
 def news_create(request):
-    user = User.objects.first()
-    news = News(author=user)
+    news = News(author=request.user)
     serializer = NewsSerializer(news, data=request.data, context={'request':request})
     if serializer.is_valid():
         serializer.save()

@@ -1,10 +1,11 @@
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticated
 
 from news.models import News
 from news.serializers import NewsSerializer
+from botanical_garden.permissions import IsManager
 
 
 @api_view(['GET'])
@@ -29,6 +30,7 @@ def news_detail(request, pk):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated, IsManager])
 def news_create(request):
     news = News(author=request.user)
     serializer = NewsSerializer(news, data=request.data, context={'request':request})
@@ -39,6 +41,7 @@ def news_create(request):
 
 
 @api_view(['PUT'])
+@permission_classes([IsAuthenticated, IsManager])
 def news_update(request, pk):
     try:
         news = News.objects.get(pk=pk)
@@ -56,6 +59,7 @@ def news_update(request, pk):
 
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated, IsManager])
 def news_delete(request, pk):
     try:
         news = News.objects.get(pk=pk)

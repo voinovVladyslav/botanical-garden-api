@@ -2,37 +2,9 @@ from rest_framework import permissions
 from django.contrib.auth.models import Group
 
 
-class IsManagerOrReadOnly(permissions.BasePermission):
-    message = 'Only manager has access to news management'
+class IsManager(permissions.BasePermission):
+    message = "You're not the manager"
 
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-
-        user_groups = request.user.groups.filter(name='manager').first()
-        manager = Group.objects.filter(name='manager').first()
-        
-        return manager == user_groups
-
-
-class IsAuthorOrIsManagerOrReadOnly(permissions.BasePermission):
-    message = 'Only manager can view all messages'
-
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-
-        user_groups = request.user.groups.filter(name='manager').first()
-        manager = Group.objects.filter(name='manager').first()
-        is_manager = manager == user_groups
-
-        return request.user == obj.user or is_manager 
-
-
-class IsAuthorOrReadOnly(permissions.BasePermission):
-    message = "You can't modify this, you're not the author"
-
-    def has_object_permission(self, request, view, obj):
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        return request.user == obj.user
+    def has_permission(self, request, view):
+        group = Group.objects.get(name='manager')
+        return group in request.user.groups.all()

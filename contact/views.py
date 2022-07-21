@@ -1,8 +1,7 @@
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from django.contrib.auth.models import User
-from contact import serializers
+from rest_framework.permissions import IsAuthenticated
 
 from contact.models import Contact
 from contact.serializers import ContactSerializer
@@ -29,6 +28,7 @@ def contact_detail(request, pk):
 
 
 @api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def contact_create(request):
     contact = Contact(user=request.user)
     serializer = ContactSerializer(contact, data=request.data, context={'request':request})
@@ -40,12 +40,16 @@ def contact_create(request):
 
 
 @api_view(['PUT'])
+@permission_classes([IsAuthenticated])
 def contact_update(request, pk):
     try:
         contact = Contact.objects.get(pk=pk)
     except:
         data = {'error':'this contact does not exists'}
         return Response(data=data, status=status.HTTP_404_NOT_FOUND)
+
+    if request.user != contact.user:
+        return Response({'detail':'access denied'}, status=status.HTTP_403_FORBIDDEN)
 
     serializer = ContactSerializer(contact, data=request.data, context={'request':request})
     data = {}
@@ -57,12 +61,16 @@ def contact_update(request, pk):
 
 
 @api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def contact_delete(request, pk):
     try:
         contact = Contact.objects.get(pk=pk)
     except:
         data = {'error':'this contact does not exists'}
         return Response(data=data, status=status.HTTP_404_NOT_FOUND)
+
+    if request.user != contact.user:
+        return Response({'detail':'access denied'}, status=status.HTTP_403_FORBIDDEN)
 
     operation = contact.delete()
     data = {}

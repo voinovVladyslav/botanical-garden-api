@@ -1,8 +1,0 @@
-venv/
-*.log
-*.pot
-*.pyc
-**/__pycache__/**
-config.py
-botanical_garden/static/media/*
-!botanical_garden/static/media/.gitkeep

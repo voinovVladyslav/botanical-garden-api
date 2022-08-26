@@ -1,0 +1,27 @@
+FROM python:3.9-alpine
+LABEL maintainer='Voinov Vladyslav'
+
+ENV PYTHONUNBUFFERED 1
+
+COPY ./requirements.txt /tmp/requirements.txt
+COPY ./botanical-garden-api /botanical-garden-api
+WORKDIR /botanical-garden-api
+
+EXPOSE 8000
+
+RUN python -m venv /py && \
+    /py/bin/pip install --upgrade pip && \
+    apk add --update --no-cache mysql-client &&\
+    apk add --update --no-cache --virtual .tmp-build-deps \
+    mysql-client musl-dev build-base mysql-dev && \
+    /py/bin/pip install -r /tmp/requirements.txt && \
+    rm -rf /tmp && \
+    apk del .tmp-build-deps && \
+    adduser \
+    --disabled-password \
+    --no-create-home \
+    django-user
+
+ENV PATH="py/bin:{$PATH}"
+
+USER django-user

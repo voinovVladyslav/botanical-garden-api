@@ -11,3 +11,23 @@ services:
       - ./botanical-garden-api:/botanical-garden-api
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=user
+      - DB_PASSWORD=changeme
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    volumes:
+     - dev-db-data:/var/lib/mysql/
+    environment:
+      - MYSQL_DATABASE=devdb
+      - MYSQL_ROOT_PASSWORD=changeme
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=changeme
+
+volumes:
+  dev-db-data:

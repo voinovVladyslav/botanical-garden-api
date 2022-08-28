@@ -24,7 +24,7 @@ services:
   db:
     image: postgres:alpine3.16
     volumes:
-      - dev-db-data:/var/lib/postgres/data
+      - dev-db-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=devdb
       - POSTGRES_USER=django-user

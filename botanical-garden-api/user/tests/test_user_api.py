@@ -7,6 +7,7 @@ from rest_framework import status
 
 
 CREATE_USER_URL = reverse('user:create')
+TOKEN_URL = reverse('user:token')
 
 
 def create_user(**params):
@@ -67,3 +68,41 @@ class UserApiTest(TestCase):
         res = self.client.post(CREATE_USER_URL, data)
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_retrieve_token_success(self):
+        user_data = {
+            'email': 'example.com',
+            'password': 'testpassword123',
+            'first_name': 'Dima',
+            'last_name': 'Tsal',
+        }
+        create_user(**user_data)
+
+        data = {
+            'email': 'example.com',
+            'password': 'testpassword123',
+        }
+
+        res = self.client.post(TOKEN_URL, data)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertIn('token', res.data)
+
+    def test_retrieve_token_wrong_credentials(self):
+        user_data = {
+            'email': 'example.com',
+            'password': 'testpassword123',
+            'first_name': 'Dima',
+            'last_name': 'Tsal',
+        }
+        create_user(**user_data)
+
+        data = {
+            'email': 'example.com',
+            'password': 'wrongpassword',
+        }
+
+        res = self.client.post(TOKEN_URL, data)
+
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertNotIn('token', res.data)

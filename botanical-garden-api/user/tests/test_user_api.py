@@ -71,7 +71,7 @@ class UserApiTest(TestCase):
 
     def test_retrieve_token_success(self):
         user_data = {
-            'email': 'example.com',
+            'email': 'test@example.com',
             'password': 'testpassword123',
             'first_name': 'Dima',
             'last_name': 'Tsal',
@@ -79,7 +79,7 @@ class UserApiTest(TestCase):
         create_user(**user_data)
 
         data = {
-            'email': 'example.com',
+            'email': 'test@example.com',
             'password': 'testpassword123',
         }
 
@@ -90,7 +90,7 @@ class UserApiTest(TestCase):
 
     def test_retrieve_token_wrong_credentials(self):
         user_data = {
-            'email': 'example.com',
+            'email': 'test@example.com',
             'password': 'testpassword123',
             'first_name': 'Dima',
             'last_name': 'Tsal',
@@ -98,7 +98,7 @@ class UserApiTest(TestCase):
         create_user(**user_data)
 
         data = {
-            'email': 'example.com',
+            'email': 'test@example.com',
             'password': 'wrongpassword',
         }
 

@@ -4,8 +4,8 @@ from django.contrib.auth import get_user_model
 
 class UserModelTest(TestCase):
     def test_create_user(self):
-        email='test@example.com'
-        password='testpassword134'
+        email = 'test@example.com'
+        password = 'testpassword134'
         user = get_user_model().objects.create_user(
             email=email,
             password=password,
@@ -17,8 +17,8 @@ class UserModelTest(TestCase):
         self.assertEqual(user.is_manager, False)
 
     def test_create_manager(self):
-        email='test@example.com'
-        password='testpassword134'
+        email = 'test@example.com'
+        password = 'testpassword134'
         manager = get_user_model().objects.create_manager(
             email=email,
             password=password,
@@ -31,8 +31,8 @@ class UserModelTest(TestCase):
 
 
     def test_create_superuser(self):
-        email='test@example.com'
-        password='testpassword134'
+        email = 'test@example.com'
+        password = 'testpassword134'
         superuser = get_user_model().objects.create_superuser(
             email=email,
             password=password,
@@ -43,3 +43,22 @@ class UserModelTest(TestCase):
         self.assertEqual(superuser.is_staff, True)
         self.assertEqual(superuser.is_manager, True)
         self.assertEqual(superuser.is_superuser, True)
+
+    def test_create_user_with_extra_field(self):
+        email = 'test@example.com'
+        password = 'testpassword134'
+        first_name = 'Pavlo'
+        last_name = 'Beton'
+        user = get_user_model().objects.create_user(
+            email=email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+        )
+
+        self.assertEqual(email, user.email)
+        self.assertTrue(user.check_password(password))
+        self.assertEqual(user.first_name, first_name)
+        self.assertEqual(user.last_name, last_name)
+        self.assertEqual(user.is_staff, False)
+        self.assertEqual(user.is_manager, False)

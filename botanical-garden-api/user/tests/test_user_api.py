@@ -24,14 +24,12 @@ class UserApiTest(TestCase):
             'first_name': 'Dima',
             'last_name': 'Tsal',
         }
-
         res = self.client.post(CREATE_USER_URL, data)
 
-        self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertContains(res, 'email')
-        self.assertContains(res, 'first_name')
-        self.assertContains(res, 'last_name')
-        self.assertNotContains(res, 'password')
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        user = get_user_model().objects.get(email=data['email'])
+        self.assertTrue(user.check_password(data['password']))
+        self.assertNotIn('password', res.data)
 
     def test_create_user_error(self):
         data = {

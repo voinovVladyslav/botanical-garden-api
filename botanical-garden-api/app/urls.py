@@ -20,4 +20,5 @@ urlpatterns = [
 
     # api
     path('api/user/', include('user.urls')),
+    path('api/feedback/', include('feedback.urls')),
 ]

@@ -12,6 +12,10 @@ REVIEW_URL = reverse('feedback:review-list')
 REVIEW_GLOBAL_URL = reverse('feedback:all-review-list')
 
 
+def review_detail(review_id):
+    return reverse('feedback:review-detail', args=[review_id])
+
+
 def create_review(user, **params):
     defaults = {
         'rating': 5,
@@ -74,3 +78,54 @@ class AuthorizedFeedbackApiTest(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertContains(res, r1.description)
         self.assertNotContains(res, r2.description)
+
+    def test_create_review(self):
+        data = {
+            'rating': 4,
+            'description': 'Description test',
+        }
+
+        res = self.client.post(REVIEW_URL, data)
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        review = Review.objects.get(id=res.data['id'])
+        self.assertEqual(review.description, data['description'])
+
+    def test_create_review_rating_out_of_range(self):
+        data = {
+            'rating': 11,
+            'description': 'Description test',
+        }
+
+        res = self.client.post(REVIEW_URL, data)
+
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_full_review_update(self):
+        review = create_review(self.user)
+        data = {
+            'rating': 1,
+            'description': 'updated description',
+        }
+
+        url = review_detail(review.id)
+        res = self.client.put(url, data)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        review.refresh_from_db()
+        self.assertEqual(data['description'], review.description)
+        self.assertEqual(data['rating'], review.rating)
+
+    def test_partial_review_update(self):
+        review = create_review(self.user)
+        data = {
+            'rating': 1,
+            'description': 'updated description',
+        }
+
+        url = review_detail(review.id)
+        res = self.client.patch(url, data)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        review.refresh_from_db()
+        self.assertEqual(data['description'], review.description)

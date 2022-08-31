@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #local
     'core',
+    'feedback',
 
     #packages
     'rest_framework',

@@ -70,6 +70,18 @@ class UserApiTest(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
+    def test_create_user_with_minimum_data(self):
+        data = {
+            'email': 'test@example.com',
+            'password': 'testpassword123',
+        }
+
+        res = self.client.post(CREATE_USER_URL, data)
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        user_exists = get_user_model().objects.filter(email=data['email']).exists()
+        self.assertTrue(user_exists)
+
     def test_retrieve_token_success(self):
         user_data = {
             'email': 'test@example.com',

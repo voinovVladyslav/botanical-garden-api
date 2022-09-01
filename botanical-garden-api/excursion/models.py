@@ -3,6 +3,8 @@ from django.conf import settings
 from django.utils.translation import gettext as _
 from django.core.exceptions import ValidationError
 
+from datetime import datetime
+
 
 WORKDAY_START = (8, 30)
 WORKDAY_END = (16, 15)
@@ -11,6 +13,19 @@ FRIDAY_END = (15, 0)
 
 
 def validate_excursion_date(value):
+    now = datetime.now()
+    if value.day == now.day:
+        raise ValidationError(
+            _("You can't sign up for today, at least tomorrow"),
+            params={'value': value},
+        )
+
+    if value.day < now.day:
+        raise ValidationError(
+            _("We do not work in past"),
+            params={'value': value},
+        )
+
     if value.weekday() in [5, 6]:
         raise ValidationError(
             _('We do not work at weekends'),

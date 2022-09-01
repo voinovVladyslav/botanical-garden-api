@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #local
     'core',
     'feedback',
+    'excursion',
 
     #packages
     'rest_framework',

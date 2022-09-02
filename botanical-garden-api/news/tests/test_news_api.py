@@ -5,6 +5,10 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
 
+from PIL import Image
+import tempfile
+import os
+
 from news.models import News
 from news.serializers import (
     NewsSerializer,
@@ -28,6 +32,10 @@ def create_news(user, **params):
     defaults.update(**params)
     news = News.objects.create(user=user, **defaults)
     return news
+
+
+def image_upload_url(news_id):
+    return reverse('news:news-upload-image', args=[news_id])
 
 
 class PublicNewsApiTest(TestCase):
@@ -157,3 +165,38 @@ class ManagerNewsApiTest(TestCase):
         self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
         news = News.objects.filter(user=self.user)
         self.assertFalse(news.exists())
+
+
+class ImageUploadTests(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.user = get_user_model().objects.create_manager(
+            email='test@example.com',
+            password='testpassword123',
+        )
+        self.client.force_authenticate(self.user)
+        self.news = create_news(self.user)
+
+    def tearDown(self):
+        self.news.image.delete()
+
+    def test_upload_image(self):
+        url = image_upload_url(self.news.id)
+        with tempfile.NamedTemporaryFile(suffix='.jpg') as image_file:
+            img = Image.new('RGB', (10, 10))
+            img.save(image_file, format='JPEG')
+            image_file.seek(0)
+            data = {'image': image_file}
+            res = self.client.post(url, data, format='multipart')
+
+        self.news.refresh_from_db()
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertIn('image', res.data)
+        self.assertTrue(os.path.exists(self.news.image.path))
+
+    def test_upload_not_image(self):
+        url = image_upload_url(self.news.id)
+        data = {'image': 'not image'}
+        res = self.client.post(url, data, format='multipart')
+
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)

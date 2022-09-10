@@ -4,11 +4,12 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
 
-from news.models import News
+from news.models import News, Hashtag
 from news.serializers import (
     NewsSerializer,
     NewsDetailSerializer,
     NewsImageSerializer,
+    HashtagSerializer,
 )
 from news.permissions import IsManagerOrReadOnly
 
@@ -42,3 +43,13 @@ class NewsViewSet(ModelViewSet):
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class HashtagViewSet(ModelViewSet):
+    queryset = Hashtag.objects.all()
+    permission_classes = [IsManagerOrReadOnly]
+    authentication_classes = [TokenAuthentication]
+    serializer_class = HashtagSerializer
+
+    def get_queryset(self):
+        return self.queryset.order_by('-name')

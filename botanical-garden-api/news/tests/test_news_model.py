@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 
 from unittest.mock import patch
 
-from news.models import News, news_image_file_path
+from news.models import News, Hashtag, news_image_file_path
 
 
 class NewsModelTest(TestCase):
@@ -17,7 +17,6 @@ class NewsModelTest(TestCase):
         News.objects.create(
             title='News title',
             context='News context',
-            hashtag='#news',
             user=self.user,
         )
 

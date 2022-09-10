@@ -10,6 +10,7 @@ app_name = 'news'
 
 router = DefaultRouter()
 router.register('news', views.NewsViewSet)
+router.register('hashtag', views.HashtagViewSet)
 
 
 urlpatterns = [

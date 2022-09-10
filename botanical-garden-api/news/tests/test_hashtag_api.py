@@ -41,7 +41,7 @@ class HashtagApiTests(TestCase):
 class ManagerApiTests(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.user = get_user_model().create_manager(
+        self.user = get_user_model().objects.create_manager(
             email='test@example.com',
             password='testpassword123',
         )

@@ -9,7 +9,7 @@ from PIL import Image
 import tempfile
 import os
 
-from news.models import News
+from news.models import News, Hashtag
 from news.serializers import (
     NewsSerializer,
     NewsDetailSerializer,
@@ -27,10 +27,12 @@ def create_news(user, **params):
     defaults = {
         'title': 'Default title',
         'context': 'Default context',
-        'hashtag': '#hashtag',
     }
+
     defaults.update(**params)
     news = News.objects.create(user=user, **defaults)
+    hashtag = Hashtag.objects.create(name='#news')
+    news.hashtags.add(hashtag)
     return news
 
 
@@ -116,7 +118,7 @@ class ManagerNewsApiTest(TestCase):
         data = {
             'title': 'Title',
             'context': 'Context',
-            'hashtag': '#tag',
+            'hashtags': [{'name': '#news2'}],
         }
 
         res = self.client.post(NEWS_URL, data)
@@ -144,7 +146,6 @@ class ManagerNewsApiTest(TestCase):
         data = {
             'title': 'Update title',
             'context': 'Update context',
-            'hashtag': '#newtag',
         }
 
         url = news_detail(news.id)

@@ -10,3 +10,6 @@ class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     description = models.TextField(blank=True)
+
+    def __srt__(self):
+        return self.description[:100]

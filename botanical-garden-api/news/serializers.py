@@ -17,16 +17,30 @@ class NewsSerializer(serializers.ModelSerializer):
         fields = ['id', 'title', 'hashtags']
         read_only_fieds = ['id']
 
-    def create(self, validated_data):
-        hashtags = validated_data.pop('tags', [])
-        news = News.objects.create(**validated_data)
+    def _get_or_create_hashtags(self, hashtags, news):
         for hashtag in hashtags:
-            hashtag_obj, created = Hashtag.objects.get_or_create(
-                **hashtag
-            )
+            hashtag_obj, created = Hashtag.objects.get_or_create(**hashtag)
             news.hashtags.add(hashtag_obj)
 
+
+    def create(self, validated_data):
+        hashtags = validated_data.pop('hashtags', [])
+        news = News.objects.create(**validated_data)
+        self._get_or_create_hashtags(hashtags, news)
         return news
+
+    def update(self, instance, validated_data):
+        hashtags = validated_data.pop('hashtags', None)
+        if hashtags is not None:
+            instance.hashtags.clear()
+            self._get_or_create_hashtags(hashtags, instance)
+
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+
+        instance.save()
+        return instance
+
 
 class NewsDetailSerializer(NewsSerializer):
     class Meta(NewsSerializer.Meta):

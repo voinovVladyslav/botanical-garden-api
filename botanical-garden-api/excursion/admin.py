@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from excursion.models import Excursion
+
+
+admin.site.register(Excursion)

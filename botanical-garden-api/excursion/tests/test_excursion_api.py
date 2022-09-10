@@ -80,8 +80,6 @@ class AuthenticatedExcursionApiTest(TestCase):
         serializer = ExcursionSerializer(excursions, many=True)
         self.assertEqual(res.data, serializer.data)
 
-
-
     def test_retvieve_excursions_for_current_user_only(self):
         another_user = get_user_model().objects.create_user(
             email='another@example.com',
@@ -151,7 +149,7 @@ class AuthenticatedExcursionApiTest(TestCase):
         }
 
         url = excursion_detail(excursion.id)
-        res = self.client.patch(url, data)
+        res = self.client.put(url, data)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         excursion.refresh_from_db()

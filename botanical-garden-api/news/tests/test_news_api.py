@@ -31,8 +31,6 @@ def create_news(user, **params):
 
     defaults.update(**params)
     news = News.objects.create(user=user, **defaults)
-    hashtag = Hashtag.objects.create(name='#news')
-    news.hashtags.add(hashtag)
     return news
 
 
@@ -166,6 +164,85 @@ class ManagerNewsApiTest(TestCase):
         self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
         news = News.objects.filter(user=self.user)
         self.assertFalse(news.exists())
+
+    def test_create_news_with_new_hashtags(self):
+        data = {
+            'title': 'title',
+            'context': 'context',
+            'hashtags': [{'name': '#hashtag1'}, {'name': '#hashtag2'}],
+        }
+
+        res = self.client.post(NEWS_URL, data, format='json')
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        news = News.objects.filter(user=self.user)
+        self.assertEqual(news.count(), 1)
+        news = news[0]
+        self.assertEqual(news.hashtags.count(), 2)
+
+        for hashtag in data['hashtags']:
+            exists = news.hashtags.filter(
+                name=hashtag['name']
+            ).exists()
+            self.assertTrue(exists)
+
+    def test_create_news_with_existing_hashtags(self):
+        Hashtag.objects.create(name='#hashtag1')
+        data = {
+            'title': 'title',
+            'context': 'context',
+            'hashtags': [{'name': '#hashtag1'}, {'name': '#hashtag2'}],
+        }
+
+        res = self.client.post(NEWS_URL, data, format='json')
+
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        news = News.objects.filter(user=self.user)
+        self.assertEqual(news.count(), 1)
+        news = news[0]
+        self.assertEqual(news.hashtags.count(), 2)
+
+        for hashtag in data['hashtags']:
+            exists = news.hashtags.filter(
+                name=hashtag['name']
+            ).exists()
+            self.assertTrue(exists)
+
+    def test_create_hashtags_on_update(self):
+        news = create_news(self.user)
+        data = {'hashtags': [{'name': '#newtag'}]}
+        url = news_detail(news.id)
+        res = self.client.patch(url, data, format='json')
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        new_hashtag = Hashtag.objects.get(name='#newtag')
+        self.assertIn(new_hashtag, news.hashtags.all())
+
+    def test_assign_hashtag_on_update(self):
+        hashtag = Hashtag.objects.create(name='#hashtag')
+        news = create_news(self.user)
+        news.hashtags.add(hashtag)
+
+        new_hashtag = Hashtag.objects.create(name='#newhashtag')
+        data = {'hashtags': [{'name': '#newhashtag'}]}
+        url = news_detail(news.id)
+        res = self.client.patch(url, data, format='json')
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertIn(new_hashtag, news.hashtags.all())
+        self.assertNotIn(hashtag, news.hashtags.all())
+
+    def test_clear_news_hashtags(self):
+        hashtag = Hashtag.objects.create(name='#news')
+        news = create_news(self.user)
+        news.hashtags.add(hashtag)
+
+        data = {'hashtags': []}
+        url = news_detail(news.id)
+        res = self.client.patch(url, data, format='json')
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertEqual(news.hashtags.count(), 0)
 
 
 class ImageUploadTests(TestCase):

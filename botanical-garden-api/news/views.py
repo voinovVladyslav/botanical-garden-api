@@ -4,6 +4,13 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
 
+from drf_spectacular.utils import (
+    extend_schema_view,
+    extend_schema,
+    OpenApiParameter,
+    OpenApiTypes,
+)
+
 from news.models import News, Hashtag
 from news.serializers import (
     NewsSerializer,
@@ -14,6 +21,27 @@ from news.serializers import (
 from news.permissions import IsManagerOrReadOnly
 
 
+@extend_schema_view(
+    list=extend_schema(
+        parameters=[
+            OpenApiParameter(
+                'hashtags',
+                OpenApiTypes.STR,
+                description='List of hashtags id to filter',
+            ),
+            OpenApiParameter(
+                'publication_date_lte',
+                OpenApiTypes.STR,
+                description='Lower than equal date',
+            ),
+            OpenApiParameter(
+                'publication_date_gte',
+                OpenApiTypes.STR,
+                description='Greater than equal date',
+            ),
+        ]
+    )
+)
 class NewsViewSet(ModelViewSet):
     queryset = News.objects.all()
     permission_classes = [IsManagerOrReadOnly]

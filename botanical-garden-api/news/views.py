@@ -20,8 +20,24 @@ class NewsViewSet(ModelViewSet):
     authentication_classes = [TokenAuthentication]
     serializer_class = NewsDetailSerializer
 
+    def _params_to_int(self, qs):
+        return [int(str_id) for str_id in qs.split(',')]
+
     def get_queryset(self):
-        return self.queryset.order_by('-id')
+        hashtags = self.request.query_params.get('hashtags')
+        publication_date_gte = self.request.query_params.get('publication_date_gte')
+        publication_date_lte = self.request.query_params.get('publication_date_lte')
+        queryset = self.queryset
+
+        if hashtags:
+            hashtag_ids = self._params_to_int(hashtags)
+            queryset = queryset.filter(hashtags__id__in=hashtag_ids)
+        if publication_date_gte:
+            queryset = queryset.filter(publication_date__gte=publication_date_gte)
+        if publication_date_lte:
+            queryset = queryset.filter(publication_date__lte=publication_date_lte)
+
+        return queryset.order_by('-id').distinct()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

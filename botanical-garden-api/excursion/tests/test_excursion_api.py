@@ -35,6 +35,7 @@ def create_datetime(**params):
 MONDAY_MIDDAY = create_datetime()
 MONDAY_LATE_EVENING = create_datetime(hour=19)
 SUNDAY_MIDDAY = create_datetime(day=4)
+MONDAY_PAST_YEAR = create_datetime(year=2020, month=1, day=6)
 
 
 def create_excursion(user, **params):
@@ -165,3 +166,13 @@ class AuthenticatedExcursionApiTest(TestCase):
         self.assertEqual(res.status_code, status.HTTP_204_NO_CONTENT)
         excursion = Excursion.objects.filter(user=self.user)
         self.assertFalse(excursion.exists())
+
+    def test_excursion_past_year_date(self):
+        data = {
+            'type': 'AD',
+            'date': MONDAY_PAST_YEAR,
+        }
+
+        res = self.client.post(EXCURSIONS_URL, data)
+
+        self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)

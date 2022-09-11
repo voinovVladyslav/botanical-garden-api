@@ -8,6 +8,7 @@ from rest_framework import status
 from PIL import Image
 import tempfile
 import os
+from datetime import date, timedelta
 
 from news.models import News, Hashtag
 from news.serializers import (
@@ -65,6 +66,97 @@ class PublicNewsApiTest(TestCase):
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
+
+    def test_news_filter_by_date_gte(self):
+        news1 = create_news(self.user, title='News1')
+        news2 = create_news(self.user, title='News2')
+        news3 = create_news(self.user, title='News3')
+        yesterday = date.today() - timedelta(days=1)
+        news3.publication_date = yesterday
+        news3.save()
+
+        params = {'publication_date_gte': f'{news1.publication_date}'}
+        res = self.client.get(NEWS_URL, params)
+
+        s1 = NewsSerializer(news1)
+        s2 = NewsSerializer(news2)
+        s3 = NewsSerializer(news3)
+
+        self.assertIn(s1.data, res.data)
+        self.assertIn(s2.data, res.data)
+        self.assertNotIn(s3.data, res.data)
+
+    def test_news_filter_by_date_lte(self):
+        news1 = create_news(self.user, title='News1')
+        news2 = create_news(self.user, title='News2')
+        news3 = create_news(self.user, title='News3')
+        yesterday = date.today() - timedelta(days=1)
+        news3.publication_date = yesterday
+        news3.save()
+
+        params = {'publication_date_lte': f'{news3.publication_date}'}
+        res = self.client.get(NEWS_URL, params)
+
+        s1 = NewsSerializer(news1)
+        s2 = NewsSerializer(news2)
+        s3 = NewsSerializer(news3)
+
+        self.assertNotIn(s1.data, res.data)
+        self.assertNotIn(s2.data, res.data)
+        self.assertIn(s3.data, res.data)
+
+    def test_news_filter_by_gte_and_lte(self):
+        news1 = create_news(self.user, title='News1')
+        news2 = create_news(self.user, title='News2')
+        news3 = create_news(self.user, title='News3')
+        news4 = create_news(self.user, title='News4')
+
+        news1.publication_date = date.today()
+        news2.publication_date = date.today() - timedelta(days=2)
+        news3.publication_date = date.today() - timedelta(days=5)
+        news4.publication_date = date.today() - timedelta(days=8)
+
+        news1.save()
+        news2.save()
+        news3.save()
+        news4.save()
+
+        params = {
+            'publication_date_gte': f'{news3.publication_date}',
+            'publication_date_lte': f'{news2.publication_date}',
+        }
+        res = self.client.get(NEWS_URL, params)
+
+        s1 = NewsSerializer(news1)
+        s2 = NewsSerializer(news2)
+        s3 = NewsSerializer(news3)
+        s4 = NewsSerializer(news4)
+
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        self.assertNotIn(s1.data, res.data)
+        self.assertIn(s2.data, res.data)
+        self.assertIn(s3.data, res.data)
+        self.assertNotIn(s4.data, res.data)
+
+    def test_news_fiter_by_hashtag(self):
+        news1 = create_news(self.user, title='News1')
+        news2 = create_news(self.user, title='News2')
+        news3 = create_news(self.user, title='News3')
+        hashtag1 = Hashtag.objects.create(name='#hashtag1')
+        hashtag2 = Hashtag.objects.create(name='#hashtag2')
+        news1.hashtags.add(hashtag1)
+        news2.hashtags.add(hashtag2)
+
+        params = {'hashtags': f'{hashtag1.id}'}
+        res = self.client.get(NEWS_URL, params)
+
+        s1 = NewsSerializer(news1)
+        s2 = NewsSerializer(news2)
+        s3 = NewsSerializer(news3)
+
+        self.assertIn(s1.data, res.data)
+        self.assertNotIn(s2.data, res.data)
+        self.assertNotIn(s3.data, res.data)
 
     def test_post_not_allowed(self):
         res = self.client.post(NEWS_URL, {})

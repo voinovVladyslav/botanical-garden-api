@@ -14,14 +14,14 @@ FRIDAY_END = (15, 0)
 
 def validate_excursion_date(value):
     now = datetime.now()
-    equal_date = value.year == now.year and value.month == now.month
-    if equal_date and value.day == now.day:
+    past_date = value.year <= now.year and value.month <= now.month
+    if past_date and value.day == now.day:
         raise ValidationError(
             _("You can't sign up for today, at least tomorrow"),
             params={'value': value},
         )
 
-    if equal_date and value.day < now.day:
+    if past_date and value.day < now.day:
         raise ValidationError(
             _("We do not work in past"),
             params={'value': value},
